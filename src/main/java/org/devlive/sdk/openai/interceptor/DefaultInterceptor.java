@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.response.DefaultResponse;
@@ -55,7 +56,11 @@ public class DefaultInterceptor
         if (response.code() == 401) {
             log.error("Failure to intercept request because not authorized");
             JsonUtils<DefaultResponse> jsonUtils = JsonUtils.getInstance();
-            DefaultResponse defaultResponse = jsonUtils.getObject(response.body().string(), DefaultResponse.class);
+            ResponseBody body = response.body();
+            if (ObjectUtils.isEmpty(body)) {
+                throw new NullPointerException("Failed to intercept request because no body");
+            }
+            DefaultResponse defaultResponse = jsonUtils.getObject(body.string(), DefaultResponse.class);
             throw new AuthorizedException(defaultResponse.getError().getMessage());
         }
         return response;

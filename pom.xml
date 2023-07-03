@@ -57,6 +57,7 @@
         <guava.version>31.1-jre</guava.version>
         <retrofit2.version>2.9.0</retrofit2.version>
         <plugin.maven.checkstyle.version>3.0.0</plugin.maven.checkstyle.version>
+        <plugin.maven.findbugs.version>3.0.5</plugin.maven.findbugs.version>
     </properties>
 
     <dependencies>
@@ -137,6 +138,27 @@
                             <consoleOutput>true</consoleOutput>
                             <failsOnError>true</failsOnError>
                         </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${plugin.maven.findbugs.version}</version>
+                <configuration>
+                    <effort>Low</effort>
+                    <threshold>Medium</threshold>
+                    <failOnError>true</failOnError>
+                    <includeTests>true</includeTests>
+                    <excludeFilterFile>./findbugs.xml</excludeFilterFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>run-findbugs</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
