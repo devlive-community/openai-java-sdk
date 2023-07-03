@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.devlive.openai</groupId>
+    <artifactId>openai-java-sdk</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>openai-java-sdk</name>
+    <description>
+        Provides Java developers with a convenient, easy-to-use SDK to interact with OpenAI's apis.
+    </description>
+
+    <url>https://sdk.devlive.org</url>
+
+    <scm>
+        <connection>scm:git:git://github.com/devlive-community/openai-java-sdk</connection>
+        <url>https://github.com/devlive-community/openai-java-sdk</url>
+    </scm>
+
+    <organization>
+        <name>devlive-community</name>
+        <url>https://github.com/devlive-community</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>qianmoq</name>
+            <email>shicheng@devlive.org</email>
+            <roles>
+                <role>Owner</role>
+            </roles>
+            <organization>devlive</organization>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://projectlombok.org/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+</project>
