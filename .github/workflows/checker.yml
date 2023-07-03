@@ -24,7 +24,11 @@ jobs:
       - name: Maven Checker Style
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: |
+            8
+            11
+            16
+            17
           distribution: 'temurin'
       - run: chmod 755 ./mvnw
       - run: ./mvnw clean install checkstyle:checkstyle -Dfindbugs.skip -Dgpg.skip -Dskip.yarn -DskipTests=true
@@ -39,7 +43,11 @@ jobs:
       - name: Maven Checker Bugs
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: |
+            8
+            11
+            16
+            17
           distribution: 'temurin'
       - run: chmod 755 ./mvnw
       - run: ./mvnw clean install findbugs:findbugs -Dcheckstyle.skip -Dgpg.skip -Dskip.yarn -DskipTests=true
@@ -55,7 +63,11 @@ jobs:
       - name: Maven Checker Tests
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: |
+            8
+            11
+            16
+            17
           distribution: 'temurin'
       - run: chmod 755 ./mvnw
       - run: ./mvnw clean install test -Dfindbugs.skip -Dcheckstyle.skip -Dgpg.skip -Dskip.yarn -Dopenai.token=${{ secrets.OPENAI_TOKEN }}
@@ -70,7 +82,11 @@ jobs:
       - name: Maven Checker Package
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: |
+            8
+            11
+            16
+            17
           distribution: 'temurin'
       - run: chmod 755 ./mvnw
       - run: ./mvnw -T 1C clean install package -Dfindbugs.skip -Dgpg.skip -Dcheckstyle.skip -DskipTests=true
