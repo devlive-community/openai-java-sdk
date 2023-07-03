@@ -11,7 +11,6 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.response.DefaultResponse;
 import org.devlive.sdk.openai.utils.JsonUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -37,9 +36,8 @@ public class DefaultInterceptor
                 .build();
     }
 
-    @NotNull
     @Override
-    public Response intercept(@NotNull Chain chain) throws IOException
+    public Response intercept(Chain chain) throws IOException
     {
         Request original = chain.request();
         Request request = this.headers(original);

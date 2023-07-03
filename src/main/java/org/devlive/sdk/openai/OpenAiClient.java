@@ -67,7 +67,8 @@ public class OpenAiClient
         {
             if (StringUtils.isEmpty(apiHost)) {
                 apiHost = "https://api.openai.com";
-            } else {
+            }
+            else {
                 Preconditions.checkState(apiHost.startsWith("http") || apiHost.startsWith("https"),
                         "Api host must start with http or https");
             }

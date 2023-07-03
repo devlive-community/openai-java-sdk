@@ -56,6 +56,7 @@
         <okhttp.version>4.9.3</okhttp.version>
         <guava.version>31.1-jre</guava.version>
         <retrofit2.version>2.9.0</retrofit2.version>
+        <plugin.maven.checkstyle.version>3.0.0</plugin.maven.checkstyle.version>
     </properties>
 
     <dependencies>
@@ -117,4 +118,31 @@
             <version>${retrofit2.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${plugin.maven.checkstyle.version}</version>
+                <configuration>
+                    <configLocation>./check.xml</configLocation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <consoleOutput>true</consoleOutput>
+                            <failsOnError>true</failsOnError>
+                        </configuration>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
