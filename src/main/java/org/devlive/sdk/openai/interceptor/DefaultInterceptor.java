@@ -9,7 +9,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.AuthorizedException;
+import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.response.DefaultResponse;
 import org.devlive.sdk.openai.utils.JsonUtils;
@@ -31,6 +33,9 @@ public class DefaultInterceptor
 
     public Request headers(Request original)
     {
+        if (StringUtils.isEmpty(this.apiKey)) {
+            throw new ParamException("Invalid OpenAi token, must be non-empty");
+        }
         return original.newBuilder()
                 .header("Authorization", String.format("Bearer %s", this.apiKey))
                 .header("Content-Type", "application/json")

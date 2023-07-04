@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -36,16 +37,16 @@ public class OpenAiClient
         }
         Preconditions.checkState(hasApiKey, "Invalid OpenAi token");
 
-        if (ObjectUtils.isEmpty(apiHost)) {
+        if (ObjectUtils.isEmpty(builder.apiHost)) {
             builder.apiHost(null);
         }
-        if (ObjectUtils.isEmpty(timeout)) {
+        if (ObjectUtils.isEmpty(builder.timeout)) {
             builder.timeout(null);
         }
-        if (ObjectUtils.isEmpty(unit)) {
+        if (ObjectUtils.isEmpty(builder.unit)) {
             builder.unit(null);
         }
-        if (ObjectUtils.isEmpty(client)) {
+        if (ObjectUtils.isEmpty(builder.client)) {
             builder.client(null);
         }
 
@@ -101,10 +102,10 @@ public class OpenAiClient
 
         public OpenAiClientBuilder client(OkHttpClient client)
         {
+            DefaultInterceptor interceptor = new DefaultInterceptor();
+            interceptor.setApiKey(this.apiKey);
             if (ObjectUtils.isEmpty(client)) {
                 log.warn("No client, creating default client");
-                DefaultInterceptor interceptor = new DefaultInterceptor();
-                interceptor.setApiKey(this.apiKey);
                 client = new OkHttpClient.Builder()
                         .addInterceptor(interceptor)
                         .connectTimeout(this.timeout, this.unit)
@@ -112,6 +113,18 @@ public class OpenAiClient
                         .readTimeout(this.timeout, this.unit)
                         .callTimeout(this.timeout, this.unit)
                         .build();
+            }
+
+            if (client.interceptors().size() <= 0) {
+                throw new ParamException("No interceptors available");
+            }
+
+            long count = client.interceptors()
+                    .stream()
+                    .filter(inter -> inter instanceof DefaultInterceptor)
+                    .count();
+            if (count <= 0) {
+                throw new ParamException("Must inject DefaultInterceptor");
             }
             this.client = client;
             return this;
