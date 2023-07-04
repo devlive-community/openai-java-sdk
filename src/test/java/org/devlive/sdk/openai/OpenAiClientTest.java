@@ -38,4 +38,11 @@ public class OpenAiClientTest
     {
         Assert.assertTrue(client.getModels().getModels().size() > 0);
     }
+
+    @Test
+    public void testGetModel()
+    {
+        String model = "text-davinci-003";
+        Assert.assertNotNull(client.getModel(model));
+    }
 }

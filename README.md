@@ -22,9 +22,10 @@
 
 ---
 
-| Function                              |  Interface   | Platform | Plan |
-|---------------------------------------|:------------:|:--------:|:----:|
-| Lists the currently available models. | `/v1/models` | `OpenAi` |  ✅   |
+- Rapidly develop products based on the platform, improve development efficiency, and meet fast delivery requirements.
+- Concise and easy to understand, code specification requirements, can be used as enterprise code specification.
+- The steps to use are very simple, and one line of code realizes the required functions.
+- Support multiple proxy platforms, perfectly adapt to various APIs.
 
 ## Star History
 

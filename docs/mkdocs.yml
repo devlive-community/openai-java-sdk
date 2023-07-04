@@ -40,3 +40,9 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.snippets
   - abbr
+
+nav:
+  - index.md
+  - Reference:
+      - reference/models.md
+  - powered_by.md
