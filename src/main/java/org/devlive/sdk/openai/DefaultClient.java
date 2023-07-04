@@ -11,25 +11,25 @@ public abstract class DefaultClient
 {
     protected DefaultApi api;
 
-    ModelResponse getModels()
+    public ModelResponse getModels()
     {
         return this.api.fetchModels()
                 .blockingGet();
     }
 
-    ModelEntity getModel(String model)
+    public ModelEntity getModel(String model)
     {
         return this.api.fetchModel(model)
                 .blockingGet();
     }
 
-    CompleteResponse createCompletion(CompletionEntity configure)
+    public CompleteResponse createCompletion(CompletionEntity configure)
     {
         return this.api.fetchCompletions(configure)
                 .blockingGet();
     }
 
-    CompleteChatResponse createChatCompletion(CompletionChatEntity configure)
+    public CompleteChatResponse createChatCompletion(CompletionChatEntity configure)
     {
         return this.api.fetchChatCompletions(configure)
                 .blockingGet();
