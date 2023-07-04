@@ -1,0 +1,42 @@
+site_name: OpenAi Java Sdk
+site_url: https://openai-java-sdk.devlive.org
+site_author: qinamoQ
+site_description: >-
+  Provides Java developers with a convenient, easy-to-use SDK to interact with OpenAI's apis.
+
+repo_name: devlive-community/openai-java-sdk
+repo_url: https://github.com/devlive-community/openai-java-sdk
+edit_uri: "https://github.com/devlive-community/openai-java-sdk/blob/master/docs/docs"
+
+copyright: Copyright &copy; 2023 Devlive Community
+
+use_directory_urls: false
+
+theme:
+  name: material
+
+  language: en
+  features:
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.tooltips
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets
+  - abbr
