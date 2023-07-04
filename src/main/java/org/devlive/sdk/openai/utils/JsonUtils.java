@@ -20,4 +20,9 @@ public class JsonUtils<T>
     {
         return OBJECT_MAPPER.readValue(json, clazz);
     }
+
+    public String getString(T clazz) throws JsonProcessingException
+    {
+        return OBJECT_MAPPER.writeValueAsString(clazz);
+    }
 }

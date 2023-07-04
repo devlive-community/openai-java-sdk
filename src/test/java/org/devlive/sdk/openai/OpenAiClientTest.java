@@ -1,6 +1,8 @@
 package org.devlive.sdk.openai;
 
+import org.devlive.sdk.openai.entity.CompleteEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
+import org.devlive.sdk.openai.model.CompleteModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,5 +46,16 @@ public class OpenAiClientTest
     {
         String model = "text-davinci-003";
         Assert.assertNotNull(client.getModel(model));
+    }
+
+    @Test
+    public void testCreateComplete()
+    {
+        CompleteEntity configure = CompleteEntity.builder()
+                .model(CompleteModel.TEXT_DAVINCI_003.getName())
+                .prompt("How to create a complete")
+                .temperature(2D)
+                .build();
+        Assert.assertTrue(client.createComplete(configure).getChoices().size() > 0);
     }
 }
