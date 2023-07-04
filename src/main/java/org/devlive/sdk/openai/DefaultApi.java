@@ -1,13 +1,9 @@
 package org.devlive.sdk.openai;
 
 import io.reactivex.Single;
-import org.devlive.sdk.openai.entity.CompleteEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
-import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface DefaultApi
@@ -15,7 +11,7 @@ public interface DefaultApi
     /**
      * Lists the currently available models
      */
-    @GET(value = "v1/models")
+    @GET("v1/models")
     Single<ModelResponse> fetchModels();
 
     /**
@@ -23,12 +19,6 @@ public interface DefaultApi
      *
      * @param model The ID of the model to use for this request
      */
-    @GET(value = "v1/models/{model}")
+    @GET("v1/models/{model}")
     Single<ModelEntity> fetchModel(@Path("model") String model);
-
-    /**
-     * Creates a completion for the provided prompt and parameters.
-     */
-    @POST(value = "v1/completions")
-    Single<CompleteResponse> fetchCompletions(@Body CompleteEntity configure);
 }

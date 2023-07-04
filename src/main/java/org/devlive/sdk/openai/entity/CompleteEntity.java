@@ -6,11 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.model.CompleteModel;
-import org.devlive.sdk.openai.utils.EnumsUtils;
 
 import java.util.List;
 
@@ -21,8 +17,9 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CompleteEntity
 {
-    @JsonProperty(value = "model")
-    private String model;
+    @JsonProperty(value = "model", defaultValue = "TEXT_DAVINCI_003")
+    @Builder.Default
+    private CompleteModel model = CompleteModel.TEXT_DAVINCI_003;
 
     @JsonProperty(value = "prompt", required = true)
     private String prompt;
@@ -37,7 +34,7 @@ public class CompleteEntity
     private Double topP;
 
     @JsonProperty(value = "best_of")
-    private Integer bestOf;
+    private Double bestOf;
 
     @JsonProperty(value = "frequency_penalty")
     private Double frequencyPenalty;
@@ -47,111 +44,4 @@ public class CompleteEntity
 
     @JsonProperty(value = "stop")
     private List<String> stop;
-
-    private CompleteEntity(CompleteEntityBuilder builder)
-    {
-        if (ObjectUtils.isEmpty(builder.model)) {
-            builder.model(CompleteModel.TEXT_DAVINCI_003.getName());
-        }
-        this.model = builder.model;
-
-        if (ObjectUtils.isEmpty(builder.prompt)) {
-            builder.prompt(null);
-        }
-        this.prompt = builder.prompt;
-
-        if (ObjectUtils.isEmpty(builder.temperature)) {
-            builder.temperature(1D);
-        }
-        this.temperature = builder.temperature;
-
-        if (ObjectUtils.isEmpty(builder.maxTokens)) {
-            builder.maxTokens(16);
-        }
-        this.maxTokens = builder.maxTokens;
-
-        if (ObjectUtils.isEmpty(builder.topP)) {
-            builder.topP(1D);
-        }
-        this.topP = builder.topP;
-
-        if (ObjectUtils.isEmpty(builder.bestOf)) {
-            builder.bestOf(1);
-        }
-        this.bestOf = builder.bestOf;
-
-        if (ObjectUtils.isEmpty(builder.frequencyPenalty)) {
-            builder.frequencyPenalty(0D);
-        }
-        this.frequencyPenalty = builder.frequencyPenalty;
-
-        if (ObjectUtils.isEmpty(builder.presencePenalty)) {
-            builder.presencePenalty(0D);
-        }
-        this.presencePenalty = builder.presencePenalty;
-        this.stop = builder.stop;
-    }
-
-    public static class CompleteEntityBuilder
-    {
-        public CompleteEntityBuilder model(String model)
-        {
-            if (StringUtils.isEmpty(model)) {
-                model = CompleteModel.TEXT_DAVINCI_003.getName();
-            }
-            this.model = model;
-            return this;
-        }
-
-        public CompleteEntityBuilder prompt(String prompt)
-        {
-            if (StringUtils.isEmpty(prompt)) {
-                throw new ParamException("Invalid prompt must not be empty");
-            }
-            this.prompt = prompt;
-            return this;
-        }
-
-        public CompleteEntityBuilder temperature(Double temperature)
-        {
-            if (temperature < 0 || temperature > 2) {
-                throw new ParamException(String.format("Invalid temperature: %s , between 0 and 2", temperature));
-            }
-            this.temperature = temperature;
-            return this;
-        }
-
-        public CompleteEntityBuilder maxTokens(Integer maxTokens)
-        {
-            CompleteModel completeModel = EnumsUtils.getCompleteModel(this.model);
-            if (ObjectUtils.isNotEmpty(this.model) && maxTokens > completeModel.getMaxTokens()) {
-                throw new ParamException(String.format("Invalid maxTokens: %s, Cannot be larger than the model default configuration %s", maxTokens, completeModel.getMaxTokens()));
-            }
-            this.maxTokens = maxTokens;
-            return this;
-        }
-
-        public CompleteEntityBuilder frequencyPenalty(Double frequencyPenalty)
-        {
-            if (frequencyPenalty < -2.0 || frequencyPenalty > 2.0) {
-                throw new ParamException(String.format("Invalid frequencyPenalty: %s , between -2.0 and 2.0", frequencyPenalty));
-            }
-            this.frequencyPenalty = frequencyPenalty;
-            return this;
-        }
-
-        public CompleteEntityBuilder presencePenalty(Double presencePenalty)
-        {
-            if (presencePenalty < -2.0 || presencePenalty > 2.0) {
-                throw new ParamException(String.format("Invalid presencePenalty: %s , between -2.0 and 2.0", presencePenalty));
-            }
-            this.presencePenalty = presencePenalty;
-            return this;
-        }
-
-        public CompleteEntity build()
-        {
-            return new CompleteEntity(this);
-        }
-    }
 }

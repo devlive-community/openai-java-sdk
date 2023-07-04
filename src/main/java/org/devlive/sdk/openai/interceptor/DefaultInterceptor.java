@@ -10,7 +10,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.exception.AuthorizedException;
-import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.response.DefaultResponse;
 import org.devlive.sdk.openai.utils.JsonUtils;
 
@@ -41,8 +40,6 @@ public class DefaultInterceptor
     @Override
     public Response intercept(Chain chain) throws IOException
     {
-        JsonUtils<DefaultResponse> jsonInstance = JsonUtils.getInstance();
-
         Request original = chain.request();
         Request request = this.headers(original);
         Response response = chain.proceed(request);
@@ -57,24 +54,14 @@ public class DefaultInterceptor
 
         // Unauthorized
         if (response.code() == 401) {
+            log.error("Failure to intercept request because not authorized");
+            JsonUtils<DefaultResponse> jsonUtils = JsonUtils.getInstance();
             ResponseBody body = response.body();
             if (ObjectUtils.isEmpty(body)) {
                 throw new NullPointerException("Failed to intercept request because no body");
             }
-            DefaultResponse defaultResponse = jsonInstance.getObject(body.string(), DefaultResponse.class);
-            log.error("Failure to intercept request because not authorized {}", defaultResponse.getError().getMessage());
+            DefaultResponse defaultResponse = jsonUtils.getObject(body.string(), DefaultResponse.class);
             throw new AuthorizedException(defaultResponse.getError().getMessage());
-        }
-
-        // Has error
-        if (response.code() == 404 || response.code() == 400) {
-            ResponseBody body = response.body();
-            if (ObjectUtils.isEmpty(body)) {
-                throw new NullPointerException("Failed to intercept request because no body");
-            }
-            DefaultResponse defaultResponse = jsonInstance.getObject(body.string(), DefaultResponse.class);
-            log.error("Failure to intercept request because {}", defaultResponse.getError().getMessage());
-            throw new RequestException(defaultResponse.getError().getMessage());
         }
         return response;
     }
