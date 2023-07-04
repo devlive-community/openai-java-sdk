@@ -1,8 +1,8 @@
 package org.devlive.sdk.openai;
 
-import org.devlive.sdk.openai.entity.CompleteEntity;
+import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
-import org.devlive.sdk.openai.model.CompleteModel;
+import org.devlive.sdk.openai.model.CompletionModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,13 +49,13 @@ public class OpenAiClientTest
     }
 
     @Test
-    public void testCreateComplete()
+    public void testCreateCompletion()
     {
-        CompleteEntity configure = CompleteEntity.builder()
-                .model(CompleteModel.TEXT_DAVINCI_003.getName())
-                .prompt("How to create a complete")
+        CompletionEntity configure = CompletionEntity.builder()
+                .model(CompletionModel.TEXT_DAVINCI_003.getName())
+                .prompt("How to create a completion")
                 .temperature(2D)
                 .build();
-        Assert.assertTrue(client.createComplete(configure).getChoices().size() > 0);
+        Assert.assertTrue(client.createCompletion(configure).getChoices().size() > 0);
     }
 }

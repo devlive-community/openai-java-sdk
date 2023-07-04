@@ -1,7 +1,7 @@
 package org.devlive.sdk.openai;
 
 import io.reactivex.Single;
-import org.devlive.sdk.openai.entity.CompleteEntity;
+import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
@@ -30,5 +30,5 @@ public interface DefaultApi
      * Creates a completion for the provided prompt and parameters.
      */
     @POST(value = "v1/completions")
-    Single<CompleteResponse> fetchCompletions(@Body CompleteEntity configure);
+    Single<CompleteResponse> fetchCompletions(@Body CompletionEntity configure);
 }

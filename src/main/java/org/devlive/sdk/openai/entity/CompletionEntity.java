@@ -9,7 +9,7 @@ import lombok.ToString;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.ParamException;
-import org.devlive.sdk.openai.model.CompleteModel;
+import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.utils.EnumsUtils;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CompleteEntity
+public class CompletionEntity
 {
     @JsonProperty(value = "model")
     private String model;
@@ -48,10 +48,10 @@ public class CompleteEntity
     @JsonProperty(value = "stop")
     private List<String> stop;
 
-    private CompleteEntity(CompleteEntityBuilder builder)
+    private CompletionEntity(CompletionEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
-            builder.model(CompleteModel.TEXT_DAVINCI_003.getName());
+            builder.model(CompletionModel.TEXT_DAVINCI_003.getName());
         }
         this.model = builder.model;
 
@@ -92,18 +92,18 @@ public class CompleteEntity
         this.stop = builder.stop;
     }
 
-    public static class CompleteEntityBuilder
+    public static class CompletionEntityBuilder
     {
-        public CompleteEntityBuilder model(String model)
+        public CompletionEntityBuilder model(String model)
         {
             if (StringUtils.isEmpty(model)) {
-                model = CompleteModel.TEXT_DAVINCI_003.getName();
+                model = CompletionModel.TEXT_DAVINCI_003.getName();
             }
             this.model = model;
             return this;
         }
 
-        public CompleteEntityBuilder prompt(String prompt)
+        public CompletionEntityBuilder prompt(String prompt)
         {
             if (StringUtils.isEmpty(prompt)) {
                 throw new ParamException("Invalid prompt must not be empty");
@@ -112,7 +112,7 @@ public class CompleteEntity
             return this;
         }
 
-        public CompleteEntityBuilder temperature(Double temperature)
+        public CompletionEntityBuilder temperature(Double temperature)
         {
             if (temperature < 0 || temperature > 2) {
                 throw new ParamException(String.format("Invalid temperature: %s , between 0 and 2", temperature));
@@ -121,17 +121,17 @@ public class CompleteEntity
             return this;
         }
 
-        public CompleteEntityBuilder maxTokens(Integer maxTokens)
+        public CompletionEntityBuilder maxTokens(Integer maxTokens)
         {
-            CompleteModel completeModel = EnumsUtils.getCompleteModel(this.model);
-            if (ObjectUtils.isNotEmpty(this.model) && maxTokens > completeModel.getMaxTokens()) {
-                throw new ParamException(String.format("Invalid maxTokens: %s, Cannot be larger than the model default configuration %s", maxTokens, completeModel.getMaxTokens()));
+            CompletionModel completionModel = EnumsUtils.getCompleteModel(this.model);
+            if (ObjectUtils.isNotEmpty(this.model) && maxTokens > completionModel.getMaxTokens()) {
+                throw new ParamException(String.format("Invalid maxTokens: %s, Cannot be larger than the model default configuration %s", maxTokens, completionModel.getMaxTokens()));
             }
             this.maxTokens = maxTokens;
             return this;
         }
 
-        public CompleteEntityBuilder frequencyPenalty(Double frequencyPenalty)
+        public CompletionEntityBuilder frequencyPenalty(Double frequencyPenalty)
         {
             if (frequencyPenalty < -2.0 || frequencyPenalty > 2.0) {
                 throw new ParamException(String.format("Invalid frequencyPenalty: %s , between -2.0 and 2.0", frequencyPenalty));
@@ -140,7 +140,7 @@ public class CompleteEntity
             return this;
         }
 
-        public CompleteEntityBuilder presencePenalty(Double presencePenalty)
+        public CompletionEntityBuilder presencePenalty(Double presencePenalty)
         {
             if (presencePenalty < -2.0 || presencePenalty > 2.0) {
                 throw new ParamException(String.format("Invalid presencePenalty: %s , between -2.0 and 2.0", presencePenalty));
@@ -149,9 +149,9 @@ public class CompleteEntity
             return this;
         }
 
-        public CompleteEntity build()
+        public CompletionEntity build()
         {
-            return new CompleteEntity(this);
+            return new CompletionEntity(this);
         }
     }
 }

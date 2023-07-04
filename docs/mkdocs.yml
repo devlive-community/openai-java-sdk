@@ -45,4 +45,5 @@ nav:
   - index.md
   - Reference:
       - reference/models.md
+      - reference/completions.md
   - powered_by.md
