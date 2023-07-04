@@ -34,9 +34,6 @@ hide:
     </a>
     <p/> 
     <p/>
-    <a href="/reference/get_started.html" title="Get Started" class="md-button">
-        Get Started
-    </a>
     <a href="https://github.com/devlive-community/openai-java-sdk" target="_blank" title="Join us on GitHub" class="md-button md-button--primary">
       Join us on GitHub
     </a>
@@ -70,5 +67,17 @@ hide:
     ---
 
     Support multiple proxy platforms, perfectly adapt to various APIs.
+
+- __Dynamically Configure__
+
+    ---
+
+    Dynamically expand Max Tokens according to the model.
+
+- __Isolate remote API__
+
+    ---
+
+    Rich pre-data verification to avoid direct contact with API.
 
 </div>

@@ -1,7 +1,9 @@
 package org.devlive.sdk.openai;
 
+import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 
@@ -24,6 +26,12 @@ public abstract class DefaultClient
     CompleteResponse createCompletion(CompletionEntity configure)
     {
         return this.api.fetchCompletions(configure)
+                .blockingGet();
+    }
+
+    CompleteChatResponse createChatCompletion(CompletionChatEntity configure)
+    {
+        return this.api.fetchChatCompletions(configure)
                 .blockingGet();
     }
 }

@@ -1,8 +1,10 @@
 package org.devlive.sdk.openai;
 
 import io.reactivex.Single;
+import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import retrofit2.http.Body;
@@ -31,4 +33,10 @@ public interface DefaultApi
      */
     @POST(value = "v1/completions")
     Single<CompleteResponse> fetchCompletions(@Body CompletionEntity configure);
+
+    /**
+     * Creates a model response for the given chat conversation.
+     */
+    @POST(value = "v1/chat/completions")
+    Single<CompleteChatResponse> fetchChatCompletions(@Body CompletionChatEntity configure);
 }
