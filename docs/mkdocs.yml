@@ -46,4 +46,5 @@ nav:
   - Reference:
       - reference/models.md
       - reference/completions.md
+      - reference/completions_chat.md
   - powered_by.md

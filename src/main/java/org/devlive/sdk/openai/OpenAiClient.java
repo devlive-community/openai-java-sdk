@@ -1,5 +1,7 @@
 package org.devlive.sdk.openai;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Preconditions;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 public class OpenAiClient
         extends DefaultClient
 {
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
     private String apiKey;
     private String apiHost;
     private Integer timeout;
@@ -46,11 +50,12 @@ public class OpenAiClient
         }
 
         // Build a remote API client
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.api = new Retrofit.Builder()
                 .baseUrl(builder.apiHost)
                 .client(builder.client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create(objectMapper))
                 .build()
                 .create(DefaultApi.class);
     }
