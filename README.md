@@ -26,6 +26,8 @@
 - Concise and easy to understand, code specification requirements, can be used as enterprise code specification.
 - The steps to use are very simple, and one line of code realizes the required functions.
 - Support multiple proxy platforms, perfectly adapt to various APIs.
+- Dynamically expand Max Tokens according to the model
+- Rich pre-data verification to avoid direct contact with API
 
 ## Star History
 

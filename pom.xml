@@ -5,7 +5,7 @@
 
     <groupId>org.devlive.sdk</groupId>
     <artifactId>openai-java-sdk</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <name>openai-java-sdk</name>
     <description>
@@ -56,6 +56,7 @@
         <okhttp.version>4.9.3</okhttp.version>
         <guava.version>31.1-jre</guava.version>
         <retrofit2.version>2.9.0</retrofit2.version>
+        <findbugs.version>3.0.1</findbugs.version>
         <plugin.maven.checkstyle.version>3.0.0</plugin.maven.checkstyle.version>
         <plugin.maven.findbugs.version>3.0.5</plugin.maven.findbugs.version>
         <plugin.maven.source.version>2.2.1</plugin.maven.source.version>
@@ -121,6 +122,11 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
             <version>${retrofit2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>findbugs-annotations</artifactId>
+            <version>${findbugs.version}</version>
         </dependency>
     </dependencies>
 

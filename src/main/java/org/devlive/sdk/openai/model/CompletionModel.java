@@ -60,8 +60,7 @@ public enum CompletionModel
     CODE_DAVINCI_002("code-davinci-002",
             "Optimized for code-completion tasks",
             null,
-            8001),
-    ;
+            8001);
 
     private final String name;
     private final String description;
