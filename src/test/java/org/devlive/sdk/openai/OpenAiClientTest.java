@@ -1,22 +1,26 @@
 package org.devlive.sdk.openai;
 
 import com.google.common.collect.Lists;
+import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
+import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class OpenAiClientTest
 {
     private OpenAiClient client;
     private String invalidApiKey = "sk-rh";
+    private long openApiTimeout = 10;
 
     @Before
     public void before()
@@ -30,6 +34,25 @@ public class OpenAiClientTest
     public void testBuilder()
     {
         Assert.assertNotNull(client);
+    }
+
+    @Test
+    public void testClient()
+    {
+        DefaultInterceptor interceptor = new DefaultInterceptor();
+        interceptor.setApiKey(System.getProperty("proxy.token"));
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .connectTimeout(openApiTimeout, TimeUnit.SECONDS)
+                .writeTimeout(openApiTimeout, TimeUnit.SECONDS)
+                .readTimeout(openApiTimeout, TimeUnit.SECONDS)
+                .build();
+        client = OpenAiClient.builder()
+                .apiHost(System.getProperty("proxy.host"))
+                .apiKey(invalidApiKey)
+                .client(okHttpClient)
+                .build();
+        Assert.assertTrue(client.getModels().getModels().size() > 0);
     }
 
     @Test
