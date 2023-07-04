@@ -11,12 +11,12 @@
     <description>
         Provides Java developers with a convenient, easy-to-use SDK to interact with OpenAI's apis.
     </description>
-
     <url>https://openai-java-sdk.devlive.org</url>
 
     <scm>
-        <connection>scm:git:git://github.com/devlive-community/openai-java-sdk</connection>
         <url>https://github.com/devlive-community/openai-java-sdk</url>
+        <connection>scm:git:git://github.com/devlive-community/openai-java-sdk</connection>
+        <tag>openai,jdk,java,chatgpt</tag>
     </scm>
 
     <organization>
@@ -58,6 +58,10 @@
         <retrofit2.version>2.9.0</retrofit2.version>
         <plugin.maven.checkstyle.version>3.0.0</plugin.maven.checkstyle.version>
         <plugin.maven.findbugs.version>3.0.5</plugin.maven.findbugs.version>
+        <plugin.maven.source.version>2.2.1</plugin.maven.source.version>
+        <plugin.maven.javadoc.version>3.5.0</plugin.maven.javadoc.version>
+        <plugin.maven.gpg.version>1.6</plugin.maven.gpg.version>
+        <plugin.maven.nexus.version>1.6</plugin.maven.nexus.version>
     </properties>
 
     <dependencies>
@@ -165,6 +169,78 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${plugin.maven.source.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${plugin.maven.javadoc.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <tags>
+                        <tag>
+                            <name>Description</name>
+                            <placement>test</placement>
+                            <head>description</head>
+                        </tag>
+                    </tags>
+                    <additionalOptions>-Xdoclint:none</additionalOptions>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${plugin.maven.gpg.version}</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>${plugin.maven.nexus.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
