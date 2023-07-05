@@ -70,7 +70,11 @@ jobs:
             17
           distribution: 'temurin'
       - run: chmod 755 ./mvnw
-      - run: ./mvnw clean install test -Dfindbugs.skip -Dcheckstyle.skip -Dgpg.skip -Dskip.yarn -Dopenai.token=${{ secrets.OPENAI_TOKEN }} -Dproxy.token=${{ secrets.PROXY_TOKEN }} -Dproxy.host=${{ secrets.PROXY_HOST }}
+      - run: ./mvnw clean install test -Dfindbugs.skip -Dcheckstyle.skip -Dgpg.skip -Dskip.yarn \
+          -Dopenai.token=${{ secrets.OPENAI_TOKEN }} \
+          -Dproxy.token=${{ secrets.PROXY_TOKEN }} \
+          -Dproxy.host=${{ secrets.PROXY_HOST }} \
+          -Dazure.token=${{ secrets.AZURE_TOKEN}}
 
   before_checker_package:
     runs-on: ubuntu-latest

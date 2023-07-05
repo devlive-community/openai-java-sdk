@@ -1,21 +1,27 @@
 package org.devlive.sdk.openai;
 
+import lombok.extern.slf4j.Slf4j;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.model.ProviderModel;
+import org.devlive.sdk.openai.model.UrlModel;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.utils.ProviderUtils;
 
+@Slf4j
 public abstract class DefaultClient
 {
     protected DefaultApi api;
+    protected ProviderModel provider;
 
     public ModelResponse getModels()
     {
-        return this.api.fetchModels()
+        return this.api.fetchModels(ProviderUtils.getUrl(provider, UrlModel.FETCH_MODELS))
                 .blockingGet();
     }
 
@@ -27,13 +33,13 @@ public abstract class DefaultClient
 
     public CompleteResponse createCompletion(CompletionEntity configure)
     {
-        return this.api.fetchCompletions(configure)
+        return this.api.fetchCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_COMPLETIONS), configure)
                 .blockingGet();
     }
 
     public CompleteChatResponse createChatCompletion(CompletionChatEntity configure)
     {
-        return this.api.fetchChatCompletions(configure)
+        return this.api.fetchChatCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS), configure)
                 .blockingGet();
     }
 

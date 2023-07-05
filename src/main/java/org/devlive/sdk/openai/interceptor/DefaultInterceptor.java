@@ -11,9 +11,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.Buffer;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.AuthorizedException;
-import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.response.DefaultResponse;
 import org.devlive.sdk.openai.utils.JsonUtils;
@@ -21,29 +19,16 @@ import org.devlive.sdk.openai.utils.JsonUtils;
 import java.io.IOException;
 
 @Slf4j
-public class DefaultInterceptor
+@Setter
+@Getter
+public abstract class DefaultInterceptor
         implements Interceptor
 {
-    @Getter
-    @Setter
     private String apiKey;
+    private String model;
+    private String version;
 
-    public DefaultInterceptor()
-    {
-        log.warn("Default Interceptor");
-    }
-
-    public Request headers(Request original)
-    {
-        if (StringUtils.isEmpty(this.apiKey)) {
-            throw new ParamException("Invalid OpenAi token, must be non-empty");
-        }
-        return original.newBuilder()
-                .header("Authorization", String.format("Bearer %s", this.apiKey))
-                .header("Content-Type", "application/json")
-                .method(original.method(), original.body())
-                .build();
-    }
+    protected abstract Request prepared(Request original);
 
     @Override
     public Response intercept(Chain chain) throws IOException
@@ -51,7 +36,7 @@ public class DefaultInterceptor
         JsonUtils<DefaultResponse> jsonInstance = JsonUtils.getInstance();
 
         Request original = chain.request();
-        Request request = this.headers(original);
+        Request request = this.prepared(original);
 
         RequestBody requestBody = request.body();
         if (ObjectUtils.isNotEmpty(requestBody)) {
@@ -82,7 +67,8 @@ public class DefaultInterceptor
         }
 
         // Has error
-        if (response.code() == 404 || response.code() == 400 || response.code() == 403) {
+        if (response.code() == 404 || response.code() == 400 || response.code() == 403
+                || response.code() == 405) {
             ResponseBody body = response.body();
             if (ObjectUtils.isEmpty(body)) {
                 throw new NullPointerException("Failed to intercept request because no body");

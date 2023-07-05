@@ -13,14 +13,15 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Url;
 
 public interface DefaultApi
 {
     /**
      * Lists the currently available models
      */
-    @GET(value = "v1/models")
-    Single<ModelResponse> fetchModels();
+    @GET
+    Single<ModelResponse> fetchModels(@Url String url);
 
     /**
      * Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
@@ -33,14 +34,16 @@ public interface DefaultApi
     /**
      * Creates a completion for the provided prompt and parameters.
      */
-    @POST(value = "v1/completions")
-    Single<CompleteResponse> fetchCompletions(@Body CompletionEntity configure);
+    @POST
+    Single<CompleteResponse> fetchCompletions(@Url String url,
+                                              @Body CompletionEntity configure);
 
     /**
      * Creates a model response for the given chat conversation.
      */
-    @POST(value = "v1/chat/completions")
-    Single<CompleteChatResponse> fetchChatCompletions(@Body CompletionChatEntity configure);
+    @POST
+    Single<CompleteChatResponse> fetchChatCompletions(@Url String url,
+                                                      @Body CompletionChatEntity configure);
 
     /**
      * Get all keys
