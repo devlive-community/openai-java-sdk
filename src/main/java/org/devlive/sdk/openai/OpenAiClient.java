@@ -2,13 +2,16 @@ package org.devlive.sdk.openai;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Preconditions;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.devlive.sdk.openai.exception.ParamException;
+import org.devlive.sdk.openai.interceptor.AzureInterceptor;
 import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
+import org.devlive.sdk.openai.interceptor.OpenAiInterceptor;
+import org.devlive.sdk.openai.model.ProviderModel;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -27,14 +30,31 @@ public class OpenAiClient
     private Integer timeout;
     private TimeUnit unit;
     private OkHttpClient client;
+    private ProviderModel provider;
+    // Azure provider requires
+    private String model; // The model name deployed in azure
+    private String version;
 
     private OpenAiClient(OpenAiClientBuilder builder)
     {
         boolean hasApiKey = StringUtils.isNotEmpty(builder.apiKey);
         if (!hasApiKey) {
             log.error("Invalid OpenAi token");
+            throw new ParamException("Invalid OpenAi token");
         }
-        Preconditions.checkState(hasApiKey, "Invalid OpenAi token");
+
+        if (ObjectUtils.isEmpty(builder.provider)) {
+            builder.provider(ProviderModel.openai);
+        }
+
+        if (builder.provider.equals(ProviderModel.azure)) {
+            if (ObjectUtils.isEmpty(builder.model)) {
+                throw new ParamException("Azure provider model not specified");
+            }
+            if (ObjectUtils.isEmpty(builder.version)) {
+                throw new ParamException("Azure provider version not specified");
+            }
+        }
 
         if (ObjectUtils.isEmpty(builder.apiHost)) {
             builder.apiHost(null);
@@ -49,6 +69,7 @@ public class OpenAiClient
             builder.client(null);
         }
 
+        super.provider = builder.provider;
         // Build a remote API client
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.api = new Retrofit.Builder()
@@ -74,8 +95,10 @@ public class OpenAiClient
                 apiHost = "https://api.openai.com";
             }
             else {
-                Preconditions.checkState(apiHost.startsWith("http") || apiHost.startsWith("https"),
-                        "Api host must start with http or https");
+                boolean flag = apiHost.startsWith("http") || apiHost.startsWith("https");
+                if (!flag) {
+                    throw new ParamException(String.format("Invalid apiHost <%s> must start with http or https", apiHost));
+                }
             }
             this.apiHost = apiHost;
             return this;
@@ -101,8 +124,12 @@ public class OpenAiClient
 
         public OpenAiClientBuilder client(OkHttpClient client)
         {
+            if (ObjectUtils.isEmpty(this.provider)) {
+                this.provider = ProviderModel.openai;
+            }
+
             if (ObjectUtils.isEmpty(client)) {
-                log.warn("No client, creating default client");
+                log.debug("No client specified, creating default client");
                 client = new OkHttpClient.Builder()
                         .connectTimeout(this.timeout, this.unit)
                         .writeTimeout(this.timeout, this.unit)
@@ -111,8 +138,13 @@ public class OpenAiClient
                         .build();
             }
             // Add default interceptor
-            DefaultInterceptor interceptor = new DefaultInterceptor();
-            interceptor.setApiKey(this.apiKey);
+            DefaultInterceptor interceptor = new OpenAiInterceptor();
+            if (this.provider.equals(ProviderModel.azure)) {
+                interceptor = new AzureInterceptor();
+                interceptor.setVersion(this.version);
+                interceptor.setModel(this.model);
+            }
+            interceptor.setApiKey(apiKey);
             client = client.newBuilder()
                     .addInterceptor(interceptor)
                     .build();
