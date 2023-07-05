@@ -44,6 +44,7 @@ markdown_extensions:
 nav:
   - index.md
   - Reference:
+      - reference/users.md
       - reference/models.md
       - reference/completions.md
       - reference/completions_chat.md

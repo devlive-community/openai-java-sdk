@@ -112,4 +112,10 @@ public class OpenAiClientTest
                 .toString()
                 .contains("openai-java-sdk"));
     }
+
+    @Test
+    public void testGetKeys()
+    {
+        Assert.assertNotNull(client.getKeys());
+    }
 }

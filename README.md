@@ -18,6 +18,30 @@
 
 </div>
 
+# How to use?
+
+```java
+<properties>
+    <openai.version>LATEST</openai.version>
+</properties>
+
+<dependencies>
+    <dependency>
+        <groupId>org.devlive.sdk</groupId>
+        <artifactId>openai-java-sdk</artifactId>
+        <version>${openai.version}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+</dependencies>
+```
+
+`LATEST` By default the latest version will be used.
+
 # Feature
 
 ---

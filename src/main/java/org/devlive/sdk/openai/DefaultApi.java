@@ -7,6 +7,7 @@ import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
+import org.devlive.sdk.openai.response.UserKeyResponse;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -39,4 +40,10 @@ public interface DefaultApi
      */
     @POST(value = "v1/chat/completions")
     Single<CompleteChatResponse> fetchChatCompletions(@Body CompletionChatEntity configure);
+
+    /**
+     * Get all keys
+     */
+    @GET(value = "dashboard/user/api_keys")
+    Single<UserKeyResponse> fetchUserAPIKeys();
 }
