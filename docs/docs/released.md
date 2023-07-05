@@ -5,6 +5,16 @@ hide:
   - navigation
 ---
 
+### 1.2.0
+
+---
+
+- Support report error message
+- Supports custom `OkHttpClient`
+- Add a default interceptor
+- Support list api keys
+- Support create new api key
+
 ### 1.1.0
 
 ---

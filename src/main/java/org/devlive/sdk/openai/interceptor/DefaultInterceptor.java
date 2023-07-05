@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Interceptor;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.Buffer;
@@ -52,9 +53,10 @@ public class DefaultInterceptor
         Request original = chain.request();
         Request request = this.headers(original);
 
-        if (ObjectUtils.isNotEmpty(request.body())) {
+        RequestBody requestBody = request.body();
+        if (ObjectUtils.isNotEmpty(requestBody)) {
             Buffer buffer = new Buffer();
-            request.body().writeTo(buffer);
+            requestBody.writeTo(buffer);
             log.debug("Request body {}", buffer.readUtf8());
         }
 
