@@ -6,8 +6,10 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Interceptor;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okio.Buffer;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.AuthorizedException;
@@ -50,6 +52,14 @@ public class DefaultInterceptor
 
         Request original = chain.request();
         Request request = this.headers(original);
+
+        RequestBody requestBody = request.body();
+        if (ObjectUtils.isNotEmpty(requestBody)) {
+            Buffer buffer = new Buffer();
+            requestBody.writeTo(buffer);
+            log.debug("Request body {}", buffer.readUtf8());
+        }
+
         Response response = chain.proceed(request);
         if (!response.isSuccessful()) {
             log.error("Failed to intercept request");
@@ -72,7 +82,7 @@ public class DefaultInterceptor
         }
 
         // Has error
-        if (response.code() == 404 || response.code() == 400) {
+        if (response.code() == 404 || response.code() == 400 || response.code() == 403) {
             ResponseBody body = response.body();
             if (ObjectUtils.isEmpty(body)) {
                 throw new NullPointerException("Failed to intercept request because no body");

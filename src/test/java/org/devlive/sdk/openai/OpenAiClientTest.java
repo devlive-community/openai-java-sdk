@@ -5,8 +5,9 @@ import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
-import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
+import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.junit.Assert;
 import org.junit.Before;
@@ -39,17 +40,14 @@ public class OpenAiClientTest
     @Test
     public void testClient()
     {
-        DefaultInterceptor interceptor = new DefaultInterceptor();
-        interceptor.setApiKey(System.getProperty("proxy.token"));
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
                 .connectTimeout(openApiTimeout, TimeUnit.SECONDS)
                 .writeTimeout(openApiTimeout, TimeUnit.SECONDS)
                 .readTimeout(openApiTimeout, TimeUnit.SECONDS)
                 .build();
         client = OpenAiClient.builder()
                 .apiHost(System.getProperty("proxy.host"))
-                .apiKey(invalidApiKey)
+                .apiKey(System.getProperty("proxy.token"))
                 .client(okHttpClient)
                 .build();
         Assert.assertTrue(client.getModels().getModels().size() > 0);
@@ -115,5 +113,21 @@ public class OpenAiClientTest
                 .collect(Collectors.toList())
                 .toString()
                 .contains("openai-java-sdk"));
+    }
+
+    @Test
+    public void testGetKeys()
+    {
+        Assert.assertNotNull(client.getKeys());
+    }
+
+    @Test
+    public void testCreateUserAPIKey()
+    {
+        UserKeyEntity configure = UserKeyEntity.builder()
+                .name("Create first key")
+                .action("create")
+                .build();
+        Assert.assertThrows(RequestException.class, () -> client.createUserAPIKey(configure));
     }
 }

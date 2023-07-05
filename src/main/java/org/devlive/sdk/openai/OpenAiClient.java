@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -102,30 +101,21 @@ public class OpenAiClient
 
         public OpenAiClientBuilder client(OkHttpClient client)
         {
-            DefaultInterceptor interceptor = new DefaultInterceptor();
-            interceptor.setApiKey(this.apiKey);
             if (ObjectUtils.isEmpty(client)) {
                 log.warn("No client, creating default client");
                 client = new OkHttpClient.Builder()
-                        .addInterceptor(interceptor)
                         .connectTimeout(this.timeout, this.unit)
                         .writeTimeout(this.timeout, this.unit)
                         .readTimeout(this.timeout, this.unit)
                         .callTimeout(this.timeout, this.unit)
                         .build();
             }
-
-            if (client.interceptors().size() <= 0) {
-                throw new ParamException("No interceptors available");
-            }
-
-            long count = client.interceptors()
-                    .stream()
-                    .filter(inter -> inter instanceof DefaultInterceptor)
-                    .count();
-            if (count <= 0) {
-                throw new ParamException("Must inject DefaultInterceptor");
-            }
+            // Add default interceptor
+            DefaultInterceptor interceptor = new DefaultInterceptor();
+            interceptor.setApiKey(this.apiKey);
+            client = client.newBuilder()
+                    .addInterceptor(interceptor)
+                    .build();
             this.client = client;
             return this;
         }

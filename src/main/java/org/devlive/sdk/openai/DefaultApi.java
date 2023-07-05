@@ -4,9 +4,11 @@ import io.reactivex.Single;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
+import org.devlive.sdk.openai.response.UserKeyResponse;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -39,4 +41,16 @@ public interface DefaultApi
      */
     @POST(value = "v1/chat/completions")
     Single<CompleteChatResponse> fetchChatCompletions(@Body CompletionChatEntity configure);
+
+    /**
+     * Get all keys
+     */
+    @GET(value = "dashboard/user/api_keys")
+    Single<UserKeyResponse> fetchUserAPIKeys();
+
+    /**
+     * Create a key for the given
+     */
+    @POST(value = "dashboard/user/api_keys")
+    Single<UserKeyResponse> fetchCreateUserAPIKey(@Body UserKeyEntity configure);
 }
