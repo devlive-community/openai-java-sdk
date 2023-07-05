@@ -1,6 +1,8 @@
 package org.devlive.sdk.openai;
 
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.OkHttpClient;
+import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
@@ -14,10 +16,11 @@ import org.devlive.sdk.openai.response.UserKeyResponse;
 import org.devlive.sdk.openai.utils.ProviderUtils;
 
 @Slf4j
-public abstract class DefaultClient
+public abstract class DefaultClient implements AutoCloseable
 {
     protected DefaultApi api;
     protected ProviderModel provider;
+    protected OkHttpClient client;
 
     public ModelResponse getModels()
     {
@@ -53,5 +56,14 @@ public abstract class DefaultClient
     {
         return this.api.fetchCreateUserAPIKey(configure)
                 .blockingGet();
+    }
+
+    public void close()
+    {
+        if (ObjectUtils.isNotEmpty(this.client)) {
+            this.client.dispatcher().cancelAll();
+            this.client.connectionPool().evictAll();
+            this.client = null;
+        }
     }
 }
