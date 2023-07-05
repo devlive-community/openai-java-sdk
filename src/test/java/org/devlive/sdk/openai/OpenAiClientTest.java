@@ -5,7 +5,9 @@ import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
+import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.junit.Assert;
 import org.junit.Before;
@@ -117,5 +119,15 @@ public class OpenAiClientTest
     public void testGetKeys()
     {
         Assert.assertNotNull(client.getKeys());
+    }
+
+    @Test
+    public void testCreateUserAPIKey()
+    {
+        UserKeyEntity configure = UserKeyEntity.builder()
+                .name("Create first key")
+                .action("create")
+                .build();
+        Assert.assertThrows(RequestException.class, () -> client.createUserAPIKey(configure));
     }
 }

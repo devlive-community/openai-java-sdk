@@ -22,4 +22,10 @@ public class UserKeyResponse
 
     @JsonProperty(value = "data")
     private List<UserKeyEntity> keys;
+
+    @JsonProperty(value = "result")
+    private String result;
+
+    @JsonProperty(value = "key")
+    private UserKeyEntity key;
 }

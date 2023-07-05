@@ -3,6 +3,7 @@ package org.devlive.sdk.openai;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
@@ -39,6 +40,12 @@ public abstract class DefaultClient
     public UserKeyResponse getKeys()
     {
         return this.api.fetchUserAPIKeys()
+                .blockingGet();
+    }
+
+    public UserKeyResponse createUserAPIKey(UserKeyEntity configure)
+    {
+        return this.api.fetchCreateUserAPIKey(configure)
                 .blockingGet();
     }
 }

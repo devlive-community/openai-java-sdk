@@ -43,3 +43,32 @@ Returns:
 }
 ```
 
+### Create a key
+
+---
+
+Create a new key.
+
+```java
+UserKeyEntity configure=UserKeyEntity.builder()
+        .name("Create first key")
+        .action("create")
+        .build();
+client.createUserAPIKey(configure)
+```
+
+Return:
+
+```json
+{
+  "result": "success",
+  "key": {
+    "sensitive_id": "sk-xxx",
+    "object": "api_key",
+    "name": "Test",
+    "created": 1688525108,
+    "last_use": null,
+    "publishable": false
+  }
+}
+```

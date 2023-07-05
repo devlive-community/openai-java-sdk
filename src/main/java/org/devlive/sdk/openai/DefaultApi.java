@@ -4,6 +4,7 @@ import io.reactivex.Single;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
@@ -46,4 +47,10 @@ public interface DefaultApi
      */
     @GET(value = "dashboard/user/api_keys")
     Single<UserKeyResponse> fetchUserAPIKeys();
+
+    /**
+     * Create a key for the given
+     */
+    @POST(value = "dashboard/user/api_keys")
+    Single<UserKeyResponse> fetchCreateUserAPIKey(@Body UserKeyEntity configure);
 }

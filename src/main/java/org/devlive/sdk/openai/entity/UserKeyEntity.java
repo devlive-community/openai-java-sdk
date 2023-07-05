@@ -35,5 +35,11 @@ public class UserKeyEntity
     private String lastUseTime;
 
     @JsonProperty(value = "publishable")
-    private boolean publishable;
+    private Boolean publishable;
+
+    /**
+     * When creating a key use
+     */
+    @JsonProperty(value = "action")
+    private String action;
 }
