@@ -48,5 +48,7 @@ nav:
       - reference/models.md
       - reference/completions.md
       - reference/completions_chat.md
+      - Provider:
+          - reference/provider/azure.md
   - released.md
   - powered_by.md

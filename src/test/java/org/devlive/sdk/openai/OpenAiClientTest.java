@@ -56,10 +56,11 @@ public class OpenAiClientTest
     @Test
     public void testNoAuthorized()
     {
-        client = OpenAiClient.builder()
+        try (OpenAiClient client = OpenAiClient.builder()
                 .apiKey(invalidApiKey)
-                .build();
-        Assert.assertThrows(AuthorizedException.class, () -> client.getModels());
+                .build()) {
+            Assert.assertThrows(AuthorizedException.class, () -> client.getModels());
+        }
     }
 
     @Test

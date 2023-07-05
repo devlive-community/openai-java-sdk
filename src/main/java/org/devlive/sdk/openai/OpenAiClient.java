@@ -70,6 +70,7 @@ public class OpenAiClient
         }
 
         super.provider = builder.provider;
+        super.client = builder.client;
         // Build a remote API client
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.api = new Retrofit.Builder()
