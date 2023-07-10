@@ -14,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -139,5 +140,15 @@ public class OpenAiClientTest
                 .prompt("Create a bus")
                 .build();
         Assert.assertTrue(client.createImages(configure).getImages().size() > 0);
+    }
+
+    @Test
+    public void testEditImages()
+    {
+        ImageEntity configure = ImageEntity.builder()
+                .prompt("Add hello to image")
+                .build();
+        String file = this.getClass().getResource("/logo.png").getFile();
+        Assert.assertTrue(client.editImages(new File(file), null, configure).getImages().size() > 0);
     }
 }
