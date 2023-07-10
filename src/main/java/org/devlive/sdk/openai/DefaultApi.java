@@ -70,7 +70,8 @@ public interface DefaultApi
      * Creates an image given a prompt.
      */
     @POST
-    Single<ImageResponse> fetchImagesGenerations(@Url String url, @Body ImageEntity configure);
+    Single<ImageResponse> fetchImagesGenerations(@Url String url,
+                                                 @Body ImageEntity configure);
 
     /**
      * Creates an edited or extended image given an original image and a prompt.
@@ -81,4 +82,13 @@ public interface DefaultApi
                                            @Part() MultipartBody.Part image,
                                            @Part() MultipartBody.Part mask,
                                            @PartMap Map<String, RequestBody> configure);
+
+    /**
+     * Creates a variation of a given image.
+     */
+    @POST
+    @Multipart
+    Single<ImageResponse> fetchImagesVariations(@Url String url,
+                                                @Part() MultipartBody.Part image,
+                                                @PartMap Map<String, RequestBody> configure);
 }

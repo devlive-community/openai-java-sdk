@@ -5,6 +5,8 @@ import org.devlive.sdk.openai.model.ImageSizeModel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+
 public class ImageEntityTest
 {
     private String prompt = "Enter";
@@ -34,5 +36,21 @@ public class ImageEntityTest
                 .size(ImageSizeModel.X_256)
                 .build();
         Assert.assertEquals(entity.getSize(), ImageSizeModel.X_256.getName());
+    }
+
+    @Test
+    public void testImage()
+    {
+        Assert.assertThrows(ParamException.class, () -> ImageEntity.builder()
+                .isEdit(Boolean.TRUE)
+                .build());
+
+        String file = this.getClass().getResource("/logo.png").getFile();
+        Assert.assertTrue(ImageEntity.builder()
+                .prompt("Testing")
+                .image(new File(file))
+                .isEdit(Boolean.TRUE)
+                .build()
+                .getIsEdit());
     }
 }

@@ -30,6 +30,7 @@ public class OpenAiClientTest
     {
         client = OpenAiClient.builder()
                 .apiKey(System.getProperty("openai.token"))
+                .apiKey("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")
                 .build();
     }
 
@@ -145,10 +146,23 @@ public class OpenAiClientTest
     @Test
     public void testEditImages()
     {
+        String file = this.getClass().getResource("/logo.png").getFile();
         ImageEntity configure = ImageEntity.builder()
                 .prompt("Add hello to image")
+                .image(new File(file))
+                .isEdit(Boolean.TRUE)
                 .build();
+        Assert.assertTrue(client.editImages(configure).getImages().size() > 0);
+    }
+
+    @Test
+    public void testVariationsImages()
+    {
         String file = this.getClass().getResource("/logo.png").getFile();
-        Assert.assertTrue(client.editImages(new File(file), null, configure).getImages().size() > 0);
+        ImageEntity configure = ImageEntity.builder()
+                .image(new File(file))
+                .isVariation(Boolean.TRUE)
+                .build();
+        Assert.assertTrue(client.variationsImages(configure).getImages().size() > 0);
     }
 }

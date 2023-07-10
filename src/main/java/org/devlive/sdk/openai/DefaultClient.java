@@ -1,12 +1,9 @@
 package org.devlive.sdk.openai;
 
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
@@ -21,9 +18,6 @@ import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
-
-import java.io.File;
-import java.util.Map;
 
 @Slf4j
 public abstract class DefaultClient implements AutoCloseable
@@ -70,31 +64,32 @@ public abstract class DefaultClient implements AutoCloseable
 
     public ImageResponse createImages(ImageEntity configure)
     {
+        configure.setIsVariation(null);
+        configure.setIsEdit(null);
         return this.api.fetchImagesGenerations(ProviderUtils.getUrl(provider, UrlModel.FETCH_IMAGES_GENERATIONS), configure)
                 .blockingGet();
     }
 
-    public ImageResponse editImages(File image, File mask, ImageEntity configure)
+    public ImageResponse editImages(ImageEntity configure)
     {
-        MultipartBody.Part imageBody = MultipartBodyUtils.getPart(image, "image");
+        MultipartBody.Part imageBody = MultipartBodyUtils.getPart(configure.getImage(), "image");
         MultipartBody.Part maskBody = null;
-        if (ObjectUtils.isNotEmpty(mask)) {
-            maskBody = MultipartBodyUtils.getPart(mask, "mask");
+        if (ObjectUtils.isNotEmpty(configure.getMask())) {
+            maskBody = MultipartBodyUtils.getPart(configure.getMask(), "mask");
         }
-
-        Map<String, RequestBody> map = Maps.newConcurrentMap();
-        map.put("prompt", RequestBody.create(MultipartBodyUtils.TYPE, configure.getPrompt()));
-        map.put("n", RequestBody.create(MultipartBodyUtils.TYPE, configure.getCount().toString()));
-        map.put("size", RequestBody.create(MultipartBodyUtils.TYPE, configure.getSize()));
-        map.put("response_format", RequestBody.create(MultipartBodyUtils.TYPE, configure.getFormat()));
-        if (StringUtils.isNotEmpty(configure.getUser())) {
-            map.put("user", RequestBody.create(MultipartBodyUtils.TYPE, configure.getUser()));
-        }
-
-        return this.api.fetchImagesEdits(ProviderUtils.getUrl(provider, UrlModel.FETCH_EDITS_GENERATIONS),
+        return this.api.fetchImagesEdits(ProviderUtils.getUrl(provider, UrlModel.FETCH_IMAGES_EDITS),
                         imageBody,
                         maskBody,
-                        map)
+                        configure.convertMap())
+                .blockingGet();
+    }
+
+    public ImageResponse variationsImages(ImageEntity configure)
+    {
+        MultipartBody.Part imageBody = MultipartBodyUtils.getPart(configure.getImage(), "image");
+        return this.api.fetchImagesVariations(ProviderUtils.getUrl(provider, UrlModel.FETCH_IMAGES_VARIATIONS),
+                        imageBody,
+                        configure.convertMap())
                 .blockingGet();
     }
 
