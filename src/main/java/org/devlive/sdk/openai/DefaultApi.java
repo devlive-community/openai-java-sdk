@@ -1,19 +1,28 @@
 package org.devlive.sdk.openai;
 
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
+import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
+import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.Url;
+
+import java.util.Map;
 
 public interface DefaultApi
 {
@@ -56,4 +65,30 @@ public interface DefaultApi
      */
     @POST(value = "dashboard/user/api_keys")
     Single<UserKeyResponse> fetchCreateUserAPIKey(@Body UserKeyEntity configure);
+
+    /**
+     * Creates an image given a prompt.
+     */
+    @POST
+    Single<ImageResponse> fetchImagesGenerations(@Url String url,
+                                                 @Body ImageEntity configure);
+
+    /**
+     * Creates an edited or extended image given an original image and a prompt.
+     */
+    @POST
+    @Multipart
+    Single<ImageResponse> fetchImagesEdits(@Url String url,
+                                           @Part() MultipartBody.Part image,
+                                           @Part() MultipartBody.Part mask,
+                                           @PartMap Map<String, RequestBody> configure);
+
+    /**
+     * Creates a variation of a given image.
+     */
+    @POST
+    @Multipart
+    Single<ImageResponse> fetchImagesVariations(@Url String url,
+                                                @Part() MultipartBody.Part image,
+                                                @PartMap Map<String, RequestBody> configure);
 }

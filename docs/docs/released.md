@@ -5,6 +5,13 @@ hide:
   - navigation
 ---
 
+### 1.3.0
+
+---
+
+- Support azure proxy
+- Supports automatic resource release
+
 ### 1.2.0
 
 ---

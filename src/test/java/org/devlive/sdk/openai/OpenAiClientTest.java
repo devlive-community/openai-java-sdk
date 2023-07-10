@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.exception.RequestException;
@@ -13,6 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -28,6 +30,7 @@ public class OpenAiClientTest
     {
         client = OpenAiClient.builder()
                 .apiKey(System.getProperty("openai.token"))
+                .apiKey("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")
                 .build();
     }
 
@@ -129,5 +132,37 @@ public class OpenAiClientTest
                 .action("create")
                 .build();
         Assert.assertThrows(RequestException.class, () -> client.createUserAPIKey(configure));
+    }
+
+    @Test
+    public void testCreateImages()
+    {
+        ImageEntity configure = ImageEntity.builder()
+                .prompt("Create a bus")
+                .build();
+        Assert.assertTrue(client.createImages(configure).getImages().size() > 0);
+    }
+
+    @Test
+    public void testEditImages()
+    {
+        String file = this.getClass().getResource("/logo.png").getFile();
+        ImageEntity configure = ImageEntity.builder()
+                .prompt("Add hello to image")
+                .image(new File(file))
+                .isEdit(Boolean.TRUE)
+                .build();
+        Assert.assertTrue(client.editImages(configure).getImages().size() > 0);
+    }
+
+    @Test
+    public void testVariationsImages()
+    {
+        String file = this.getClass().getResource("/logo.png").getFile();
+        ImageEntity configure = ImageEntity.builder()
+                .image(new File(file))
+                .isVariation(Boolean.TRUE)
+                .build();
+        Assert.assertTrue(client.variationsImages(configure).getImages().size() > 0);
     }
 }
