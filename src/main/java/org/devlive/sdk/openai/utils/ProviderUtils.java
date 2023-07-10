@@ -20,6 +20,7 @@ public class ProviderUtils
         AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "v1/chat/completions");
         AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_IMAGES_GENERATIONS, "v1/images/generations");
     }
 
     private ProviderUtils()

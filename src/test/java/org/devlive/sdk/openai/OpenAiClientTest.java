@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.exception.RequestException;
@@ -129,5 +130,14 @@ public class OpenAiClientTest
                 .action("create")
                 .build();
         Assert.assertThrows(RequestException.class, () -> client.createUserAPIKey(configure));
+    }
+
+    @Test
+    public void testCreateImages()
+    {
+        ImageEntity configure = ImageEntity.builder()
+                .prompt("Create a bus")
+                .build();
+        Assert.assertTrue(client.createImages(configure).getImages().size() > 0);
     }
 }
