@@ -14,6 +14,8 @@ import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.model.ImageFormatModel;
 import org.devlive.sdk.openai.model.ImageSizeModel;
 
+import java.util.Arrays;
+
 @Data
 @Builder
 @ToString
@@ -108,7 +110,7 @@ public class ImageEntity
         {
             Object instance = EnumUtils.getEnum(ImageSizeModel.class, size.name());
             if (ObjectUtils.isEmpty(instance)) {
-                throw new ParamException(String.format("Invalid size: %s , Must be one of %s", size, ImageSizeModel.values()));
+                throw new ParamException(String.format("Invalid size: %s , Must be one of %s", size, Arrays.toString(ImageSizeModel.values())));
             }
             this.size = size.getName();
             return this;
@@ -118,7 +120,7 @@ public class ImageEntity
         {
             Object instance = EnumUtils.getEnum(ImageFormatModel.class, format.name());
             if (ObjectUtils.isEmpty(instance)) {
-                throw new ParamException(String.format("Invalid format: %s , Must be one of %s", format, ImageFormatModel.values()));
+                throw new ParamException(String.format("Invalid format: %s , Must be one of %s", format, Arrays.toString(ImageFormatModel.values())));
             }
             this.format = format.name();
             return this;

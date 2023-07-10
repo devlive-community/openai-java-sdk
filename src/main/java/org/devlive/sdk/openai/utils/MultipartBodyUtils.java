@@ -8,7 +8,7 @@ import java.io.File;
 
 public class MultipartBodyUtils
 {
-    public final static MediaType TYPE = MediaType.parse("multipart/form-data");
+    public static final MediaType TYPE = MediaType.parse("multipart/form-data");
 
     private MultipartBodyUtils()
     {
