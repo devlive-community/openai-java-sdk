@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
+import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
@@ -13,6 +14,7 @@ import org.devlive.sdk.openai.model.ProviderModel;
 import org.devlive.sdk.openai.model.UrlModel;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
+import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
@@ -90,6 +92,13 @@ public abstract class DefaultClient implements AutoCloseable
         return this.api.fetchImagesVariations(ProviderUtils.getUrl(provider, UrlModel.FETCH_IMAGES_VARIATIONS),
                         imageBody,
                         configure.convertMap())
+                .blockingGet();
+    }
+
+    public EmbeddingResponse createEmbeddings(EmbeddingEntity configure)
+    {
+        return this.api.fetchEmbeddings(ProviderUtils.getUrl(provider, UrlModel.FETCH_EMBEDDINGS),
+                        configure)
                 .blockingGet();
     }
 
