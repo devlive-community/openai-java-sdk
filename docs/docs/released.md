@@ -5,6 +5,17 @@ hide:
   - navigation
 ---
 
+### 1.4.0
+
+---
+
+- Support images api
+    - Create image
+    - Create image edit
+    - Create image variation
+- Support embeddings api
+    - Create embeddings
+
 ### 1.3.0
 
 ---
