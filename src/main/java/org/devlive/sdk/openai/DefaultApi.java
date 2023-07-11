@@ -5,11 +5,13 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
+import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
+import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
@@ -91,4 +93,11 @@ public interface DefaultApi
     Single<ImageResponse> fetchImagesVariations(@Url String url,
                                                 @Part() MultipartBody.Part image,
                                                 @PartMap Map<String, RequestBody> configure);
+
+    /**
+     * Creates an embedding vector representing the input text.
+     */
+    @POST
+    Single<EmbeddingResponse> fetchEmbeddings(@Url String url,
+                                              @Body EmbeddingEntity configure);
 }

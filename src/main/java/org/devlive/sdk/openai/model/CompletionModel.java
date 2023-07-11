@@ -60,7 +60,32 @@ public enum CompletionModel
     CODE_DAVINCI_002("code-davinci-002",
             "Optimized for code-completion tasks",
             null,
-            8001);
+            8001),
+
+    TEXT_MODERATION_LATEST("text-moderation-latest",
+            "Most capable moderation model. Accuracy will be slighlty higher than the stable model.",
+            null,
+            Integer.MAX_VALUE),
+    TEXT_MODERATION_STABLE("text-moderation-stable",
+            "Almost as capable as the latest model, but slightly older.\n",
+            null,
+            Integer.MAX_VALUE),
+    DAVINCI("davinci",
+            "Most capable GPT-3 model. Can do any task the other models can do, often with higher quality.",
+            null,
+            2049),
+    CURIE("curie",
+            "Very capable, but faster and lower cost than Davinci.",
+            null,
+            2049),
+    BABBAGE("babbage",
+            "Capable of straightforward tasks, very fast, and lower cost.",
+            null,
+            2049),
+    ADA("ada",
+            "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost.",
+            null,
+            2049);
 
     private final String name;
     private final String description;

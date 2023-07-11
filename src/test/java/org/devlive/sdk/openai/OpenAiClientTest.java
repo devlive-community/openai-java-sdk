@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
@@ -30,7 +31,6 @@ public class OpenAiClientTest
     {
         client = OpenAiClient.builder()
                 .apiKey(System.getProperty("openai.token"))
-                .apiKey("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")
                 .build();
     }
 
@@ -164,5 +164,15 @@ public class OpenAiClientTest
                 .isVariation(Boolean.TRUE)
                 .build();
         Assert.assertTrue(client.variationsImages(configure).getImages().size() > 0);
+    }
+
+    @Test
+    public void testCreateEmbeddings()
+    {
+        EmbeddingEntity configure = EmbeddingEntity.builder()
+                .model("text-similarity-ada-001")
+                .input("Hello OpenAi Java SDK")
+                .build();
+        Assert.assertTrue(client.createEmbeddings(configure).getEmbeddings().size() > 0);
     }
 }

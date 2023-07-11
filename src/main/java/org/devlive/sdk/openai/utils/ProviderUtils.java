@@ -17,12 +17,14 @@ public class ProviderUtils
         DEFAULT_PROVIDER.put(UrlModel.FETCH_MODELS, "v1/models");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_MODEL, "v1/models/{model}");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "v1/completions");
-        AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "v1/chat/completions");
-        AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_IMAGES_GENERATIONS, "v1/images/generations");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_IMAGES_EDITS, "v1/images/edits");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_IMAGES_VARIATIONS, "v1/images/variations");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_EMBEDDINGS, "v1/embeddings");
+
+        AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
+        AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");
     }
 
     private ProviderUtils()
