@@ -9,6 +9,7 @@ import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
@@ -100,4 +101,14 @@ public interface DefaultApi
     @POST
     Single<EmbeddingResponse> fetchEmbeddings(@Url String url,
                                               @Body EmbeddingEntity configure);
+
+    /**
+     * Transcribes audio into the input language.
+     * 将音频转录为输入语言。
+     */
+    @POST
+    @Multipart
+    Single<AudioResponse> fetchAudioTranscriptions(@Url String url,
+                                                   @Part() MultipartBody.Part audio,
+                                                   @PartMap Map<String, RequestBody> configure);
 }
