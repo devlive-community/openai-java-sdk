@@ -14,11 +14,11 @@
 ![GitHub contributors](https://img.shields.io/github/contributors-anon/devlive-community/openai-java-sdk?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/devlive-community/openai-java-sdk?style=flat-square)
 
-<h3> Provides Java developers with a convenient, easy-to-use SDK to interact with OpenAI's apis.</h3>
+<h3> 为 Java 开发人员提供方便易用的 SDK 来与 OpenAI 的 API 进行交互。</h3>
 
 </div>
 
-# How to use?
+# 如何使用?
 
 ---
 
@@ -36,18 +36,18 @@
 </dependencies>
 ```
 
-`LATEST` By default the latest version will be used.
+`LATEST` 默认情况下将使用最新版本。
 
 # Feature
 
 ---
 
-- Rapidly develop products based on the platform, improve development efficiency, and meet fast delivery requirements.
-- Concise and easy to understand, code specification requirements, can be used as enterprise code specification.
-- The steps to use are very simple, and one line of code realizes the required functions.
-- Support multiple proxy platforms, perfectly adapt to various APIs.
-- Dynamically expand Max Tokens according to the model
-- Rich pre-data verification to avoid direct contact with API
+- 基于平台快速开发产品，提高开发效率，满足快速交付需求。
+- 简洁易懂，代码规范要求，可作为企业代码规范。
+- 使用步骤非常简单，一行代码实现所需功能。
+- 支持多种代理平台，完美适配各种 API。
+- 根据模型动态扩展 Max Tokens
+- 丰富的前期数据验证，避免直接接触 API
 
 ## Star History
 

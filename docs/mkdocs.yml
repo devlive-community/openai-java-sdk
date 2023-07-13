@@ -12,6 +12,13 @@ copyright: Copyright &copy; 2023 Devlive Community
 
 use_directory_urls: false
 
+plugins:
+  - i18n:
+      default_language: en
+      languages:
+        en: English
+        zh: Chinese (Simplified)
+
 theme:
   name: material
 
@@ -28,6 +35,13 @@ theme:
     - search.share
     - search.suggest
     - content.tooltips
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: Chinese (Simplified)
+      link: /zh/
+      lang: zh
 
 markdown_extensions:
   - attr_list
