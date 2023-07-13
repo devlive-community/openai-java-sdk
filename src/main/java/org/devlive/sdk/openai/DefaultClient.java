@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
+import org.devlive.sdk.openai.entity.AudioEntity;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
@@ -12,6 +13,7 @@ import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.model.ProviderModel;
 import org.devlive.sdk.openai.model.UrlModel;
+import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
@@ -99,6 +101,15 @@ public abstract class DefaultClient implements AutoCloseable
     {
         return this.api.fetchEmbeddings(ProviderUtils.getUrl(provider, UrlModel.FETCH_EMBEDDINGS),
                         configure)
+                .blockingGet();
+    }
+
+    public AudioResponse audioTranscriptions(AudioEntity configure)
+    {
+        MultipartBody.Part fileBody = MultipartBodyUtils.getPart(configure.getFile(), "file");
+        return this.api.fetchAudioTranscriptions(ProviderUtils.getUrl(provider, UrlModel.FETCH_AUDIO_TRANSCRIPTIONS),
+                        fileBody,
+                        configure.convertMap())
                 .blockingGet();
     }
 

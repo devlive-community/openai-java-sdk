@@ -2,6 +2,7 @@ package org.devlive.sdk.openai;
 
 import com.google.common.collect.Lists;
 import okhttp3.OkHttpClient;
+import org.devlive.sdk.openai.entity.AudioEntity;
 import org.devlive.sdk.openai.entity.CompletionChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
@@ -174,5 +175,17 @@ public class OpenAiClientTest
                 .input("Hello OpenAi Java SDK")
                 .build();
         Assert.assertTrue(client.createEmbeddings(configure).getEmbeddings().size() > 0);
+    }
+
+    @Test
+    public void testAudioTranscriptions()
+    {
+        String file = this.getClass().getResource("/hello.mp3").getFile();
+        AudioEntity configure = AudioEntity.builder()
+                .file(new File(file))
+                .build();
+        Assert.assertTrue(client.audioTranscriptions(configure)
+                .getText()
+                .length() > 0);
     }
 }
