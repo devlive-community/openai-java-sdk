@@ -53,6 +53,7 @@ public class OpenAiClientTest
                 .apiHost(System.getProperty("proxy.host"))
                 .apiKey(System.getProperty("proxy.token"))
                 .client(okHttpClient)
+                .timeout(100)
                 .build();
         Assert.assertTrue(client.getModels().getModels().size() > 0);
     }
