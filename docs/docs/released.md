@@ -5,6 +5,14 @@ hide:
   - navigation
 ---
 
+### 1.5.0
+
+---
+
+- Supports chinese documents
+- Support create translation
+- Support create moderation
+
 ### 1.4.0
 
 ---
