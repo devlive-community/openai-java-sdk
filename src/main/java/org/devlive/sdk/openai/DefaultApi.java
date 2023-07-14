@@ -8,6 +8,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.CompleteChatResponse;
@@ -15,6 +16,7 @@ import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
+import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -111,4 +113,12 @@ public interface DefaultApi
     Single<AudioResponse> fetchAudioTranscriptions(@Url String url,
                                                    @Part() MultipartBody.Part audio,
                                                    @PartMap Map<String, RequestBody> configure);
+
+    /**
+     * Classifies if text violates OpenAI's Content Policy
+     * 对文本是否违反 OpenAI 的内容政策进行分类
+     */
+    @POST
+    Single<ModerationResponse> fetchModerations(@Url String url,
+                                                @Body ModerationEntity configure);
 }
