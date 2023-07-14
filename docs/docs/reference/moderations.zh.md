@@ -1,0 +1,69 @@
+---
+title: Moderations
+---
+
+!!! Note
+
+    调用前请先构建客户端，构建代码如下：
+
+    ```java
+    OpenAiClient client = OpenAiClient.builder()
+            .apiHost("https://api.openai.com")
+            .apiKey(System.getProperty("openai.token"))
+            .build();
+    ```
+
+    `System.getProperty("openai.token")` 是访问 API 授权的关键。
+
+### Create moderation
+
+---
+
+对文本是否违反 OpenAI 的内容政策进行分类
+
+```java
+ModerationEntity configure = ModerationEntity.builder()
+        .inputs(Lists.newArrayList("Hello OpenAi Java SDK"))
+        .build();
+client.moderations(configure);
+```
+
+Returns
+
+```json
+{
+  "id": "modr-XXXXX",
+  "model": "text-moderation-005",
+  "results": [
+    {
+      "flagged": true,
+      "categories": {
+        "sexual": false,
+        "hate": false,
+        "harassment": false,
+        "self-harm": false,
+        "sexual/minors": false,
+        "hate/threatening": false,
+        "violence/graphic": false,
+        "self-harm/intent": false,
+        "self-harm/instructions": false,
+        "harassment/threatening": true,
+        "violence": true
+      },
+      "category_scores": {
+        "sexual": 1.2282071e-06,
+        "hate": 0.010696256,
+        "harassment": 0.29842457,
+        "self-harm": 1.5236925e-08,
+        "sexual/minors": 5.7246268e-08,
+        "hate/threatening": 0.0060676364,
+        "violence/graphic": 4.435014e-06,
+        "self-harm/intent": 8.098441e-10,
+        "self-harm/instructions": 2.8498655e-11,
+        "harassment/threatening": 0.63055265,
+        "violence": 0.99011886
+      }
+    }
+  ]
+}
+```

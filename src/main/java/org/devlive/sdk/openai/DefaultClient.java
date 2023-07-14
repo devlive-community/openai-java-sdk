@@ -10,6 +10,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
+import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.model.ProviderModel;
 import org.devlive.sdk.openai.model.UrlModel;
@@ -19,6 +20,7 @@ import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
+import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
@@ -110,6 +112,12 @@ public abstract class DefaultClient implements AutoCloseable
         return this.api.fetchAudioTranscriptions(ProviderUtils.getUrl(provider, UrlModel.FETCH_AUDIO_TRANSCRIPTIONS),
                         fileBody,
                         configure.convertMap())
+                .blockingGet();
+    }
+
+    public ModerationResponse moderations(ModerationEntity configure)
+    {
+        return this.api.fetchModerations(ProviderUtils.getUrl(provider, UrlModel.FETCH_MODERATIONS), configure)
                 .blockingGet();
     }
 

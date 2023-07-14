@@ -8,6 +8,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.CompletionMessageEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
+import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.exception.RequestException;
@@ -188,5 +189,14 @@ public class OpenAiClientTest
         Assert.assertTrue(client.audioTranscriptions(configure)
                 .getText()
                 .length() > 0);
+    }
+
+    @Test
+    public void testModerations()
+    {
+        ModerationEntity configure = ModerationEntity.builder()
+                .inputs(Lists.newArrayList("Hello OpenAi Java SDK"))
+                .build();
+        Assert.assertNotNull(client.moderations(configure));
     }
 }

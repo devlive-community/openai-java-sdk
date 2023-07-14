@@ -1,5 +1,5 @@
 ---
-title: 客户
+title: 用户案例
 
 hide:
   - navigation
