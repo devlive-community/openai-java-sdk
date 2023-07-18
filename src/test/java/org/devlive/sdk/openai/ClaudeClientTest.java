@@ -3,6 +3,7 @@ package org.devlive.sdk.openai;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.model.ProviderModel;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,6 +27,6 @@ public class ClaudeClientTest
                 .model(CompletionModel.CLAUDE_2.getName())
                 .prompt("How to create a completion")
                 .build();
-        System.out.println(configure);
+        Assert.assertThrows(RuntimeException.class, () -> client.createCompletion(configure));
     }
 }

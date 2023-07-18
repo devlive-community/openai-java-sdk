@@ -1,7 +1,7 @@
 package org.devlive.sdk.openai.utils;
 
-import org.devlive.sdk.openai.model.MessageModel;
 import org.devlive.sdk.openai.model.CompletionModel;
+import org.devlive.sdk.openai.model.MessageModel;
 
 import java.util.Arrays;
 import java.util.Optional;
