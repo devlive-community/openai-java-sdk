@@ -66,6 +66,7 @@ nav:
       - reference/embeddings.md
       - reference/audio.md
       - reference/moderations.md
+      - reference/edits.md
       - Provider:
           - reference/provider/azure.md
   - released.md

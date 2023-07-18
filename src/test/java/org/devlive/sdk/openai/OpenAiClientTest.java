@@ -5,14 +5,16 @@ import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.AudioEntity;
 import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
-import org.devlive.sdk.openai.entity.MessageEntity;
+import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
+import org.devlive.sdk.openai.entity.MessageEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.model.CompletionModel;
+import org.devlive.sdk.openai.model.EditModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -198,5 +200,16 @@ public class OpenAiClientTest
                 .inputs(Lists.newArrayList("Hello OpenAi Java SDK"))
                 .build();
         Assert.assertNotNull(client.moderations(configure));
+    }
+
+    @Test
+    public void testEdits()
+    {
+        EditEntity configure = EditEntity.builder()
+                .model(EditModel.TEXT_DAVINCI_EDIT_001)
+                .input("Hello OpenAi Java SDK")
+                .instruction("Fix the spelling mistakes")
+                .build();
+        Assert.assertNotNull(client.edit(configure));
     }
 }
