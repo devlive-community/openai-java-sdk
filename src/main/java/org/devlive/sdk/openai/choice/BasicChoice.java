@@ -1,4 +1,4 @@
-package org.devlive.sdk.openai.entity;
+package org.devlive.sdk.openai.choice;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,13 +14,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChoiceChatEntity
+public class BasicChoice
 {
-    @JsonProperty(value = "index")
-    private String index;
+    @JsonProperty(value = "text")
+    private String content;
 
-    @JsonProperty(value = "message")
-    private MessageEntity message;
+    @JsonProperty(value = "index")
+    private long index;
+
+    @JsonProperty(value = "logprobs")
+    private String logProb;
 
     @JsonProperty(value = "finish_reason")
     private String finishReason;

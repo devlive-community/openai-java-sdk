@@ -33,6 +33,7 @@ public class OpenAiClientTest
     {
         client = OpenAiClient.builder()
                 .apiKey(System.getProperty("openai.token"))
+                .apiKey("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")
                 .build();
     }
 

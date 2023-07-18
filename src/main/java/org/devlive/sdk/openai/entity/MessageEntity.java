@@ -10,7 +10,7 @@ import lombok.ToString;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.ParamException;
-import org.devlive.sdk.openai.model.CompletionMessageModel;
+import org.devlive.sdk.openai.model.MessageModel;
 import org.devlive.sdk.openai.utils.EnumsUtils;
 
 @Data
@@ -33,7 +33,7 @@ public class MessageEntity
     private MessageEntity(MessageEntityBuilder builder)
     {
         if (StringUtils.isEmpty(builder.role)) {
-            builder.role(CompletionMessageModel.USER.getName());
+            builder.role(MessageModel.USER.getName());
         }
         this.role = builder.role;
 
@@ -52,8 +52,8 @@ public class MessageEntity
     {
         public MessageEntityBuilder role(String role)
         {
-            CompletionMessageModel completionMessageModel = EnumsUtils.getCompleteMessageModel(role);
-            if (ObjectUtils.isEmpty(completionMessageModel)) {
+            MessageModel messageModel = EnumsUtils.getCompleteMessageModel(role);
+            if (ObjectUtils.isEmpty(messageModel)) {
                 throw new ParamException(String.format("Not support completion role %s", role));
             }
             this.role = role;

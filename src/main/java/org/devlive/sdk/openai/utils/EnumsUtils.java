@@ -1,6 +1,6 @@
 package org.devlive.sdk.openai.utils;
 
-import org.devlive.sdk.openai.model.CompletionMessageModel;
+import org.devlive.sdk.openai.model.MessageModel;
 import org.devlive.sdk.openai.model.CompletionModel;
 
 import java.util.Arrays;
@@ -20,9 +20,9 @@ public class EnumsUtils
         return optional.isPresent() ? optional.get() : null;
     }
 
-    public static CompletionMessageModel getCompleteMessageModel(final String name)
+    public static MessageModel getCompleteMessageModel(final String name)
     {
-        Optional<CompletionMessageModel> optional = Arrays.stream(CompletionMessageModel.values())
+        Optional<MessageModel> optional = Arrays.stream(MessageModel.values())
                 .filter(item -> item.getName().equals(name))
                 .findFirst();
         return optional.isPresent() ? optional.get() : null;

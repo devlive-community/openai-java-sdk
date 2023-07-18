@@ -15,7 +15,7 @@ import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.model.ProviderModel;
 import org.devlive.sdk.openai.model.UrlModel;
 import org.devlive.sdk.openai.response.AudioResponse;
-import org.devlive.sdk.openai.response.CompleteChatResponse;
+import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
@@ -50,7 +50,7 @@ public abstract class DefaultClient implements AutoCloseable
                 .blockingGet();
     }
 
-    public CompleteChatResponse createChatCompletion(ChatEntity configure)
+    public ChatResponse createChatCompletion(ChatEntity configure)
     {
         return this.api.fetchChatCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS), configure)
                 .blockingGet();

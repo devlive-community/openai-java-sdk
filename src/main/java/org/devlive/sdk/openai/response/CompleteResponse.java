@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.devlive.sdk.openai.entity.ChoiceEntity;
+import org.devlive.sdk.openai.choice.BasicChoice;
 import org.devlive.sdk.openai.entity.UsageEntity;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class CompleteResponse
     private String model;
 
     @JsonProperty(value = "choices")
-    private List<ChoiceEntity> choices;
+    private List<BasicChoice> choices;
 
     @JsonProperty(value = "usage")
     private UsageEntity usage;

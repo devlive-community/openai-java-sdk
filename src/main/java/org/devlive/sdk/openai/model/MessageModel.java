@@ -1,6 +1,6 @@
 package org.devlive.sdk.openai.model;
 
-public enum CompletionMessageModel
+public enum MessageModel
 {
     SYSTEM("system"),
     USER("user"),
@@ -14,7 +14,7 @@ public enum CompletionMessageModel
         return name;
     }
 
-    CompletionMessageModel(String name)
+    MessageModel(String name)
     {
         this.name = name;
     }

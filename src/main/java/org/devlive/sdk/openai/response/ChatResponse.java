@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.devlive.sdk.openai.entity.ChoiceChatEntity;
+import org.devlive.sdk.openai.choice.ChatChoice;
 import org.devlive.sdk.openai.entity.UsageEntity;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CompleteChatResponse
+public class ChatResponse
 {
     @JsonProperty(value = "id")
     private String name;
@@ -35,7 +35,7 @@ public class CompleteChatResponse
     private String model;
 
     @JsonProperty(value = "choices")
-    private List<ChoiceChatEntity> choices;
+    private List<ChatChoice> choices;
 
     @JsonProperty(value = "usage")
     private UsageEntity usage;

@@ -11,7 +11,7 @@ import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
-import org.devlive.sdk.openai.response.CompleteChatResponse;
+import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
@@ -56,8 +56,8 @@ public interface DefaultApi
      * Creates a model response for the given chat conversation.
      */
     @POST
-    Single<CompleteChatResponse> fetchChatCompletions(@Url String url,
-                                                      @Body ChatEntity configure);
+    Single<ChatResponse> fetchChatCompletions(@Url String url,
+                                              @Body ChatEntity configure);
 
     /**
      * Get all keys
