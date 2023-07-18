@@ -3,9 +3,9 @@ package org.devlive.sdk.openai;
 import com.google.common.collect.Lists;
 import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.AudioEntity;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
-import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.MessageEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -95,12 +95,12 @@ public class OpenAiClientTest
     @Test
     public void testCreateChatCompletion()
     {
-        List<CompletionMessageEntity> messages = Lists.newArrayList();
-        messages.add(CompletionMessageEntity.builder()
+        List<MessageEntity> messages = Lists.newArrayList();
+        messages.add(MessageEntity.builder()
                 .content("Hello, my name is openai-java-sdk")
                 .build());
 
-        CompletionChatEntity configure = CompletionChatEntity.builder()
+        ChatEntity configure = ChatEntity.builder()
                 .messages(messages)
                 .build();
 
@@ -108,7 +108,7 @@ public class OpenAiClientTest
                 .getChoices()
                 .forEach(choice -> messages.add(choice.getMessage()));
 
-        messages.add(CompletionMessageEntity.builder()
+        messages.add(MessageEntity.builder()
                 .content("What is my name?")
                 .build());
 

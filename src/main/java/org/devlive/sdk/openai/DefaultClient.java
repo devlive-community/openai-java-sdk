@@ -5,7 +5,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.entity.AudioEntity;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
@@ -50,7 +50,7 @@ public abstract class DefaultClient implements AutoCloseable
                 .blockingGet();
     }
 
-    public CompleteChatResponse createChatCompletion(CompletionChatEntity configure)
+    public CompleteChatResponse createChatCompletion(ChatEntity configure)
     {
         return this.api.fetchChatCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS), configure)
                 .blockingGet();

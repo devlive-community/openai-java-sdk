@@ -3,7 +3,7 @@ package org.devlive.sdk.openai;
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
@@ -57,7 +57,7 @@ public interface DefaultApi
      */
     @POST
     Single<CompleteChatResponse> fetchChatCompletions(@Url String url,
-                                                      @Body CompletionChatEntity configure);
+                                                      @Body ChatEntity configure);
 
     /**
      * Get all keys

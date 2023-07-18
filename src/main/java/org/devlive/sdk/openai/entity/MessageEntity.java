@@ -19,7 +19,7 @@ import org.devlive.sdk.openai.utils.EnumsUtils;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CompletionMessageEntity
+public class MessageEntity
 {
     @JsonProperty(value = "role")
     private String role;
@@ -30,7 +30,7 @@ public class CompletionMessageEntity
     @JsonProperty(value = "name")
     private String name;
 
-    private CompletionMessageEntity(CompletionMessageEntityBuilder builder)
+    private MessageEntity(MessageEntityBuilder builder)
     {
         if (StringUtils.isEmpty(builder.role)) {
             builder.role(CompletionMessageModel.USER.getName());
@@ -48,9 +48,9 @@ public class CompletionMessageEntity
         this.name = builder.name;
     }
 
-    public static class CompletionMessageEntityBuilder
+    public static class MessageEntityBuilder
     {
-        public CompletionMessageEntityBuilder role(String role)
+        public MessageEntityBuilder role(String role)
         {
             CompletionMessageModel completionMessageModel = EnumsUtils.getCompleteMessageModel(role);
             if (ObjectUtils.isEmpty(completionMessageModel)) {
@@ -60,7 +60,7 @@ public class CompletionMessageEntity
             return this;
         }
 
-        public CompletionMessageEntityBuilder content(String content)
+        public MessageEntityBuilder content(String content)
         {
             if (StringUtils.isEmpty(content)) {
                 throw new ParamException("Content must not be empty");
@@ -69,9 +69,9 @@ public class CompletionMessageEntity
             return this;
         }
 
-        public CompletionMessageEntity build()
+        public MessageEntity build()
         {
-            return new CompletionMessageEntity(this);
+            return new MessageEntity(this);
         }
     }
 }

@@ -20,7 +20,7 @@ public class ChoiceChatEntity
     private String index;
 
     @JsonProperty(value = "message")
-    private CompletionMessageEntity message;
+    private MessageEntity message;
 
     @JsonProperty(value = "finish_reason")
     private String finishReason;
