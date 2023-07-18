@@ -9,6 +9,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.interceptor.AzureInterceptor;
+import org.devlive.sdk.openai.interceptor.ClaudeInterceptor;
 import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
 import org.devlive.sdk.openai.interceptor.OpenAiInterceptor;
 import org.devlive.sdk.openai.model.ProviderModel;
@@ -44,10 +45,10 @@ public class OpenAiClient
         }
 
         if (ObjectUtils.isEmpty(builder.provider)) {
-            builder.provider(ProviderModel.openai);
+            builder.provider(ProviderModel.OPENAI);
         }
 
-        if (builder.provider.equals(ProviderModel.azure)) {
+        if (builder.provider.equals(ProviderModel.AZURE)) {
             if (ObjectUtils.isEmpty(builder.model)) {
                 throw new ParamException("Azure provider model not specified");
             }
@@ -93,7 +94,7 @@ public class OpenAiClient
         public OpenAiClientBuilder apiHost(String apiHost)
         {
             if (StringUtils.isEmpty(apiHost)) {
-                apiHost = "https://api.openai.com";
+                apiHost = this.getDefaultHost();
             }
             else {
                 boolean flag = apiHost.startsWith("http") || apiHost.startsWith("https");
@@ -126,7 +127,7 @@ public class OpenAiClient
         public OpenAiClientBuilder client(OkHttpClient client)
         {
             if (ObjectUtils.isEmpty(this.provider)) {
-                this.provider = ProviderModel.openai;
+                this.provider = ProviderModel.OPENAI;
             }
 
             if (ObjectUtils.isEmpty(client)) {
@@ -140,10 +141,14 @@ public class OpenAiClient
             }
             // Add default interceptor
             DefaultInterceptor interceptor = new OpenAiInterceptor();
-            if (this.provider.equals(ProviderModel.azure)) {
+            if (this.provider.equals(ProviderModel.AZURE)) {
                 interceptor = new AzureInterceptor();
                 interceptor.setVersion(this.version);
                 interceptor.setModel(this.model);
+            }
+            // Anthropic claude interceptor
+            if (this.provider.equals(ProviderModel.CLAUDE)) {
+                interceptor = new ClaudeInterceptor();
             }
             interceptor.setApiKey(apiKey);
             client = client.newBuilder()
@@ -151,6 +156,14 @@ public class OpenAiClient
                     .build();
             this.client = client;
             return this;
+        }
+
+        private String getDefaultHost()
+        {
+            if (this.provider.equals(ProviderModel.CLAUDE)) {
+                return "https://api.anthropic.com";
+            }
+            return "https://api.openai.com";
         }
 
         public OpenAiClient build()

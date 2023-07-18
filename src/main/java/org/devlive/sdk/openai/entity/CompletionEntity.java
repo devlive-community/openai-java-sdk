@@ -1,5 +1,6 @@
 package org.devlive.sdk.openai.entity;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class CompletionEntity
     private Double temperature;
 
     @JsonProperty(value = "max_tokens")
+    @JsonAlias(value = {"max_tokens_to_sample"})
     private Integer maxTokens;
 
     @JsonProperty(value = "top_p")

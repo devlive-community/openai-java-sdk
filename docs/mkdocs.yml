@@ -87,5 +87,7 @@ nav:
       - Azure Open Ai:
           - reference/azure/completions.md
           - reference/azure/completions_chat.md
+      - Anthropic Claude:
+          - reference/anthropic/completions.md
   - released.md
   - powered_by.md

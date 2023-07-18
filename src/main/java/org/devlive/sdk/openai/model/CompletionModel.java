@@ -85,7 +85,16 @@ public enum CompletionModel
     ADA("ada",
             "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost.",
             null,
-            2049);
+            2049),
+    /* ================================ Claude ================================ */
+    CLAUDE_2("claude-2",
+            null,
+            null,
+            Integer.MAX_VALUE),
+    CLAUDE_INSTANT_1("claude-instant-1",
+            null,
+            null,
+            Integer.MAX_VALUE);
 
     private final String name;
     private final String description;
