@@ -1,5 +1,5 @@
 ---
-title: Azure OpenAI
+title: Chat Completions
 ---
 
 !!! note
@@ -22,9 +22,11 @@ title: Azure OpenAI
 |  `model`   | Model name deployed in Azure                                                |
 | `version`  | Model version deployed in Azure                                             |
 
-### Example
+### Create chat completion
 
 ---
+
+Creates a model response for the given chat conversation.
 
 ```java
 // Automatic resource release
@@ -36,7 +38,23 @@ try(OpenAiClient client=OpenAiClient.builder()
         .version("2022-12-01")
         .build())
 {
-    client.createCompletion(configure).getChoices();
+    List<CompletionMessageEntity> messages = Lists.newArrayList();
+    messages.add(CompletionMessageEntity.builder()
+        .content("Hello, my name is openai-java-sdk")
+        .build());
+
+    CompletionChatEntity configure = CompletionChatEntity.builder()
+        .messages(messages)
+        .build();
+
+    client.createChatCompletion(configure)
+        .getChoices()
+        .forEach(choice -> messages.add(choice.getMessage()));
+
+    messages.add(CompletionMessageEntity.builder()
+        .content("What is my name?")
+        .build());
+    client.createChatCompletion(configure).getChoices();
 }
 ```
 

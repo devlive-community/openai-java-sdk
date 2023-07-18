@@ -3,16 +3,18 @@ package org.devlive.sdk.openai;
 import com.google.common.collect.Lists;
 import okhttp3.OkHttpClient;
 import org.devlive.sdk.openai.entity.AudioEntity;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
-import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
+import org.devlive.sdk.openai.entity.MessageEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.exception.AuthorizedException;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.model.CompletionModel;
+import org.devlive.sdk.openai.model.EditModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -96,12 +98,12 @@ public class OpenAiClientTest
     @Test
     public void testCreateChatCompletion()
     {
-        List<CompletionMessageEntity> messages = Lists.newArrayList();
-        messages.add(CompletionMessageEntity.builder()
+        List<MessageEntity> messages = Lists.newArrayList();
+        messages.add(MessageEntity.builder()
                 .content("Hello, my name is openai-java-sdk")
                 .build());
 
-        CompletionChatEntity configure = CompletionChatEntity.builder()
+        ChatEntity configure = ChatEntity.builder()
                 .messages(messages)
                 .build();
 
@@ -109,7 +111,7 @@ public class OpenAiClientTest
                 .getChoices()
                 .forEach(choice -> messages.add(choice.getMessage()));
 
-        messages.add(CompletionMessageEntity.builder()
+        messages.add(MessageEntity.builder()
                 .content("What is my name?")
                 .build());
 
@@ -198,5 +200,16 @@ public class OpenAiClientTest
                 .inputs(Lists.newArrayList("Hello OpenAi Java SDK"))
                 .build();
         Assert.assertNotNull(client.moderations(configure));
+    }
+
+    @Test
+    public void testEdits()
+    {
+        EditEntity configure = EditEntity.builder()
+                .model(EditModel.TEXT_DAVINCI_EDIT_001)
+                .input("Hello OpenAi Java SDK")
+                .instruction("Fix the spelling mistakes")
+                .build();
+        Assert.assertNotNull(client.edit(configure));
     }
 }

@@ -5,8 +5,9 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.entity.AudioEntity;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
+import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
@@ -15,8 +16,9 @@ import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.model.ProviderModel;
 import org.devlive.sdk.openai.model.UrlModel;
 import org.devlive.sdk.openai.response.AudioResponse;
-import org.devlive.sdk.openai.response.CompleteChatResponse;
+import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
+import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
@@ -50,7 +52,7 @@ public abstract class DefaultClient implements AutoCloseable
                 .blockingGet();
     }
 
-    public CompleteChatResponse createChatCompletion(CompletionChatEntity configure)
+    public ChatResponse createChatCompletion(ChatEntity configure)
     {
         return this.api.fetchChatCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS), configure)
                 .blockingGet();
@@ -118,6 +120,12 @@ public abstract class DefaultClient implements AutoCloseable
     public ModerationResponse moderations(ModerationEntity configure)
     {
         return this.api.fetchModerations(ProviderUtils.getUrl(provider, UrlModel.FETCH_MODERATIONS), configure)
+                .blockingGet();
+    }
+
+    public EditResponse edit(EditEntity configure)
+    {
+        return this.api.fetchEdits(ProviderUtils.getUrl(provider, UrlModel.FETCH_EDITS), configure)
                 .blockingGet();
     }
 

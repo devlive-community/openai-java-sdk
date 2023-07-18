@@ -12,13 +12,6 @@ copyright: Copyright &copy; 2023 Devlive Community
 
 use_directory_urls: false
 
-plugins:
-  - i18n:
-      default_language: en
-      languages:
-        en: English
-        zh: Chinese (Simplified)
-
 theme:
   name: material
 
@@ -35,6 +28,11 @@ theme:
     - search.share
     - search.suggest
     - content.tooltips
+    - navigation.expand
+    - navigation.prune
+    - abbr
+    - attr_list
+    - pymdownx.snippets
   alternate:
     - name: English
       link: /en/
@@ -55,18 +53,41 @@ markdown_extensions:
   - pymdownx.snippets
   - abbr
 
+plugins:
+  - i18n:
+      default_language: en
+      languages:
+        en: English
+        zh: Chinese (Simplified)
+  - redirects:
+      redirect_maps:
+        reference/users.md: reference/openai/users.md
+        reference/models.md: reference/openai/models.md
+        reference/completions.md: reference/openai/completions.md
+        reference/completions_chat.md: reference/openai/completions_chat.md
+        reference/images.md: reference/openai/images.md
+        reference/embeddings.md: reference/openai/embeddings.md
+        reference/audio.md: reference/openai/audio.md
+        reference/moderations.md: reference/openai/moderations.md
+        reference/edits.md: reference/openai/edits.md
+
 nav:
   - index.md
   - Reference:
-      - reference/users.md
-      - reference/models.md
-      - reference/completions.md
-      - reference/completions_chat.md
-      - reference/images.md
-      - reference/embeddings.md
-      - reference/audio.md
-      - reference/moderations.md
-      - Provider:
-          - reference/provider/azure.md
+      - Open Ai:
+        - reference/openai/users.md
+        - reference/openai/models.md
+        - reference/openai/completions.md
+        - reference/openai/completions_chat.md
+        - reference/openai/images.md
+        - reference/openai/embeddings.md
+        - reference/openai/audio.md
+        - reference/openai/moderations.md
+        - reference/openai/edits.md
+      - Azure Open Ai:
+          - reference/azure/completions.md
+          - reference/azure/completions_chat.md
+      - Anthropic Claude:
+          - reference/anthropic/completions.md
   - released.md
   - powered_by.md

@@ -19,20 +19,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CompleteResponse
+public class EditResponse
 {
-    @JsonProperty(value = "id")
-    private String name;
-
     @JsonProperty(value = "object")
     private String object;
 
     @JsonProperty(value = "created")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createTime;
-
-    @JsonProperty(value = "model")
-    private String model;
 
     @JsonProperty(value = "choices")
     private List<BasicChoice> choices;

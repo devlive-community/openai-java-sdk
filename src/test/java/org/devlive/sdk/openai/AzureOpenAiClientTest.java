@@ -1,9 +1,9 @@
 package org.devlive.sdk.openai;
 
 import com.google.common.collect.Lists;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
-import org.devlive.sdk.openai.entity.CompletionMessageEntity;
+import org.devlive.sdk.openai.entity.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.model.ProviderModel;
@@ -24,7 +24,7 @@ public class AzureOpenAiClientTest
         client = OpenAiClient.builder()
                 .apiHost("https://eus-chatgpt.openai.azure.com")
                 .apiKey(System.getProperty("azure.token"))
-                .provider(ProviderModel.azure)
+                .provider(ProviderModel.AZURE)
                 .model("text-davinci-002")
                 .version("2022-12-01")
                 .build();
@@ -53,17 +53,17 @@ public class AzureOpenAiClientTest
         client = OpenAiClient.builder()
                 .apiHost("https://eus-chatgpt.openai.azure.com")
                 .apiKey(System.getProperty("azure.token"))
-                .provider(ProviderModel.azure)
+                .provider(ProviderModel.AZURE)
                 .model("gpt-35-turbo-0613")
                 .version("2023-03-15-preview")
                 .build();
 
-        List<CompletionMessageEntity> messages = Lists.newArrayList();
-        messages.add(CompletionMessageEntity.builder()
+        List<MessageEntity> messages = Lists.newArrayList();
+        messages.add(MessageEntity.builder()
                 .content("Hello, my name is openai-java-sdk")
                 .build());
 
-        CompletionChatEntity configure = CompletionChatEntity.builder()
+        ChatEntity configure = ChatEntity.builder()
                 .messages(messages)
                 .build();
 
@@ -71,7 +71,7 @@ public class AzureOpenAiClientTest
                 .getChoices()
                 .forEach(choice -> messages.add(choice.getMessage()));
 
-        messages.add(CompletionMessageEntity.builder()
+        messages.add(MessageEntity.builder()
                 .content("What is my name?")
                 .build());
 

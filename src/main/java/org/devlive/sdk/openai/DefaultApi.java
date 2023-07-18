@@ -3,16 +3,18 @@ package org.devlive.sdk.openai;
 import io.reactivex.Single;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import org.devlive.sdk.openai.entity.CompletionChatEntity;
+import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
+import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
-import org.devlive.sdk.openai.response.CompleteChatResponse;
+import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
+import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
@@ -56,8 +58,8 @@ public interface DefaultApi
      * Creates a model response for the given chat conversation.
      */
     @POST
-    Single<CompleteChatResponse> fetchChatCompletions(@Url String url,
-                                                      @Body CompletionChatEntity configure);
+    Single<ChatResponse> fetchChatCompletions(@Url String url,
+                                              @Body ChatEntity configure);
 
     /**
      * Get all keys
@@ -121,4 +123,12 @@ public interface DefaultApi
     @POST
     Single<ModerationResponse> fetchModerations(@Url String url,
                                                 @Body ModerationEntity configure);
+
+    /**
+     * Creates a new edit for the provided input, instruction, and parameters.
+     * 为提供的输入、指令和参数创建新的编辑。
+     */
+    @POST
+    Single<EditResponse> fetchEdits(@Url String url,
+                                    @Body EditEntity configure);
 }

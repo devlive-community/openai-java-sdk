@@ -1,11 +1,9 @@
 package org.devlive.sdk.openai.model;
 
-public enum CompletionMessageModel
+public enum EditModel
 {
-    SYSTEM("system"),
-    USER("user"),
-    ASSISTANT("assistant"),
-    FUNCTION("function");
+    TEXT_DAVINCI_EDIT_001("text-davinci-edit-001"),
+    CODE_DAVINCI_EDIT_001("code-davinci-edit-001");
 
     private final String name;
 
@@ -14,7 +12,7 @@ public enum CompletionMessageModel
         return name;
     }
 
-    CompletionMessageModel(String name)
+    EditModel(String name)
     {
         this.name = name;
     }

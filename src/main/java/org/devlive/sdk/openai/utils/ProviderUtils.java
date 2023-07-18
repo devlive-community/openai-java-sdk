@@ -12,6 +12,7 @@ public class ProviderUtils
 {
     private static final Map<UrlModel, String> DEFAULT_PROVIDER = new HashMap<>();
     private static final Map<UrlModel, String> AZURE_PROVIDER = new HashMap<>();
+    private static final Map<UrlModel, String> CLAUDE_PROVIDER = new HashMap<>();
 
     static {
         DEFAULT_PROVIDER.put(UrlModel.FETCH_MODELS, "v1/models");
@@ -24,9 +25,12 @@ public class ProviderUtils
         DEFAULT_PROVIDER.put(UrlModel.FETCH_EMBEDDINGS, "v1/embeddings");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_AUDIO_TRANSCRIPTIONS, "v1/audio/transcriptions");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_MODERATIONS, "v1/moderations");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_EDITS, "v1/edits");
 
         AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");
+
+        CLAUDE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "v1/complete");
     }
 
     private ProviderUtils()
@@ -42,9 +46,14 @@ public class ProviderUtils
      */
     public static String getUrl(ProviderModel provider, UrlModel model)
     {
-        provider = Optional.ofNullable(provider).orElse(ProviderModel.openai);
-        Map<UrlModel, String> selectedProvider = provider.equals(ProviderModel.azure) ? AZURE_PROVIDER : DEFAULT_PROVIDER;
-
+        provider = Optional.ofNullable(provider).orElse(ProviderModel.OPENAI);
+        Map<UrlModel, String> selectedProvider = DEFAULT_PROVIDER;
+        if (provider.equals(ProviderModel.AZURE)) {
+            selectedProvider = AZURE_PROVIDER;
+        }
+        if (provider.equals(ProviderModel.CLAUDE)) {
+            selectedProvider = CLAUDE_PROVIDER;
+        }
         ProviderModel finalProvider = provider;
         return Optional.ofNullable(selectedProvider.get(model))
                 .orElseThrow(() -> new RequestException(String.format("Provider %s not supported %s", finalProvider, model)));

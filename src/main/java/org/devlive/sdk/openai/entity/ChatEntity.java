@@ -21,13 +21,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CompletionChatEntity
+public class ChatEntity
 {
     @JsonProperty(value = "model")
     private String model;
 
     @JsonProperty(value = "messages")
-    private List<CompletionMessageEntity> messages;
+    private List<MessageEntity> messages;
 
     @JsonProperty(value = "temperature")
     private Double temperature;
@@ -38,7 +38,7 @@ public class CompletionChatEntity
     @JsonProperty(value = "top_p")
     private Double topP;
 
-    private CompletionChatEntity(CompletionChatEntityBuilder builder)
+    private ChatEntity(ChatEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
             builder.model(CompletionModel.GPT_35_TURBO.getName());
@@ -62,9 +62,9 @@ public class CompletionChatEntity
         this.topP = builder.topP;
     }
 
-    public static class CompletionChatEntityBuilder
+    public static class ChatEntityBuilder
     {
-        public CompletionChatEntityBuilder model(String model)
+        public ChatEntityBuilder model(String model)
         {
             if (StringUtils.isEmpty(model)) {
                 model = CompletionModel.GPT_35_TURBO.getName();
@@ -94,7 +94,7 @@ public class CompletionChatEntity
             return this;
         }
 
-        public CompletionChatEntityBuilder temperature(Double temperature)
+        public ChatEntityBuilder temperature(Double temperature)
         {
             if (temperature < 0 || temperature > 2) {
                 throw new ParamException(String.format("Invalid temperature: %s , between 0 and 2", temperature));
@@ -103,7 +103,7 @@ public class CompletionChatEntity
             return this;
         }
 
-        public CompletionChatEntityBuilder maxTokens(Integer maxTokens)
+        public ChatEntityBuilder maxTokens(Integer maxTokens)
         {
             CompletionModel completionModel = EnumsUtils.getCompleteModel(this.model);
             if (ObjectUtils.isNotEmpty(this.model) && maxTokens > completionModel.getMaxTokens()) {
@@ -113,9 +113,9 @@ public class CompletionChatEntity
             return this;
         }
 
-        public CompletionChatEntity build()
+        public ChatEntity build()
         {
-            return new CompletionChatEntity(this);
+            return new ChatEntity(this);
         }
     }
 }

@@ -6,21 +6,21 @@ import org.devlive.sdk.openai.model.CompletionModel;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CompletionChatEntityTest
+public class ChatEntityTest
 {
     @Test
     public void testModel()
     {
-        CompletionChatEntity entity = CompletionChatEntity.builder()
+        ChatEntity entity = ChatEntity.builder()
                 .build();
         Assert.assertTrue(entity.getModel().equals(CompletionModel.GPT_35_TURBO.getName()));
 
-        entity = CompletionChatEntity.builder()
+        entity = ChatEntity.builder()
                 .model(CompletionModel.GPT_4.getName())
                 .build();
         Assert.assertTrue(entity.getModel().equals(CompletionModel.GPT_4.getName()));
 
-        Assert.assertThrows(ParamException.class, () -> CompletionChatEntity.builder()
+        Assert.assertThrows(ParamException.class, () -> ChatEntity.builder()
                 .model(CompletionModel.TEXT_ADA_001.getName())
                 .build());
     }
