@@ -16,6 +16,7 @@ import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
+import org.devlive.sdk.openai.response.FileResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -131,4 +132,11 @@ public interface DefaultApi
     @POST
     Single<EditResponse> fetchEdits(@Url String url,
                                     @Body EditEntity configure);
+
+    /**
+     * Returns a list of files that belong to the user's organization.
+     * 返回属于用户组织的文件列表。
+     */
+    @GET
+    Single<FileResponse> fetchFiles(@Url String url);
 }

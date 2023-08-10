@@ -20,6 +20,7 @@ import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
+import org.devlive.sdk.openai.response.FileResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -126,6 +127,12 @@ public abstract class DefaultClient implements AutoCloseable
     public EditResponse edit(EditEntity configure)
     {
         return this.api.fetchEdits(ProviderUtils.getUrl(provider, UrlModel.FETCH_EDITS), configure)
+                .blockingGet();
+    }
+
+    public FileResponse files()
+    {
+        return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES))
                 .blockingGet();
     }
 
