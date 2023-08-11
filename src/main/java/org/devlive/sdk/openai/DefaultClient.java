@@ -9,6 +9,7 @@ import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
+import org.devlive.sdk.openai.entity.FileEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -20,6 +21,7 @@ import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
+import org.devlive.sdk.openai.response.FileResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -28,7 +30,8 @@ import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
 
 @Slf4j
-public abstract class DefaultClient implements AutoCloseable
+public abstract class DefaultClient
+        implements AutoCloseable
 {
     protected DefaultApi api;
     protected ProviderModel provider;
@@ -126,6 +129,28 @@ public abstract class DefaultClient implements AutoCloseable
     public EditResponse edit(EditEntity configure)
     {
         return this.api.fetchEdits(ProviderUtils.getUrl(provider, UrlModel.FETCH_EDITS), configure)
+                .blockingGet();
+    }
+
+    public FileResponse uploadFile()
+    {
+        return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES))
+                .blockingGet();
+    }
+
+    public FileEntity uploadFile(FileEntity configure)
+    {
+        MultipartBody.Part fileBody = MultipartBodyUtils.getPart(configure.getFile(), "file");
+        return this.api.fetchUploadFile(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES),
+                        fileBody,
+                        configure.convertMap())
+                .blockingGet();
+    }
+
+    public FileResponse deleteFile(String id)
+    {
+        String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id);
+        return this.api.fetchDeleteFile(url)
                 .blockingGet();
     }
 

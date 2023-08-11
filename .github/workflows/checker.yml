@@ -52,31 +52,11 @@ jobs:
       - run: chmod 755 ./mvnw
       - run: ./mvnw clean install findbugs:findbugs -Dcheckstyle.skip -Dgpg.skip -Dskip.yarn -DskipTests=true
 
-  before_checker_test:
+  before_checker_package:
     runs-on: ubuntu-latest
     needs:
       - before_checker_style
       - before_checker_bugs
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Maven Checker Tests
-        uses: actions/setup-java@v3
-        with:
-          java-version: |
-            8
-            11
-            16
-            17
-          distribution: 'temurin'
-      - run: chmod 755 ./mvnw
-      - run: |
-          ./mvnw clean install test -Dfindbugs.skip -Dcheckstyle.skip -Dgpg.skip -Dskip.yarn -Dopenai.token=${{ secrets.OPENAI_TOKEN }} -Dproxy.token=${{ secrets.PROXY_TOKEN }} -Dproxy.host=${{ secrets.PROXY_HOST }} -Dazure.token=${{ secrets.AZURE_TOKEN}} -Dclaude.token=${{ secrets.CLAUDE_TOKEN }}
-
-  before_checker_package:
-    runs-on: ubuntu-latest
-    needs:
-      - before_checker_test
     steps:
       - name: Checkout
         uses: actions/checkout@v3

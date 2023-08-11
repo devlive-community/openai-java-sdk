@@ -84,6 +84,7 @@ nav:
         - reference/openai/audio.md
         - reference/openai/moderations.md
         - reference/openai/edits.md
+        - reference/openai/files.md
       - Azure Open Ai:
           - reference/azure/completions.md
           - reference/azure/completions_chat.md
