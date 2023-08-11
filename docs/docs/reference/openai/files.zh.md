@@ -54,7 +54,7 @@ String file = this.getClass().getResource("/test.jsonl").getFile();
 FileEntity configure = FileEntity.builder()
     .file(new File(file))
     .build();
-this.client.files(configure);
+this.client.uploadFile(configure);
 ```
 
 返回:
@@ -67,5 +67,26 @@ this.client.files(configure);
   "createdTime": "2022-02-02 22:22:22",
   "filename": "test.jsonl",
   "purpose": "fine-tune"
+}
+```
+
+### Delete file
+
+---
+
+删除文件
+
+```java
+String id = "file-XjGxS3KTG0uNmNOK362iJua3";
+this.client.deleteFile(entity.getId());
+```
+
+返回:
+
+```json
+{
+  "id": "file-XjGxS3KTG0uNmNOK362iJua3",
+  "object": "file",
+  "deleted": true
 }
 ```

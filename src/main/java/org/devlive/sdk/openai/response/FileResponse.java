@@ -28,4 +28,10 @@ public class FileResponse
 
     @JsonProperty(value = "usage")
     private UsageEntity usage;
+
+    @JsonProperty(value = "id")
+    private String id;
+
+    @JsonProperty(value = "deleted")
+    private Boolean deleted;
 }

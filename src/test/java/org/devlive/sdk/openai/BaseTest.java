@@ -11,7 +11,7 @@ public class BaseTest
     {
         client = OpenAiClient.builder()
                 .apiKey(System.getProperty("openai.token"))
-                .apiKey("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")
+                .apiKey("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")
                 .build();
     }
 }

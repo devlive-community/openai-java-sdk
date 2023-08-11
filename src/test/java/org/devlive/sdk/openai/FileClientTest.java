@@ -12,15 +12,29 @@ public class FileClientTest
     @Test
     public void testFiles()
     {
-        Assert.assertNotNull(this.client.files());
+        Assert.assertNotNull(this.client.uploadFile());
+    }
 
-        /**
-         * Test upload
-         * 测试上传
-         */
+    @Test
+    public void testUploadFile()
+    {
         String file = this.getClass().getResource("/test.jsonl").getFile();
-        Assert.assertNotNull(this.client.files(FileEntity.builder()
+        Assert.assertNotNull(this.client.uploadFile(FileEntity.builder()
                 .file(new File(file))
                 .build()));
+    }
+
+    @Test
+    public void testDeleteFile()
+            throws InterruptedException
+    {
+        String file = this.getClass().getResource("/test.jsonl").getFile();
+        FileEntity entity = this.client.uploadFile(FileEntity.builder()
+                .file(new File(file))
+                .build());
+        Thread.sleep(3000);
+
+        Assert.assertTrue(this.client.deleteFile(entity.getId())
+                .getDeleted());
     }
 }

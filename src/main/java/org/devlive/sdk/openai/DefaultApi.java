@@ -23,6 +23,7 @@ import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -147,7 +148,14 @@ public interface DefaultApi
      */
     @POST
     @Multipart
-    Single<FileEntity> fetchFiles(@Url String url,
+    Single<FileEntity> fetchUploadFile(@Url String url,
             @Part() MultipartBody.Part file,
             @PartMap Map<String, RequestBody> configure);
+
+    /**
+     * Delete a file.
+     * 删除文件。
+     */
+    @DELETE
+    Single<FileResponse> fetchDeleteFile(@Url String url);
 }

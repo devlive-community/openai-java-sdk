@@ -132,18 +132,25 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
-    public FileResponse files()
+    public FileResponse uploadFile()
     {
         return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES))
                 .blockingGet();
     }
 
-    public FileEntity files(FileEntity configure)
+    public FileEntity uploadFile(FileEntity configure)
     {
         MultipartBody.Part fileBody = MultipartBodyUtils.getPart(configure.getFile(), "file");
-        return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES),
+        return this.api.fetchUploadFile(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES),
                         fileBody,
                         configure.convertMap())
+                .blockingGet();
+    }
+
+    public FileResponse deleteFile(String id)
+    {
+        String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id);
+        return this.api.fetchDeleteFile(url)
                 .blockingGet();
     }
 
