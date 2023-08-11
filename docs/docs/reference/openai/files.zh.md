@@ -25,7 +25,7 @@ title: Files
 client.files()
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -40,5 +40,32 @@ Returns:
     }
   ],
   "object": "list"
+}
+```
+
+### Upload file
+
+---
+
+上传包含要在各种端点/功能之间使用的文档的文件。目前，一个组织上传的所有文件大小最大可达1GB。如果您需要增加存储限制，请联系 OpenAI。
+
+```java
+String file = this.getClass().getResource("/test.jsonl").getFile();
+FileEntity configure = FileEntity.builder()
+    .file(new File(file))
+    .build();
+this.client.files(configure);
+```
+
+返回:
+
+```json
+{
+  "id": "file-XjGxS3KTG0uNmNOK362iJua3",
+  "object": "file",
+  "bytes": 140,
+  "createdTime": "2022-02-02 22:22:22",
+  "filename": "test.jsonl",
+  "purpose": "fine-tune"
 }
 ```

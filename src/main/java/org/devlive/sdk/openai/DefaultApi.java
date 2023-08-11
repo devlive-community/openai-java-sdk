@@ -7,6 +7,7 @@ import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
+import org.devlive.sdk.openai.entity.FileEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -53,14 +54,14 @@ public interface DefaultApi
      */
     @POST
     Single<CompleteResponse> fetchCompletions(@Url String url,
-                                              @Body CompletionEntity configure);
+            @Body CompletionEntity configure);
 
     /**
      * Creates a model response for the given chat conversation.
      */
     @POST
     Single<ChatResponse> fetchChatCompletions(@Url String url,
-                                              @Body ChatEntity configure);
+            @Body ChatEntity configure);
 
     /**
      * Get all keys
@@ -79,7 +80,7 @@ public interface DefaultApi
      */
     @POST
     Single<ImageResponse> fetchImagesGenerations(@Url String url,
-                                                 @Body ImageEntity configure);
+            @Body ImageEntity configure);
 
     /**
      * Creates an edited or extended image given an original image and a prompt.
@@ -87,9 +88,9 @@ public interface DefaultApi
     @POST
     @Multipart
     Single<ImageResponse> fetchImagesEdits(@Url String url,
-                                           @Part() MultipartBody.Part image,
-                                           @Part() MultipartBody.Part mask,
-                                           @PartMap Map<String, RequestBody> configure);
+            @Part() MultipartBody.Part image,
+            @Part() MultipartBody.Part mask,
+            @PartMap Map<String, RequestBody> configure);
 
     /**
      * Creates a variation of a given image.
@@ -97,15 +98,15 @@ public interface DefaultApi
     @POST
     @Multipart
     Single<ImageResponse> fetchImagesVariations(@Url String url,
-                                                @Part() MultipartBody.Part image,
-                                                @PartMap Map<String, RequestBody> configure);
+            @Part() MultipartBody.Part image,
+            @PartMap Map<String, RequestBody> configure);
 
     /**
      * Creates an embedding vector representing the input text.
      */
     @POST
     Single<EmbeddingResponse> fetchEmbeddings(@Url String url,
-                                              @Body EmbeddingEntity configure);
+            @Body EmbeddingEntity configure);
 
     /**
      * Transcribes audio into the input language.
@@ -114,8 +115,8 @@ public interface DefaultApi
     @POST
     @Multipart
     Single<AudioResponse> fetchAudioTranscriptions(@Url String url,
-                                                   @Part() MultipartBody.Part audio,
-                                                   @PartMap Map<String, RequestBody> configure);
+            @Part() MultipartBody.Part audio,
+            @PartMap Map<String, RequestBody> configure);
 
     /**
      * Classifies if text violates OpenAI's Content Policy
@@ -123,7 +124,7 @@ public interface DefaultApi
      */
     @POST
     Single<ModerationResponse> fetchModerations(@Url String url,
-                                                @Body ModerationEntity configure);
+            @Body ModerationEntity configure);
 
     /**
      * Creates a new edit for the provided input, instruction, and parameters.
@@ -131,7 +132,7 @@ public interface DefaultApi
      */
     @POST
     Single<EditResponse> fetchEdits(@Url String url,
-                                    @Body EditEntity configure);
+            @Body EditEntity configure);
 
     /**
      * Returns a list of files that belong to the user's organization.
@@ -139,4 +140,14 @@ public interface DefaultApi
      */
     @GET
     Single<FileResponse> fetchFiles(@Url String url);
+
+    /**
+     * Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+     * 上传包含要在各种端点/功能之间使用的文档的文件。目前，一个组织上传的所有文件大小最大可达1GB。如果您需要增加存储限制，请联系我们。
+     */
+    @POST
+    @Multipart
+    Single<FileEntity> fetchFiles(@Url String url,
+            @Part() MultipartBody.Part file,
+            @PartMap Map<String, RequestBody> configure);
 }

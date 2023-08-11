@@ -42,3 +42,30 @@ Returns:
   "object": "list"
 }
 ```
+
+### Upload file
+
+---
+
+Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact openai if you need to increase the storage limit.
+
+```java
+String file = this.getClass().getResource("/test.jsonl").getFile();
+FileEntity configure = FileEntity.builder()
+    .file(new File(file))
+    .build();
+this.client.files(configure);
+```
+
+Returns:
+
+```json
+{
+  "id": "file-XjGxS3KTG0uNmNOK362iJua3",
+  "object": "file",
+  "bytes": 140,
+  "createdTime": "2022-02-02 22:22:22",
+  "filename": "test.jsonl",
+  "purpose": "fine-tune"
+}
+```

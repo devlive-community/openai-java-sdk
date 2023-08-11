@@ -3,11 +3,20 @@ package org.devlive.sdk.openai.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Maps;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import okhttp3.RequestBody;
+import org.apache.commons.lang3.ObjectUtils;
+import org.devlive.sdk.openai.exception.ParamException;
+import org.devlive.sdk.openai.model.PurposeModel;
+import org.devlive.sdk.openai.utils.MultipartBodyUtils;
+
+import java.io.File;
+import java.util.Map;
 
 @Data
 @Builder
@@ -73,4 +82,57 @@ public class FileEntity
      */
     @JsonProperty(value = "status_details")
     private String statusDetails;
+
+    /**
+     * Name of the JSON Lines file to be uploaded.
+     * If the purpose is set to "fine-tune", each line is a JSON record with "prompt" and "completion" fields representing your training examples.
+     * <p>
+     * 要上传的 JSON Lines 文件的名称。
+     * 如果目的设置为 "purpose"，则每行都是一个 JSON 记录，其中 "prompt" 和 "completion" 字段代表您的训练示例。
+     */
+    @JsonProperty(value = "file")
+    private File file;
+
+    public Map<String, RequestBody> convertMap()
+    {
+        Map<String, RequestBody> map = Maps.newConcurrentMap();
+        map.put("purpose", RequestBody.create(MultipartBodyUtils.TYPE, this.getPurpose()));
+        return map;
+    }
+
+    private FileEntity(FileEntityBuilder builder)
+    {
+        if (ObjectUtils.isEmpty(builder.file)) {
+            builder.file(null);
+        }
+        this.file = builder.file;
+
+        if (ObjectUtils.isEmpty(builder.purpose)) {
+            builder.purpose(PurposeModel.FINE_TUNE);
+        }
+        this.purpose = builder.purpose;
+    }
+
+    public static class FileEntityBuilder
+    {
+        public FileEntityBuilder file(File file)
+        {
+            if (ObjectUtils.isEmpty(file)) {
+                throw new ParamException("Invalid file must not be empty");
+            }
+            this.file = file;
+            return this;
+        }
+
+        public FileEntityBuilder purpose(PurposeModel purpose)
+        {
+            this.purpose = purpose.getName();
+            return this;
+        }
+
+        public FileEntity build()
+        {
+            return new FileEntity(this);
+        }
+    }
 }

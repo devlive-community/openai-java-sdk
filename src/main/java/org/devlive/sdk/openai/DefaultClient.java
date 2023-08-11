@@ -9,6 +9,7 @@ import org.devlive.sdk.openai.entity.ChatEntity;
 import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
+import org.devlive.sdk.openai.entity.FileEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -29,7 +30,8 @@ import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
 
 @Slf4j
-public abstract class DefaultClient implements AutoCloseable
+public abstract class DefaultClient
+        implements AutoCloseable
 {
     protected DefaultApi api;
     protected ProviderModel provider;
@@ -133,6 +135,15 @@ public abstract class DefaultClient implements AutoCloseable
     public FileResponse files()
     {
         return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES))
+                .blockingGet();
+    }
+
+    public FileEntity files(FileEntity configure)
+    {
+        MultipartBody.Part fileBody = MultipartBodyUtils.getPart(configure.getFile(), "file");
+        return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES),
+                        fileBody,
+                        configure.convertMap())
                 .blockingGet();
     }
 
