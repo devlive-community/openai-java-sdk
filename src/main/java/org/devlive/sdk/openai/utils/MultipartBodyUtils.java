@@ -9,6 +9,7 @@ import java.io.File;
 public class MultipartBodyUtils
 {
     public static final MediaType TYPE = MediaType.parse("multipart/form-data");
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private MultipartBodyUtils()
     {

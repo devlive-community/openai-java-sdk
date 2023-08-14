@@ -74,6 +74,8 @@ plugins:
 nav:
   - index.md
   - Reference:
+      - Stream (Not provider):
+          - reference/stream/console.md
       - Open Ai:
         - reference/openai/users.md
         - reference/openai/models.md
