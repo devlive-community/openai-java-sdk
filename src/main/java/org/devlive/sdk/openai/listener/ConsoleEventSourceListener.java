@@ -9,8 +9,6 @@ import okhttp3.sse.EventSourceListener;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.utils.JsonUtils;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
@@ -24,14 +22,14 @@ public class ConsoleEventSourceListener
     private JsonUtils<CompleteResponse> jsonUtils;
 
     @Override
-    public void onOpen(@NotNull EventSource eventSource, @NotNull Response response)
+    public void onOpen(EventSource eventSource, Response response)
     {
         log.info("Console listener opened on time {}", LocalDateTime.now());
         this.jsonUtils = JsonUtils.getInstance();
     }
 
     @Override
-    public void onClosed(@NotNull EventSource eventSource)
+    public void onClosed(EventSource eventSource)
     {
         log.info("Console listener closed on time {}", LocalDateTime.now());
         eventSource.cancel();
@@ -39,7 +37,7 @@ public class ConsoleEventSourceListener
     }
 
     @Override
-    public void onEvent(@NotNull EventSource eventSource, @Nullable String id, @Nullable String type, @NotNull String data)
+    public void onEvent(EventSource eventSource, String id, String type, String data)
     {
         // OpenAI ends with [DONE] by default
         if (data.equals("[DONE]")) {
@@ -58,14 +56,19 @@ public class ConsoleEventSourceListener
     }
 
     @Override
-    public void onFailure(@NotNull EventSource eventSource, @Nullable Throwable throwable, @Nullable Response response)
+    public void onFailure(EventSource eventSource, Throwable throwable, Response response)
     {
-        if (throwable.getMessage().endsWith("CANCEL")) {
-            log.info("Console listener cancelled on time {}", LocalDateTime.now());
-            this.onClosed(eventSource);
+        if (ObjectUtils.isNotEmpty(throwable)) {
+            if (throwable.getMessage().endsWith("CANCEL")) {
+                log.info("Console listener cancelled on time {}", LocalDateTime.now());
+                this.onClosed(eventSource);
+            }
+            else {
+                log.error("Console listener throwable \n{}\n response: \n{}\n", throwable, response);
+            }
         }
         else {
-            log.error("Console listener throwable \n{}\n response: \n{}\n", throwable, response);
+            log.error("Console listener failure with empty throwable. Response: \n{}\n", response);
         }
         eventSource.cancel();
         this.close();
