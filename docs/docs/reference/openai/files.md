@@ -78,7 +78,7 @@ Delete a file.
 
 ```java
 String id = "file-XjGxS3KTG0uNmNOK362iJua3";
-this.client.deleteFile(entity.getId());
+        this.client.deleteFile(entity.getId());
 ```
 
 Returns:
@@ -90,3 +90,40 @@ Returns:
   "deleted": true
 }
 ```
+
+### Retrieve file
+
+---
+
+Returns information about a specific file.
+
+```java
+String id = "file-XjGxS3KTG0uNmNOK362iJua3";
+this.client.retrieveFile(entity.getId());
+```
+
+Returns:
+
+```json
+{
+  "id": "file-XjGxS3KTG0uNmNOK362iJua3",
+  "object": "file",
+  "bytes": 140,
+  "created_at": 1613779657,
+  "filename": "test.jsonl",
+  "purpose": "fine-tune"
+}
+```
+
+### Retrieve file content
+
+---
+
+Returns information about a specific file.
+
+```java
+String id = "file-XjGxS3KTG0uNmNOK362iJua3";
+this.client.retrieveFileContent(entity.getId());
+```
+
+Returns the original content of the uploaded file.

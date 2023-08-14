@@ -158,4 +158,18 @@ public interface DefaultApi
      */
     @DELETE
     Single<FileResponse> fetchDeleteFile(@Url String url);
+
+    /**
+     * Returns information about a specific file.
+     * 返回有关特定文件的信息。
+     */
+    @GET
+    Single<FileEntity> fetchRetrieveFile(@Url String url);
+
+    /**
+     * Returns the contents of the specified file
+     * 返回指定文件的内容
+     */
+    @GET
+    Single<Object> fetchRetrieveFileContent(@Url String url);
 }
