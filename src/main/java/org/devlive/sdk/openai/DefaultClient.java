@@ -1,8 +1,14 @@
 package org.devlive.sdk.openai;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.sse.EventSource;
+import okhttp3.sse.EventSourceListener;
+import okhttp3.sse.EventSources;
 import org.apache.commons.lang3.ObjectUtils;
 import org.devlive.sdk.openai.entity.AudioEntity;
 import org.devlive.sdk.openai.entity.ChatEntity;
@@ -14,6 +20,8 @@ import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.exception.RequestException;
+import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
 import org.devlive.sdk.openai.model.ProviderModel;
 import org.devlive.sdk.openai.model.UrlModel;
 import org.devlive.sdk.openai.response.AudioResponse;
@@ -36,6 +44,8 @@ public abstract class DefaultClient
     protected DefaultApi api;
     protected ProviderModel provider;
     protected OkHttpClient client;
+    protected String apiHost;
+    protected EventSourceListener listener;
 
     public ModelResponse getModels()
     {
@@ -51,8 +61,16 @@ public abstract class DefaultClient
 
     public CompleteResponse createCompletion(CompletionEntity configure)
     {
-        return this.api.fetchCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_COMPLETIONS), configure)
-                .blockingGet();
+        String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_COMPLETIONS);
+        if (ObjectUtils.isNotEmpty(this.listener)) {
+            configure.setStream(true);
+            this.createEventSource(url, configure);
+            return null;
+        }
+        else {
+            return this.api.fetchCompletions(url, configure)
+                    .blockingGet();
+        }
     }
 
     public ChatResponse createChatCompletion(ChatEntity configure)
@@ -166,6 +184,29 @@ public abstract class DefaultClient
         String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id, "content");
         return this.api.fetchRetrieveFileContent(url)
                 .blockingGet();
+    }
+
+    private ObjectMapper createObjectMapper()
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.addMixIn(Object.class, IgnoreUnknownMixin.class);
+        return objectMapper;
+    }
+
+    private void createEventSource(String url, Object configure)
+    {
+        try {
+            EventSource.Factory factory = EventSources.createFactory(this.client);
+            ObjectMapper mapper = this.createObjectMapper();
+            Request request = new Request.Builder()
+                    .url(String.join("/", this.apiHost, url))
+                    .post(RequestBody.create(MultipartBodyUtils.JSON, mapper.writeValueAsString(configure)))
+                    .build();
+            factory.newEventSource(request, this.listener);
+        }
+        catch (Exception e) {
+            throw new RequestException(String.format("Failed to create event source: %s", e.getMessage()));
+        }
     }
 
     public void close()

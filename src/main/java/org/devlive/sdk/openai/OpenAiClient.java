@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
+import okhttp3.sse.EventSourceListener;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.ParamException;
@@ -35,6 +36,8 @@ public class OpenAiClient
     // Azure provider requires
     private String model; // The model name deployed in azure
     private String version;
+    // Support see
+    private EventSourceListener listener;
 
     private OpenAiClient(OpenAiClientBuilder builder)
     {
@@ -69,9 +72,14 @@ public class OpenAiClient
         if (ObjectUtils.isEmpty(builder.client)) {
             builder.client(null);
         }
+        if (ObjectUtils.isEmpty(builder.listener)) {
+            builder.listener(null);
+        }
 
         super.provider = builder.provider;
         super.client = builder.client;
+        super.listener = builder.listener;
+        super.apiHost = builder.apiHost;
         // Build a remote API client
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.api = new Retrofit.Builder()
@@ -160,6 +168,9 @@ public class OpenAiClient
 
         private String getDefaultHost()
         {
+            if (ObjectUtils.isEmpty(this.provider)) {
+                this.provider = ProviderModel.OPENAI;
+            }
             if (this.provider.equals(ProviderModel.CLAUDE)) {
                 return "https://api.anthropic.com";
             }

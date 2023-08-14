@@ -50,6 +50,13 @@ public class CompletionEntity
     @JsonProperty(value = "stop")
     private List<String> stop;
 
+    /**
+     * Whether to stream back partial progress. If set, tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message.
+     * 是否流回部分进度。如果设置，令牌将在可用时作为仅数据服务器发送事件发送，流由 data: [DONE] 消息终止。
+     */
+    @JsonProperty(value = "stream")
+    private boolean stream = false;
+
     private CompletionEntity(CompletionEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
@@ -148,6 +155,11 @@ public class CompletionEntity
                 throw new ParamException(String.format("Invalid presencePenalty: %s , between -2.0 and 2.0", presencePenalty));
             }
             this.presencePenalty = presencePenalty;
+            return this;
+        }
+
+        private CompletionEntityBuilder stream()
+        {
             return this;
         }
 
