@@ -114,3 +114,16 @@ Returns:
   "purpose": "fine-tune"
 }
 ```
+
+### Retrieve file content
+
+---
+
+Returns information about a specific file.
+
+```java
+String id = "file-XjGxS3KTG0uNmNOK362iJua3";
+this.client.retrieveFileContent(entity.getId());
+```
+
+Returns the original content of the uploaded file.

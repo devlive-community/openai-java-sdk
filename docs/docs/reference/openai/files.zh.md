@@ -114,3 +114,16 @@ this.client.retrieveFile(entity.getId());
   "purpose": "fine-tune"
 }
 ```
+
+### Retrieve file content
+
+---
+
+返回有关特定文件的信息。
+
+```java
+String id = "file-XjGxS3KTG0uNmNOK362iJua3";
+this.client.retrieveFileContent(entity.getId());
+```
+
+返回上传文件的原始内容。

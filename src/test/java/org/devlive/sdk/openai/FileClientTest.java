@@ -50,4 +50,17 @@ public class FileClientTest
 
         Assert.assertNotNull(this.client.retrieveFile(entity.getId()));
     }
+
+    @Test
+    public void testRetrieveFileContent()
+            throws InterruptedException
+    {
+        String file = this.getClass().getResource("/test.jsonl").getFile();
+        FileEntity entity = this.client.uploadFile(FileEntity.builder()
+                .file(new File(file))
+                .build());
+        Thread.sleep(3000);
+
+        Assert.assertNotNull(this.client.retrieveFileContent(entity.getId()));
+    }
 }

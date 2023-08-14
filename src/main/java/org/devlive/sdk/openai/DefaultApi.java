@@ -165,4 +165,11 @@ public interface DefaultApi
      */
     @GET
     Single<FileEntity> fetchRetrieveFile(@Url String url);
+
+    /**
+     * Returns the contents of the specified file
+     * 返回指定文件的内容
+     */
+    @GET
+    Single<Object> fetchRetrieveFileContent(@Url String url);
 }

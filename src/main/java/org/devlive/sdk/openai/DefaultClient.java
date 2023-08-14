@@ -161,6 +161,13 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
+    public Object retrieveFileContent(String id)
+    {
+        String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id, "content");
+        return this.api.fetchRetrieveFileContent(url)
+                .blockingGet();
+    }
+
     public void close()
     {
         if (ObjectUtils.isNotEmpty(this.client)) {
