@@ -90,3 +90,27 @@ this.client.deleteFile(entity.getId());
   "deleted": true
 }
 ```
+
+### Retrieve file
+
+---
+
+返回有关特定文件的信息。
+
+```java
+String id = "file-XjGxS3KTG0uNmNOK362iJua3";
+this.client.retrieveFile(entity.getId());
+```
+
+返回:
+
+```json
+{
+  "id": "file-XjGxS3KTG0uNmNOK362iJua3",
+  "object": "file",
+  "bytes": 140,
+  "created_at": 1613779657,
+  "filename": "test.jsonl",
+  "purpose": "fine-tune"
+}
+```

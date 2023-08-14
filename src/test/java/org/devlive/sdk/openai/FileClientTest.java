@@ -12,7 +12,7 @@ public class FileClientTest
     @Test
     public void testFiles()
     {
-        Assert.assertNotNull(this.client.uploadFile());
+        Assert.assertNotNull(this.client.files());
     }
 
     @Test
@@ -36,5 +36,18 @@ public class FileClientTest
 
         Assert.assertTrue(this.client.deleteFile(entity.getId())
                 .getDeleted());
+    }
+
+    @Test
+    public void testRetrieveFile()
+            throws InterruptedException
+    {
+        String file = this.getClass().getResource("/test.jsonl").getFile();
+        FileEntity entity = this.client.uploadFile(FileEntity.builder()
+                .file(new File(file))
+                .build());
+        Thread.sleep(3000);
+
+        Assert.assertNotNull(this.client.retrieveFile(entity.getId()));
     }
 }

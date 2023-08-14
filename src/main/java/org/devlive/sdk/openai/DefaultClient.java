@@ -132,7 +132,7 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
-    public FileResponse uploadFile()
+    public FileResponse files()
     {
         return this.api.fetchFiles(ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES))
                 .blockingGet();
@@ -151,6 +151,13 @@ public abstract class DefaultClient
     {
         String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id);
         return this.api.fetchDeleteFile(url)
+                .blockingGet();
+    }
+
+    public FileEntity retrieveFile(String id)
+    {
+        String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id);
+        return this.api.fetchRetrieveFile(url)
                 .blockingGet();
     }
 
