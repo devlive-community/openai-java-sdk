@@ -14,8 +14,24 @@
 ![GitHub contributors](https://img.shields.io/github/contributors-anon/devlive-community/openai-java-sdk?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/devlive-community/openai-java-sdk?style=flat-square)
 
-<h3> Provides Java developers with a convenient, easy-to-use SDK to interact with OpenAI's apis.</h3>
+<h3> Provides an easy-to-use SDK for Java developers to interact with the APIs of open AI models.</h3>
 
+</div>
+
+# Support platform
+
+---
+
+<div align="center">
+    <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" target="_blank">
+        <img src="images/azure.png" alt="Azure" height="100" />
+    </a>&nbsp;
+    <a href="https://openai.com" target="_blank">
+        <img src="images/openai.png" alt="OpenAi" height="80" />
+    </a>&nbsp;
+    <a href="https://claude.ai/" target="_blank">
+        <img src="images/claude.png" alt="Claude" height="80" />
+    </a>&nbsp;
 </div>
 
 # How to use?
