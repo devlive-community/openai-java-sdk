@@ -5,6 +5,28 @@ hide:
   - navigation
 ---
 
+### 1.8.0
+
+---
+
+- Support stream
+
+### 1.7.0
+
+---
+
+- Support File API
+
+### 1.6.0
+
+---
+
+- Split choice
+- Support edits
+- Split azure docs
+- Support claude
+- Rename some entity
+
 ### 1.5.0
 
 ---
