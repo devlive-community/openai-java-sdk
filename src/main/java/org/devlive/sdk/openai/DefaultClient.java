@@ -75,8 +75,16 @@ public abstract class DefaultClient
 
     public ChatResponse createChatCompletion(ChatEntity configure)
     {
-        return this.api.fetchChatCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS), configure)
-                .blockingGet();
+        String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS);
+        if (ObjectUtils.isNotEmpty(this.listener)) {
+            configure.setStream(true);
+            this.createEventSource(url, configure);
+            return null;
+        }
+        else {
+            return this.api.fetchChatCompletions(url, configure)
+                    .blockingGet();
+        }
     }
 
     public UserKeyResponse getKeys()

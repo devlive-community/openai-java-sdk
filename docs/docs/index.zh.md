@@ -18,7 +18,7 @@ hide:
 </style>
 
 <div style="text-align: center;">
-    为 Java 开发人员提供方便易用的 SDK 来与 OpenAI 的 API 进行交互。
+    为 Java 开发人员提供方便易用的 SDK 来与开放 AI 模型的 API 进行交互。
     <p/>
     <a target="_blank" class="connector-logo-index" href="https://gitee.com/devlive-community/openai-java-sdk/members">
         <img src='https://gitee.com/devlive-community/openai-java-sdk/badge/fork.svg?theme=white' alt='fork'/>

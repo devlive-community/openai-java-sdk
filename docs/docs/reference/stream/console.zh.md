@@ -33,3 +33,28 @@ CompletionEntity configure = CompletionEntity.builder()
         .build();
 client.createCompletion(configure);
 ```
+
+### Create chat completion
+
+---
+
+为给定的聊天对话创建模型响应。
+
+```java
+List<CompletionMessageEntity> messages = Lists.newArrayList();
+messages.add(CompletionMessageEntity.builder()
+    .content("Hello, my name is openai-java-sdk")
+    .build());
+
+CompletionChatEntity configure = CompletionChatEntity.builder()
+    .messages(messages)
+    .build();
+
+client.createChatCompletion(configure);
+
+messages.add(CompletionMessageEntity.builder()
+    .content("What is my name?")
+    .build());
+
+client.createChatCompletion(configure);
+```

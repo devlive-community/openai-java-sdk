@@ -33,3 +33,28 @@ CompletionEntity configure = CompletionEntity.builder()
         .build();
 client.createCompletion(configure);
 ```
+
+### Create chat completion
+
+---
+
+Creates a model response for the given chat conversation.
+
+```java
+List<CompletionMessageEntity> messages = Lists.newArrayList();
+messages.add(CompletionMessageEntity.builder()
+    .content("Hello, my name is openai-java-sdk")
+    .build());
+
+CompletionChatEntity configure = CompletionChatEntity.builder()
+    .messages(messages)
+    .build();
+
+client.createChatCompletion(configure);
+
+messages.add(CompletionMessageEntity.builder()
+    .content("What is my name?")
+    .build());
+
+client.createChatCompletion(configure);
+```
