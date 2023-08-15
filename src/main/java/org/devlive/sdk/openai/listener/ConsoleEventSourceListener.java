@@ -1,14 +1,11 @@
 package org.devlive.sdk.openai.listener;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import okhttp3.sse.EventSource;
 import okhttp3.sse.EventSourceListener;
 import org.apache.commons.lang3.ObjectUtils;
-import org.devlive.sdk.openai.response.CompleteResponse;
-import org.devlive.sdk.openai.utils.JsonUtils;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
@@ -19,13 +16,11 @@ public class ConsoleEventSourceListener
         extends EventSourceListener
 {
     private CountDownLatch countDownLatch;
-    private JsonUtils<CompleteResponse> jsonUtils;
 
     @Override
     public void onOpen(EventSource eventSource, Response response)
     {
         log.info("Console listener opened on time {}", LocalDateTime.now());
-        this.jsonUtils = JsonUtils.getInstance();
     }
 
     @Override
@@ -45,13 +40,7 @@ public class ConsoleEventSourceListener
             this.close();
         }
         else {
-            try {
-                CompleteResponse completeResponse = jsonUtils.getObject(data, CompleteResponse.class);
-                log.info("Console event received on time {} id {} type {} data {}", LocalDateTime.now(), id, type, completeResponse.getChoices().get(0).getContent());
-            }
-            catch (JsonProcessingException e) {
-                log.warn("Console event error on time {} id {} type {} data {}", LocalDateTime.now(), id, type, data, e);
-            }
+            log.info("Console event received on time {} id {} type {} data {}", LocalDateTime.now(), id, type, data);
         }
     }
 

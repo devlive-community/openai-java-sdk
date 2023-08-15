@@ -67,7 +67,7 @@ public class HttpServletEventSourceListener
         else {
             try {
                 CompleteResponse completeResponse = jsonUtils.getObject(data, CompleteResponse.class);
-                log.debug("HttpServlet event received on time {} id {} type {} data {}", LocalDateTime.now(), id, type, completeResponse.getChoices().get(0).getContent());
+                log.info("HttpServlet event received on time {} id {} type {} data {}", LocalDateTime.now(), id, type, completeResponse.getChoices().get(0).getContent());
                 this.response.getWriter().write(completeResponse.getChoices().get(0).getContent());
                 this.response.flushBuffer();
             }

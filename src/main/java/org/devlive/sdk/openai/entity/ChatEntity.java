@@ -38,6 +38,13 @@ public class ChatEntity
     @JsonProperty(value = "top_p")
     private Double topP;
 
+    /**
+     * Whether to stream back partial progress. If set, tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message.
+     * 是否流回部分进度。如果设置，令牌将在可用时作为仅数据服务器发送事件发送，流由 data: [DONE] 消息终止。
+     */
+    @JsonProperty(value = "stream")
+    private boolean stream = false;
+
     private ChatEntity(ChatEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
@@ -110,6 +117,11 @@ public class ChatEntity
                 throw new ParamException(String.format("Invalid maxTokens: %s, Cannot be larger than the model default configuration %s", maxTokens, completionModel.getMaxTokens()));
             }
             this.maxTokens = maxTokens;
+            return this;
+        }
+
+        private ChatEntityBuilder stream()
+        {
             return this;
         }
 
