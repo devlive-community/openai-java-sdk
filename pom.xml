@@ -54,7 +54,7 @@
         <lang3.version>3.12.0</lang3.version>
         <slf4j.version>2.0.7</slf4j.version>
         <okhttp.version>4.9.3</okhttp.version>
-        <guava.version>31.1-jre</guava.version>
+        <guava.version>32.1.2-jre</guava.version>
         <retrofit2.version>2.9.0</retrofit2.version>
         <findbugs.version>3.0.1</findbugs.version>
         <plugin.maven.checkstyle.version>3.0.0</plugin.maven.checkstyle.version>
