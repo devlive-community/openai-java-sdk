@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.utils.EnumsUtils;
@@ -48,7 +47,7 @@ public class ChatEntity
     private ChatEntity(ChatEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
-            builder.model(CompletionModel.GPT_35_TURBO.getName());
+            builder.model(CompletionModel.GPT_35_TURBO);
         }
         this.model = builder.model;
         this.messages = builder.messages;
@@ -71,33 +70,28 @@ public class ChatEntity
 
     public static class ChatEntityBuilder
     {
-        public ChatEntityBuilder model(String model)
+        public ChatEntityBuilder model(CompletionModel model)
         {
-            if (StringUtils.isEmpty(model)) {
-                model = CompletionModel.GPT_35_TURBO.getName();
+            if (ObjectUtils.isEmpty(model)) {
+                model = CompletionModel.GPT_35_TURBO;
             }
-
-            CompletionModel completionModel = EnumsUtils.getCompleteModel(model);
-            if (ObjectUtils.isNotEmpty(completionModel)) {
-                switch (completionModel) {
-                    case GPT_35_TURBO:
-                    case GPT_35_TURBO_16K:
-                    case GPT_35_TURBO_0613:
-                    case GPT_35_TURBO_16K_0613:
-                    case GPT_4:
-                    case GPT_4_32K:
-                    case GPT_4_0613:
-                    case GPT_4_32K_0613:
-                    case TEXT_DAVINCI_002:
-                    case TEXT_DAVINCI_003:
-                    case CODE_DAVINCI_002:
-                        model = completionModel.getName();
-                        break;
-                    default:
-                        throw new ParamException(String.format("Not support completion model %s", model));
-                }
+            switch (model) {
+                case GPT_35_TURBO:
+                case GPT_35_TURBO_16K:
+                case GPT_35_TURBO_0613:
+                case GPT_35_TURBO_16K_0613:
+                case GPT_4:
+                case GPT_4_32K:
+                case GPT_4_0613:
+                case GPT_4_32K_0613:
+                case TEXT_DAVINCI_002:
+                case TEXT_DAVINCI_003:
+                case CODE_DAVINCI_002:
+                    this.model = model.getName();
+                    break;
+                default:
+                    throw new ParamException(String.format("Not support completion model %s", model));
             }
-            this.model = model;
             return this;
         }
 

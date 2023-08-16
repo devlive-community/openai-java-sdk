@@ -31,7 +31,7 @@ public class CompletionEntityTest
 
         entity = CompletionEntity.builder()
                 .prompt(prompt)
-                .model(CompletionModel.TEXT_CURIE_001.getName())
+                .model(CompletionModel.TEXT_CURIE_001)
                 .build();
         Assert.assertEquals(entity.getModel(), CompletionModel.TEXT_CURIE_001.getName());
     }
@@ -64,7 +64,7 @@ public class CompletionEntityTest
         Assert.assertTrue(entity.getMaxTokens() == 16);
 
         Assert.assertThrows(ParamException.class, () -> CompletionEntity.builder()
-                .model(CompletionModel.TEXT_DAVINCI_003.getName())
+                .model(CompletionModel.TEXT_DAVINCI_003)
                 .prompt(prompt)
                 .maxTokens(4097)
                 .build());

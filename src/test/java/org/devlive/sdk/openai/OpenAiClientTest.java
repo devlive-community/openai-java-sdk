@@ -87,7 +87,7 @@ public class OpenAiClientTest
     public void testCreateCompletion()
     {
         CompletionEntity configure = CompletionEntity.builder()
-                .model(CompletionModel.TEXT_DAVINCI_003.getName())
+                .model(CompletionModel.TEXT_DAVINCI_003)
                 .prompt("How to create a completion")
                 .temperature(2D)
                 .build();
