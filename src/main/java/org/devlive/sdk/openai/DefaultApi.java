@@ -57,6 +57,10 @@ public interface DefaultApi
     Single<CompleteResponse> fetchCompletions(@Url String url,
             @Body CompletionEntity configure);
 
+    @POST
+    Single<CompleteResponse> fetchPaLMCompletions(@Url String url,
+            @Body org.devlive.sdk.openai.entity.google.CompletionEntity configure);
+
     /**
      * Creates a model response for the given chat conversation.
      */

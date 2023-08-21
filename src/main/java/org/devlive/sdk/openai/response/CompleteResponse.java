@@ -39,4 +39,10 @@ public class CompleteResponse
 
     @JsonProperty(value = "usage")
     private UsageEntity usage;
+
+    /**
+     * Google PaLM
+     */
+    @JsonProperty(value = "candidates")
+    private List<CandidateResponse> candidates;
 }

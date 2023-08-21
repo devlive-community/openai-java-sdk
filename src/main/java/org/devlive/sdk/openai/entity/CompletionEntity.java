@@ -60,7 +60,7 @@ public class CompletionEntity
     private CompletionEntity(CompletionEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
-            builder.model(CompletionModel.TEXT_DAVINCI_003.getName());
+            builder.model(CompletionModel.TEXT_DAVINCI_003);
         }
         this.model = builder.model;
 
@@ -103,12 +103,12 @@ public class CompletionEntity
 
     public static class CompletionEntityBuilder
     {
-        public CompletionEntityBuilder model(String model)
+        public CompletionEntityBuilder model(CompletionModel model)
         {
-            if (StringUtils.isEmpty(model)) {
-                model = CompletionModel.TEXT_DAVINCI_003.getName();
+            if (ObjectUtils.isEmpty(model)) {
+                model = CompletionModel.TEXT_DAVINCI_003;
             }
-            this.model = model;
+            this.model = model.getName();
             return this;
         }
 

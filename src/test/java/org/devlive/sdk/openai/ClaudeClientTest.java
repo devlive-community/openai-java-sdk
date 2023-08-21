@@ -24,7 +24,7 @@ public class ClaudeClientTest
     public void testCompletion()
     {
         CompletionEntity configure = CompletionEntity.builder()
-                .model(CompletionModel.CLAUDE_2.getName())
+                .model(CompletionModel.CLAUDE_2)
                 .prompt("How to create a completion")
                 .build();
         Assert.assertThrows(RuntimeException.class, () -> client.createCompletion(configure));

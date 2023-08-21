@@ -12,7 +12,9 @@ import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.interceptor.AzureInterceptor;
 import org.devlive.sdk.openai.interceptor.ClaudeInterceptor;
 import org.devlive.sdk.openai.interceptor.DefaultInterceptor;
+import org.devlive.sdk.openai.interceptor.GooglePaLMInterceptor;
 import org.devlive.sdk.openai.interceptor.OpenAiInterceptor;
+import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.model.ProviderModel;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -158,11 +160,23 @@ public class OpenAiClient
             if (this.provider.equals(ProviderModel.CLAUDE)) {
                 interceptor = new ClaudeInterceptor();
             }
+            // Google PaLM
+            if (this.provider.equals(ProviderModel.GOOGLE_PALM)) {
+                interceptor = new GooglePaLMInterceptor();
+                interceptor.setApiKey(this.apiKey);
+                interceptor.setModel(this.model);
+            }
             interceptor.setApiKey(apiKey);
             client = client.newBuilder()
                     .addInterceptor(interceptor)
                     .build();
             this.client = client;
+            return this;
+        }
+
+        public OpenAiClientBuilder model(CompletionModel model)
+        {
+            this.model = model.getName();
             return this;
         }
 
@@ -173,6 +187,9 @@ public class OpenAiClient
             }
             if (this.provider.equals(ProviderModel.CLAUDE)) {
                 return "https://api.anthropic.com";
+            }
+            if (this.provider.equals(ProviderModel.GOOGLE_PALM)) {
+                return "https://generativelanguage.googleapis.com";
             }
             return "https://api.openai.com";
         }
