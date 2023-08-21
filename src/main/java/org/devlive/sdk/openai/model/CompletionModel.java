@@ -157,7 +157,9 @@ public enum CompletionModel
     CLAUDE_INSTANT_1("claude-instant-1",
             null,
             null,
-            Integer.MAX_VALUE);
+            Integer.MAX_VALUE),
+    /* =============================== Google PaLM ================================ */
+    TEXT_BISON_001("text-bison-001", null, null, Integer.MAX_VALUE);
 
     private final String name;
     private final String description;

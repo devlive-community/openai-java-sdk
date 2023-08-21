@@ -92,5 +92,7 @@ nav:
           - reference/azure/completions_chat.md
       - Anthropic Claude:
           - reference/anthropic/completions.md
+      - Google LaPM:
+          - reference/google_palm/completions.md
   - released.md
   - powered_by.md

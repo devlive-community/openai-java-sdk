@@ -73,6 +73,12 @@ public abstract class DefaultClient
         }
     }
 
+    public CompleteResponse createPaLMCompletion(org.devlive.sdk.openai.entity.google.CompletionEntity configure)
+    {
+        return this.api.fetchPaLMCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_COMPLETIONS), configure)
+                .blockingGet();
+    }
+
     public ChatResponse createChatCompletion(ChatEntity configure)
     {
         String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_CHAT_COMPLETIONS);

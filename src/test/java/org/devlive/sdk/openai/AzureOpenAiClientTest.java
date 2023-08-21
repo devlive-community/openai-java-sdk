@@ -25,7 +25,7 @@ public class AzureOpenAiClientTest
                 .apiHost("https://eus-chatgpt.openai.azure.com")
                 .apiKey(System.getProperty("azure.token"))
                 .provider(ProviderModel.AZURE)
-                .model("text-davinci-002")
+                .model(CompletionModel.TEXT_DAVINCI_002)
                 .version("2022-12-01")
                 .build();
     }
@@ -54,7 +54,7 @@ public class AzureOpenAiClientTest
                 .apiHost("https://eus-chatgpt.openai.azure.com")
                 .apiKey(System.getProperty("azure.token"))
                 .provider(ProviderModel.AZURE)
-                .model("gpt-35-turbo-0613")
+                .model(CompletionModel.GPT_4_32K_0613)
                 .version("2023-03-15-preview")
                 .build();
 

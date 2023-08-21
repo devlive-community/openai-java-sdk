@@ -16,5 +16,10 @@ public enum ProviderModel
      * A next-generation AI assistant for your tasks, no matter the scale
      * https://www.anthropic.com/product
      */
-    CLAUDE
+    CLAUDE,
+    /**
+     * Google PaLM
+     * https://makersuite.google.com
+     */
+    GOOGLE_PALM
 }
