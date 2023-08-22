@@ -159,7 +159,8 @@ public enum CompletionModel
             null,
             Integer.MAX_VALUE),
     /* =============================== Google PaLM ================================ */
-    TEXT_BISON_001("text-bison-001", null, null, Integer.MAX_VALUE);
+    TEXT_BISON_001("text-bison-001", null, null, Integer.MAX_VALUE),
+    CHAT_BISON_001("chat-bison-001", null, null, Integer.MAX_VALUE);
 
     private final String name;
     private final String description;

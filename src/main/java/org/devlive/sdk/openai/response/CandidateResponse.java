@@ -21,4 +21,10 @@ public class CandidateResponse
 
     @JsonProperty(value = "safetyRatings")
     private List<SafetyResponse> safetyRatings;
+
+    @JsonProperty(value = "author")
+    private String author;
+
+    @JsonProperty(value = "content")
+    private String content;
 }

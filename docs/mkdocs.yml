@@ -94,5 +94,6 @@ nav:
           - reference/anthropic/completions.md
       - Google PaLM:
           - reference/google_palm/completions.md
+          - reference/google_palm/chat.md
   - released.md
   - powered_by.md
