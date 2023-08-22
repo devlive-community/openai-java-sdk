@@ -43,7 +43,7 @@
 
 ```java
 <properties>
-    <openai.version>LATEST</openai.version>
+    <openai.version>1.9.0</openai.version>
 </properties>
 
 <dependencies>
@@ -54,8 +54,6 @@
     </dependency>
 </dependencies>
 ```
-
-`LATEST` By default the latest version will be used.
 
 # Feature
 

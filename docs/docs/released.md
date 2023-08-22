@@ -5,6 +5,12 @@ hide:
   - navigation
 ---
 
+### 1.9.0
+
+---
+
+- Support google PaLM
+
 ### 1.8.0
 
 ---
