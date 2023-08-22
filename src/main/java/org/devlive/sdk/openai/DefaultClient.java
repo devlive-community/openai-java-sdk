@@ -20,6 +20,7 @@ import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.entity.google.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
 import org.devlive.sdk.openai.model.ProviderModel;
@@ -76,6 +77,17 @@ public abstract class DefaultClient
     public CompleteResponse createPaLMCompletion(org.devlive.sdk.openai.entity.google.CompletionEntity configure)
     {
         return this.api.fetchPaLMCompletions(ProviderUtils.getUrl(provider, UrlModel.FETCH_COMPLETIONS), configure)
+                .blockingGet();
+    }
+
+    public CompleteResponse createPaLMChat(org.devlive.sdk.openai.entity.google.ChatEntity configure)
+    {
+        MessageEntity message = MessageEntity.builder()
+                .content("NEXT REQUEST")
+                .build();
+        configure.getPrompt().getMessages()
+                .add(message);
+        return this.api.fetchPaLMChat(ProviderUtils.getUrl(provider, UrlModel.FETCH_COMPLETIONS), configure)
                 .blockingGet();
     }
 

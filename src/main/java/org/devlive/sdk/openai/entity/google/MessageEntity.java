@@ -7,24 +7,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
-import java.util.List;
-
 @Data
 @Builder
 @ToString
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PromptEntity
+public class MessageEntity
 {
-    @JsonProperty(value = "text")
-    private String text;
-
-    @JsonProperty(value = "context")
-    private String context;
-
-    @JsonProperty(value = "examples")
-    private List<ExampleEntity> examples;
-
-    @JsonProperty(value = "messages")
-    private List<MessageEntity> messages;
+    @JsonProperty(value = "content")
+    private String content;
 }
