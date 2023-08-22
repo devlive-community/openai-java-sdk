@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/index.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/index.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/index.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/powered_by.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/powered_by.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/powered_by.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/released.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/released.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/released.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/anthropic/completions.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/anthropic/completions.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/anthropic/completions.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/azure/completions.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/azure/completions.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/azure/completions.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/azure/completions_chat.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/azure/completions_chat.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/azure/completions_chat.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/google_palm/chat.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/google_palm/chat.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/google_palm/chat.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/google_palm/completions.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/google_palm/completions.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/google_palm/completions.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/audio.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/audio.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/audio.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/completions.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/completions.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/completions.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/completions_chat.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/completions_chat.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/completions_chat.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/edits.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/edits.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/edits.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/embeddings.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/embeddings.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/embeddings.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/files.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/files.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/files.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/images.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/images.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/images.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/models.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/models.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/models.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/moderations.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/moderations.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/moderations.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/openai/users.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/openai/users.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/openai/users.html"/>
+         
+    </url>
+    <url>
+         <loc>https://openai-java-sdk.devlive.org/reference/stream/console.html</loc>
+         <lastmod>2023-08-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://openai-java-sdk.devlive.org/en/reference/stream/console.html"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="https://openai-java-sdk.devlive.org/zh/reference/stream/console.html"/>
+         
+    </url>
+</urlset>
