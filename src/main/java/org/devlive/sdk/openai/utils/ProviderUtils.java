@@ -29,6 +29,7 @@ public class ProviderUtils
         DEFAULT_PROVIDER.put(UrlModel.FETCH_FILES, "v1/files");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_FINE_TUNING_JOBS, "v1/fine_tuning/jobs");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_FINE_TUNING_JOBS_EVENTS, "v1/fine_tuning/jobs/%s/events");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_FINE_TUNING_JOBS_CONTENT, "v1/fine_tuning/jobs/%s");
 
         AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");

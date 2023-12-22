@@ -57,6 +57,10 @@ public class FineTuningEntity
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String createTime;
 
+    @JsonProperty(value = "finished_at")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private String finishTime;
+
     @JsonProperty(value = "level")
     private String level;
 
@@ -68,6 +72,21 @@ public class FineTuningEntity
 
     @JsonProperty(value = "type")
     private String type;
+
+    @JsonProperty(value = "fine_tuned_model")
+    private String tunedModel;
+
+    @JsonProperty(value = "organization_id")
+    private String organizationId;
+
+    @JsonProperty(value = "status")
+    private String status;
+
+    @JsonProperty(value = "validation_file")
+    private String validationFile;
+
+    @JsonProperty(value = "trained_tokens")
+    private Long trainedTokens;
 
     private FineTuningEntity(FineTuningEntityBuilder builder)
     {

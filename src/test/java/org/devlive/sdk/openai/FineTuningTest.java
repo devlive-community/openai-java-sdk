@@ -38,4 +38,10 @@ public class FineTuningTest
     {
         Assert.assertThrows(RequestException.class, () -> client.fineTuningJobEvents("ftjob-abc123"));
     }
+
+    @Test
+    public void testFineTuningJobContent()
+    {
+        Assert.assertThrows(RequestException.class, () -> client.fineTuningJobContent("ftjob-abc123"));
+    }
 }

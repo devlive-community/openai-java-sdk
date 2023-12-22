@@ -218,4 +218,11 @@ public interface DefaultApi
      */
     @GET
     Single<FineTuningResponse> fetchFineTuningJobEvents(@Url String url);
+
+    /**
+     * Get info about a fine-tuning job.
+     * 获取有关微调作业的信息。
+     */
+    @GET
+    Single<FineTuningEntity> fetchFineTuningJobContent(@Url String url);
 }
