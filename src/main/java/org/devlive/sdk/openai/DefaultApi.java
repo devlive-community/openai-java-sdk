@@ -8,6 +8,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.FileEntity;
+import org.devlive.sdk.openai.entity.FineTuningEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -196,6 +197,18 @@ public interface DefaultApi
     @GET
     Single<Object> fetchRetrieveFileContent(@Url String url);
 
+    /**
+     * List your organization's fine-tuning jobs
+     * 列出组织的微调作业
+     */
     @GET
     Single<FineTuningResponse> fetchFineTuningJobs(@Url String url);
+
+    /**
+     * Creates a job that fine-tunes a specified model from a given dataset.
+     * 创建一个作业，用于微调给定数据集中的指定模型。
+     */
+    @POST
+    Single<FineTuningResponse> fetchCreateFineTuningJob(@Url String url,
+            @Body FineTuningEntity configure);
 }

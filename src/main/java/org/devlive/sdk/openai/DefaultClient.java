@@ -16,6 +16,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.FileEntity;
+import org.devlive.sdk.openai.entity.FineTuningEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -216,6 +217,12 @@ public abstract class DefaultClient
     public FineTuningResponse fineTuningJobs()
     {
         return this.api.fetchFineTuningJobs(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS))
+                .blockingGet();
+    }
+
+    public FineTuningResponse createFineTuningJob(FineTuningEntity configure)
+    {
+        return this.api.fetchCreateFineTuningJob(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS), configure)
                 .blockingGet();
     }
 

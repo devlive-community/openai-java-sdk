@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.devlive.sdk.openai.exception.ParamException;
+import org.devlive.sdk.openai.model.CompletionModel;
 
 @Data
 @Builder
@@ -31,6 +32,20 @@ public class FineTuningEntity
      */
     @JsonProperty(value = "limit")
     private Integer limit;
+
+    /**
+     * The name of the model to fine-tune.
+     * 要微调的模型的名称。
+     */
+    @JsonProperty(value = "model")
+    private String model;
+
+    /**
+     * The ID of an uploaded file that contains training data.
+     * 包含训练数据的已上传文件的 ID。
+     */
+    @JsonProperty(value = "training_file")
+    private String file;
 
     @JsonProperty(value = "object")
     private String object;
@@ -57,23 +72,33 @@ public class FineTuningEntity
     private FineTuningEntity(FineTuningEntityBuilder builder)
     {
         if (builder.limit == null) {
-            builder.limit(20);
+            builder.limit(null);
         }
         this.limit = builder.limit;
         this.after = builder.after;
+
+        if (builder.model == null) {
+            builder.model(CompletionModel.GPT_35_TURBO);
+        }
+        this.model = builder.model;
+
+        if (builder.file == null) {
+            builder.file(null);
+        }
+        this.file = builder.file;
     }
 
     public static class FineTuningEntityBuilder
     {
         public FineTuningEntityBuilder limit(Integer limit)
         {
-            if (limit == null) {
-                limit = 20;
-            }
-
-            if (limit < 1) {
-                throw new ParamException("Invalid limit must not be less than 1");
-            }
+//            if (limit == null) {
+//                limit = 20;
+//            }
+//
+//            if (limit < 1) {
+//                throw new ParamException("Invalid limit must not be less than 1");
+//            }
             this.limit = limit;
             return this;
         }
@@ -81,6 +106,35 @@ public class FineTuningEntity
         public FineTuningEntityBuilder after(String after)
         {
             this.after = after;
+            return this;
+        }
+
+        public FineTuningEntityBuilder model(CompletionModel model)
+        {
+            if (model == null) {
+                model = CompletionModel.GPT_35_TURBO;
+            }
+
+            switch (model) {
+                case GPT_35_TURBO:
+                case GPT_35_TURBO_0613:
+                case BABBAGE_002:
+                case DAVINCI_002:
+                case GPT_4_0613:
+                    this.model = model.getName();
+                    break;
+                default:
+                    throw new ParamException(String.format("Not support completion model %s", model));
+            }
+            return this;
+        }
+
+        public FineTuningEntityBuilder file(String file)
+        {
+            if (file == null) {
+                throw new ParamException("Invalid file name must not be empty");
+            }
+            this.file = file;
             return this;
         }
 
