@@ -1,12 +1,12 @@
-name: Publish via Maven Central
+name: Publish via Maven Central for SNAPSHOT version
 
 on:
-  release:
-    types: [ published ]
+  push
 
 jobs:
   publish-maven-central:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
