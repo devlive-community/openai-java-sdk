@@ -32,4 +32,10 @@ public class FineTuningTest
                 .build();
         Assert.assertThrows(RequestException.class, () -> client.createFineTuningJob(entity));
     }
+
+    @Test
+    public void testFineTuningJobEvents()
+    {
+        Assert.assertThrows(RequestException.class, () -> client.fineTuningJobEvents("ftjob-abc123"));
+    }
 }

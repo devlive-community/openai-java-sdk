@@ -211,4 +211,11 @@ public interface DefaultApi
     @POST
     Single<FineTuningResponse> fetchCreateFineTuningJob(@Url String url,
             @Body FineTuningEntity configure);
+
+    /**
+     * Get status updates for a fine-tuning job.
+     * 获取微调作业的状态更新。
+     */
+    @GET
+    Single<FineTuningResponse> fetchFineTuningJobEvents(@Url String url);
 }

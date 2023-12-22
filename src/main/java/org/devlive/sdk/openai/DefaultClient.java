@@ -226,6 +226,13 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
+    public FineTuningResponse fineTuningJobEvents(String jobId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_EVENTS), jobId);
+        return this.api.fetchFineTuningJobEvents(url)
+                .blockingGet();
+    }
+
     private ObjectMapper createObjectMapper()
     {
         ObjectMapper objectMapper = new ObjectMapper();
