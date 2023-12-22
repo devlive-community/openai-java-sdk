@@ -31,6 +31,7 @@ import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.FileResponse;
+import org.devlive.sdk.openai.response.FineTuningResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -209,6 +210,12 @@ public abstract class DefaultClient
     {
         String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id, "content");
         return this.api.fetchRetrieveFileContent(url)
+                .blockingGet();
+    }
+
+    public FineTuningResponse fineTuningJobs()
+    {
+        return this.api.fetchFineTuningJobs(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS))
                 .blockingGet();
     }
 

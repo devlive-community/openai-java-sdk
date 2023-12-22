@@ -27,6 +27,7 @@ public class ProviderUtils
         DEFAULT_PROVIDER.put(UrlModel.FETCH_MODERATIONS, "v1/moderations");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_EDITS, "v1/edits");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_FILES, "v1/files");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_FINE_TUNING_JOBS, "v1/fine_tuning/jobs");
 
         AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");
@@ -42,7 +43,7 @@ public class ProviderUtils
      * Obtain the service address according to the service provider
      *
      * @param provider Internet service provider
-     * @param model    Access address model
+     * @param model Access address model
      * @return Request address
      */
     public static String getUrl(ProviderModel provider, UrlModel model)

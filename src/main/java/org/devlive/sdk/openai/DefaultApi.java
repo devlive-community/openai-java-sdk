@@ -18,6 +18,7 @@ import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.FileResponse;
+import org.devlive.sdk.openai.response.FineTuningResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -194,4 +195,7 @@ public interface DefaultApi
      */
     @GET
     Single<Object> fetchRetrieveFileContent(@Url String url);
+
+    @GET
+    Single<FineTuningResponse> fetchFineTuningJobs(@Url String url);
 }
