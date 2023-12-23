@@ -16,6 +16,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.FileEntity;
+import org.devlive.sdk.openai.entity.FineTuningEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -31,6 +32,7 @@ import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.FileResponse;
+import org.devlive.sdk.openai.response.FineTuningResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -209,6 +211,39 @@ public abstract class DefaultClient
     {
         String url = String.join("/", ProviderUtils.getUrl(provider, UrlModel.FETCH_FILES), id, "content");
         return this.api.fetchRetrieveFileContent(url)
+                .blockingGet();
+    }
+
+    public FineTuningResponse fineTuningJobs()
+    {
+        return this.api.fetchFineTuningJobs(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS))
+                .blockingGet();
+    }
+
+    public FineTuningResponse createFineTuningJob(FineTuningEntity configure)
+    {
+        return this.api.fetchCreateFineTuningJob(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS), configure)
+                .blockingGet();
+    }
+
+    public FineTuningResponse fineTuningJobEvents(String jobId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_EVENTS), jobId);
+        return this.api.fetchFineTuningJobEvents(url)
+                .blockingGet();
+    }
+
+    public FineTuningEntity retrieveFineTuningJob(String jobId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_CONTENT), jobId);
+        return this.api.fetchFineTuningJobContent(url)
+                .blockingGet();
+    }
+
+    public FineTuningEntity cancelFineTuningJob(String jobId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_CANCEL), jobId);
+        return this.api.fetchCancelFineTuningJob(url)
                 .blockingGet();
     }
 

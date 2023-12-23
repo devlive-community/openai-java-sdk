@@ -8,6 +8,7 @@ import org.devlive.sdk.openai.entity.CompletionEntity;
 import org.devlive.sdk.openai.entity.EditEntity;
 import org.devlive.sdk.openai.entity.EmbeddingEntity;
 import org.devlive.sdk.openai.entity.FileEntity;
+import org.devlive.sdk.openai.entity.FineTuningEntity;
 import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
@@ -18,6 +19,7 @@ import org.devlive.sdk.openai.response.CompleteResponse;
 import org.devlive.sdk.openai.response.EditResponse;
 import org.devlive.sdk.openai.response.EmbeddingResponse;
 import org.devlive.sdk.openai.response.FileResponse;
+import org.devlive.sdk.openai.response.FineTuningResponse;
 import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
@@ -194,4 +196,40 @@ public interface DefaultApi
      */
     @GET
     Single<Object> fetchRetrieveFileContent(@Url String url);
+
+    /**
+     * List your organization's fine-tuning jobs
+     * 列出组织的微调作业
+     */
+    @GET
+    Single<FineTuningResponse> fetchFineTuningJobs(@Url String url);
+
+    /**
+     * Creates a job that fine-tunes a specified model from a given dataset.
+     * 创建一个作业，用于微调给定数据集中的指定模型。
+     */
+    @POST
+    Single<FineTuningResponse> fetchCreateFineTuningJob(@Url String url,
+            @Body FineTuningEntity configure);
+
+    /**
+     * Get status updates for a fine-tuning job.
+     * 获取微调作业的状态更新。
+     */
+    @GET
+    Single<FineTuningResponse> fetchFineTuningJobEvents(@Url String url);
+
+    /**
+     * Get info about a fine-tuning job.
+     * 获取有关微调作业的信息。
+     */
+    @GET
+    Single<FineTuningEntity> fetchFineTuningJobContent(@Url String url);
+
+    /**
+     * Immediately cancel a fine-tune job.
+     * 立即取消微调作业。
+     */
+    @POST
+    Single<FineTuningEntity> fetchCancelFineTuningJob(@Url String url);
 }
