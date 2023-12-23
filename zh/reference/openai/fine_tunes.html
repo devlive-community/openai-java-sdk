@@ -12,13 +12,13 @@
         <meta name="author" content="qinamoQ">
       
       
-        <link rel="canonical" href="https://openai-java-sdk.devlive.org/zh/reference/google_palm/completions.html">
+        <link rel="canonical" href="https://openai-java-sdk.devlive.org/zh/reference/openai/fine_tunes.html">
       
       
-        <link rel="prev" href="../anthropic/completions.html">
+        <link rel="prev" href="files.html">
       
       
-        <link rel="next" href="chat.html">
+        <link rel="next" href="../azure/completions.html">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Completions - Open AI Models Java Sdk</title>
+        <title>Fine Tuning - Open AI Models Java Sdk</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-completion" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Completions
+              Fine Tuning
             
           </span>
         </div>
@@ -157,13 +157,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="completions.html" hreflang="zh" class="md-select__link">
+            <a href="fine_tunes.html" hreflang="zh" class="md-select__link">
               Chinese (Simplified)
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="../../../reference/google_palm/completions.html" hreflang="en" class="md-select__link">
+            <a href="../../../reference/openai/fine_tunes.html" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -482,6 +482,8 @@
                 
   
   
+    
+  
   
     
     
@@ -515,14 +517,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -536,7 +536,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Open Ai
@@ -549,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/users.html" class="md-nav__link">
+      <a href="users.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -569,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/models.html" class="md-nav__link">
+      <a href="models.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -589,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/completions.html" class="md-nav__link">
+      <a href="completions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -609,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/completions_chat.html" class="md-nav__link">
+      <a href="completions_chat.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/images.html" class="md-nav__link">
+      <a href="images.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -649,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/embeddings.html" class="md-nav__link">
+      <a href="embeddings.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -669,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/audio.html" class="md-nav__link">
+      <a href="audio.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -689,7 +689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/moderations.html" class="md-nav__link">
+      <a href="moderations.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -709,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/edits.html" class="md-nav__link">
+      <a href="edits.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -729,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/files.html" class="md-nav__link">
+      <a href="files.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -747,9 +747,27 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../openai/fine_tunes.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Fine Tuning
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="fine_tunes.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -758,6 +776,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    创建微调作业
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    列出微调作业
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    列出微调事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    检索微调作业
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    取消微调
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -943,8 +1014,6 @@
                 
   
   
-    
-  
   
     
     
@@ -960,12 +1029,14 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
@@ -979,7 +1050,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             Google PaLM
@@ -990,27 +1061,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Completions
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="completions.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../google_palm/completions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1019,31 +1072,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-completion" class="md-nav__link">
-    Create completion
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1055,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="chat.html" class="md-nav__link">
+      <a href="../google_palm/chat.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1222,8 +1250,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-completion" class="md-nav__link">
-    Create completion
+  <a href="#_1" class="md-nav__link">
+    创建微调作业
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    列出微调作业
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    列出微调事件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    检索微调作业
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    取消微调
   </a>
   
 </li>
@@ -1247,28 +1303,140 @@
   
 
 
-  <h1>Completions</h1>
+  <h1>Fine Tuning</h1>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>支持 google palm，产品地址: <a href="https://developers.generativeai.google/products/palm">https://developers.generativeai.google/products/palm</a></p>
+<p>调用前请先构建客户端，构建代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">OpenAiClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenAiClient</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">apiHost</span><span class="p">(</span><span class="s">&quot;https://api.openai.com&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">apiKey</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;openai.token&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+</code></pre></div>
+<p><code>System.getProperty("openai.token")</code> 是访问 API 授权的关键。</p>
 </div>
-<h3 id="create-completion">Create completion</h3>
+<h3 id="_1">创建微调作业</h3>
 <hr />
-<p>为提供的提示和参数创建补全。</p>
-<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">(</span><span class="n">OpenAiClient</span><span class="w"> </span><span class="n">client</span><span class="o">=</span><span class="n">OpenAiClient</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">(</span><span class="n">ProviderModel</span><span class="p">.</span><span class="na">GOOGLE_PALM</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">CompletionModel</span><span class="p">.</span><span class="na">TEXT_BISON_001</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">apiKey</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;google.token&quot;</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">    </span><span class="n">PromptEntity</span><span class="w"> </span><span class="n">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PromptEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">text</span><span class="p">(</span><span class="s">&quot;How to create a completion&quot;</span><span class="p">)</span>
+<p>创建一个作业，用于微调给定数据集中的指定模型。</p>
+<div class="highlight"><pre><span></span><code><span class="n">FineTuningEntity</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FineTuningEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="s">&quot;file-Rcxv6RrQXzTuJ2i2LY9kuChL&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="n">CompletionEntity</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CompletionEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">prompt</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="na">createPaLMCompletion</span><span class="p">(</span><span class="n">configure</span><span class="p">).</span><span class="na">getCandidates</span><span class="p">();</span>
+<span class="n">client</span><span class="p">.</span><span class="na">createFineTuningJob</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span>
+</code></pre></div>
+<p>返回:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine_tuning.job&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ftjob-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpt-3.5-turbo-0613&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1614807352</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;fine_tuned_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org-123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;result_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;queued&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;validation_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;training_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_2">列出微调作业</h3>
+<hr />
+<p>列出组织的微调作业</p>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">fineTuningJobs</span><span class="p">();</span>
+</code></pre></div>
+<p>返回:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine_tuning.job.event&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ft-event-TjX0lMfOniCZX64t9PUQT5hn&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1689813489</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fine tuning process stopping due to job cancellation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;message&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;has_more&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">列出微调事件</h3>
+<hr />
+<p>获取微调作业的状态更新。</p>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">fineTuningJobEvents</span><span class="p">(</span><span class="s">&quot;ftjob-abc123&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>返回:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine_tuning.job.event&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ft-event-ddTJfwuMVpfLXseO0Am0Gqjm&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1692407401</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fine tuning job successfully completed&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;message&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine_tuning.job.event&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ft-event-tyiGuB72evQncpH87xe505Sv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1692407400</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New fine-tuned model created: ft:gpt-3.5-turbo:openai::7p4lURel&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;message&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;has_more&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_4">检索微调作业</h3>
+<hr />
+<p>获取有关微调作业的信息。</p>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">retrieveFineTuningJob</span><span class="p">(</span><span class="s">&quot;ftjob-abc123&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>返回:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine_tuning.job&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ftjob-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;davinci-002&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1692661014</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;finished_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1692661190</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;fine_tuned_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ft:davinci-002:my-org:custom_suffix:7q8mpxmy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org-123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;result_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;file-abc123&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;succeeded&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;validation_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;training_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hyperparameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;n_epochs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;trained_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5768</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_5">取消微调</h3>
+<hr />
+<p>立即取消微调作业。</p>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">cancelFineTuningJob</span><span class="p">(</span><span class="s">&quot;ftjob-abc123&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>返回:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine_tuning.job&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ftjob-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpt-3.5-turbo-0613&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1689376978</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;fine_tuned_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;organization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org-123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;result_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;hyperparameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;n_epochs&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;auto&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cancelled&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;validation_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;training_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
