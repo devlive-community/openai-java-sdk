@@ -1,5 +1,5 @@
 ---
-title: 发行说明
+title: 旧版本
 
 hide:
   - navigation

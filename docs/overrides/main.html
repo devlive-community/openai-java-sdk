@@ -1,0 +1,65 @@
+{#-
+This file was automatically generated - do not edit
+-#}
+{% extends "base.html" %}
+{% block extrahead %}
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+{% endblock %}
+{% block announce %}
+<div class="announce-wrapper">
+    <div id="announce-left">
+        {% for banner in config.banners %}
+        <div class="item">
+            <a class="announce-link" href="{{ banner.link }}" style="color: #ffffff;">
+                <div class="twemoji">
+                    <div>{{ banner.title }}</div>
+                    <div style="margin-left: 100px; color: #ffffff;">{{ banner.description }}</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="announce-right" style="position: relative;">
+        <div class="item">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<!-- Reload on palette change -->
+<script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            var giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark")
+        }
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+                /* Instruct Giscus to change theme */
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    {giscus: {setConfig: {theme}}},
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ 'assets/javascripts/bundle.39654835.min.js' | url }}"></script>
+{% endblock %}

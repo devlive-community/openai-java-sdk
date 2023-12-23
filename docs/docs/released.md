@@ -1,5 +1,5 @@
 ---
-title: Release Notes
+title: Old Versions
 
 hide:
   - navigation
