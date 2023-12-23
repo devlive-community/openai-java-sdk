@@ -8,12 +8,18 @@ repo_name: devlive-community/openai-java-sdk
 repo_url: https://github.com/devlive-community/openai-java-sdk
 edit_uri: "https://github.com/devlive-community/openai-java-sdk/blob/master/docs/docs"
 
-copyright: Copyright &copy; 2023 Devlive Community
+banners:
+  - title: OpenAi Java SDK &nbsp; <em>2023.12.1</em> &nbsp; is released
+    link: /release-latest.html
+    description: <a href="https://github.com/devlive-community/openai-java-sdk" class="text-white"> Do you ❤️ DataCap? Give us a 🌟 on GitHub </a>
+
+copyright: Copyright &copy; 2023 devlive-community
 
 use_directory_urls: false
 
 theme:
   name: material
+  custom_dir: overrides
 
   language: en
   features:
@@ -41,6 +47,12 @@ theme:
       link: /zh/
       lang: zh
 
+extra_css:
+  - assets/stylesheets/main.2f34a6de.min.css
+  - assets/stylesheets/palette.ecc776e4.min.css
+extra_javascript:
+  - assets/javascript/main.2dasf4fv.js
+
 markdown_extensions:
   - attr_list
   - md_in_html
@@ -55,21 +67,24 @@ markdown_extensions:
 
 plugins:
   - i18n:
+      reconfigure_material: true
       default_language: en
       languages:
-        en: English
-        zh: Chinese (Simplified)
+        - locale: zh
+          name: Chinese (Simplified)
+          build: true
+          default: false
+          nav_translations:
+            NavReleaseNote: 更新日志
+        - locale: en
+          name: English
+          build: true
+          default: true
+          nav_translations:
+            NavReleaseNote: Release Note
   - redirects:
       redirect_maps:
-        reference/users.md: reference/openai/users.md
-        reference/models.md: reference/openai/models.md
-        reference/completions.md: reference/openai/completions.md
-        reference/completions_chat.md: reference/openai/completions_chat.md
-        reference/images.md: reference/openai/images.md
-        reference/embeddings.md: reference/openai/embeddings.md
-        reference/audio.md: reference/openai/audio.md
-        reference/moderations.md: reference/openai/moderations.md
-        reference/edits.md: reference/openai/edits.md
+        release-latest.md: release/latest.md
 
 nav:
   - index.md
@@ -95,5 +110,7 @@ nav:
       - Google PaLM:
           - reference/google_palm/completions.md
           - reference/google_palm/chat.md
-  - released.md
+  - NavReleaseNote:
+      - release/latest.md
+      - released.md
   - powered_by.md
