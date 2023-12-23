@@ -233,10 +233,17 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
-    public FineTuningEntity fineTuningJobContent(String jobId)
+    public FineTuningEntity retrieveFineTuningJob(String jobId)
     {
         String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_CONTENT), jobId);
         return this.api.fetchFineTuningJobContent(url)
+                .blockingGet();
+    }
+
+    public FineTuningEntity cancelFineTuningJob(String jobId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_CANCEL), jobId);
+        return this.api.fetchCancelFineTuningJob(url)
                 .blockingGet();
     }
 

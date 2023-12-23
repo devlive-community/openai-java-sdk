@@ -225,4 +225,11 @@ public interface DefaultApi
      */
     @GET
     Single<FineTuningEntity> fetchFineTuningJobContent(@Url String url);
+
+    /**
+     * Immediately cancel a fine-tune job.
+     * 立即取消微调作业。
+     */
+    @POST
+    Single<FineTuningEntity> fetchCancelFineTuningJob(@Url String url);
 }

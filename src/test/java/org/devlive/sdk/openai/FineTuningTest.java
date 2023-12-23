@@ -40,8 +40,14 @@ public class FineTuningTest
     }
 
     @Test
-    public void testFineTuningJobContent()
+    public void testRetrieveFineTuningJob()
     {
-        Assert.assertThrows(RequestException.class, () -> client.fineTuningJobContent("ftjob-abc123"));
+        Assert.assertThrows(RequestException.class, () -> client.retrieveFineTuningJob("ftjob-abc123"));
+    }
+
+    @Test
+    public void testCancelFineTuningJob()
+    {
+        Assert.assertThrows(RequestException.class, () -> client.cancelFineTuningJob("ftjob-abc123"));
     }
 }
