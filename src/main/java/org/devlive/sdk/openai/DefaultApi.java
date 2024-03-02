@@ -280,4 +280,12 @@ public interface DefaultApi
      */
     @GET
     Single<AssistantsFileEntity> fetchRetrieveAssistantFile(@Url String url);
+
+    /**
+     * Modifies an assistant.
+     * 修改助手。
+     */
+    @POST
+    Single<AssistantsEntity> fetchUpdateAssistant(@Url String url,
+            @Body AssistantsEntity configure);
 }

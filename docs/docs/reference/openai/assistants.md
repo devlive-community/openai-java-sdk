@@ -197,3 +197,39 @@ Returns:
   "assistant_id": "asst_abc123"
 }
 ```
+
+### Modify assistant
+
+---
+
+Modifies an assistant.
+
+```java
+AssistantsEntity entity = AssistantsEntity.builder()
+        .name("Math Tutor 1")
+        .model(CompletionModel.GPT_35_TURBO)
+        .instructions("You are a personal math tutor. When asked a question, write and run Python code to answer the question.")
+        .build();
+client.updateAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U", entity);
+```
+
+Returns:
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant",
+  "created_at": 1698984975,
+  "name": "Math Tutor 1",
+  "description": null,
+  "model": "gpt-4",
+  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+  "tools": [
+    {
+      "type": "code_interpreter"
+    }
+  ],
+  "file_ids": [],
+  "metadata": {}
+}
+```

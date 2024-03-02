@@ -65,4 +65,15 @@ public class AssistantsTest
     {
         Assert.assertNotNull(client.retrieveAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U", "file-jNuKdx61rNQ0FUhuPFpMNmGZ"));
     }
+
+    @Test
+    public void testUpdateAssistants()
+    {
+        AssistantsEntity entity = AssistantsEntity.builder()
+                .name("Math Tutor 1")
+                .model(CompletionModel.GPT_35_TURBO)
+                .instructions("You are a personal math tutor. When asked a question, write and run Python code to answer the question.")
+                .build();
+        Assert.assertNotNull(client.updateAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U", entity));
+    }
 }
