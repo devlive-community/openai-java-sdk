@@ -4,7 +4,7 @@ title: Assistants <span style="font-weight:bold; margin-left:10px; color:red;">B
 
 !!! Note
 
-    Please build the client before calling, the build code is as follows:
+    调用前请先构建客户端，构建代码如下：
 
     ```java
     OpenAiClient client = OpenAiClient.builder()
@@ -13,9 +13,9 @@ title: Assistants <span style="font-weight:bold; margin-left:10px; color:red;">B
             .build();
     ```
 
-    `System.getProperty("openai.token")` is the key to access the API authorization.
+    `System.getProperty("openai.token")` 是访问 API 授权的关键。
 
-### Create assistant
+### 创建助手
 
 ---
 
@@ -28,7 +28,7 @@ AssistantsEntity entity = AssistantsEntity.builder()
 client.createAssistants(entity);
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -49,7 +49,7 @@ Returns:
 }
 ```
 
-### Create assistant file
+### 创建助手文件
 
 ---
 
@@ -57,7 +57,7 @@ Returns:
 client.createAssistantsFile("file-jNuKdx61rNQ0FUhuPFpMNmGZ","asst_xv9N9dNXstuV8OVLElLqgV7U")
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -68,7 +68,7 @@ Returns:
 }
 ```
 
-### List assistants
+### 列出助手
 
 ---
 
@@ -82,7 +82,7 @@ QueryEntity configure = QueryEntity.builder()
 client.assistants(configure);
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -107,7 +107,7 @@ Returns:
 }
 ```
 
-### List assistant files
+### 列出助手文件
 
 ---
 
@@ -115,7 +115,7 @@ Returns:
 client.assistantsFiles("asst_xv9N9dNXstuV8OVLElLqgV7U"));
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -134,7 +134,7 @@ Returns:
 }
 ```
 
-### Retrieve assistant
+### 检索助手
 
 ---
 
@@ -163,7 +163,7 @@ Returns:
 }
 ```
 
-### Retrieve assistant file
+### 检索助手文件
 
 ---
 
@@ -171,7 +171,7 @@ Returns:
 client.retrieveAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U","file-jNuKdx61rNQ0FUhuPFpMNmGZ");
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -182,7 +182,7 @@ Returns:
 }
 ```
 
-### Modify assistant
+### 修改助手
 
 ---
 
@@ -195,7 +195,7 @@ AssistantsEntity entity = AssistantsEntity.builder()
 client.updateAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U",entity);
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -216,7 +216,7 @@ Returns:
 }
 ```
 
-### Delete assistant
+### 删除助手
 
 ---
 
@@ -224,7 +224,7 @@ Returns:
 client.deleteAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U");
 ```
 
-Returns:
+返回:
 
 ```json
 {
@@ -234,7 +234,7 @@ Returns:
 }
 ```
 
-### Delete assistant file
+### 删除助手文件
 
 ---
 
@@ -242,7 +242,7 @@ Returns:
 client.deleteAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U","file-jNuKdx61rNQ0FUhuPFpMNmGZ");
 ```
 
-Returns:
+返回:
 
 ```json
 {
