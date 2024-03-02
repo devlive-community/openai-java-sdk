@@ -26,6 +26,7 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsFileResponse;
 import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -258,4 +259,11 @@ public interface DefaultApi
      */
     @GET
     Single<AssistantsResponse> fetchAssistants(@Url String url);
+
+    /**
+     * Returns a list of assistant files.
+     * 返回助手文件的列表。
+     */
+    @GET
+    Single<AssistantsFileResponse> fetchAssistantFiles(@Url String url);
 }

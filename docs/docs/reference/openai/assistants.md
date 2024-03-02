@@ -112,3 +112,32 @@ Returns:
   "has_more": false
 }
 ```
+
+### List assistant files
+
+---
+
+Returns a list of assistant files.
+
+```java
+client.assistantsFiles("asst_xv9N9dNXstuV8OVLElLqgV7U"));
+```
+
+Returns:
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "file-abc123",
+      "object": "assistant.file",
+      "created_at": 1699060412,
+      "assistant_id": "asst_abc123"
+    }
+  ],
+  "first_id": "file-abc123",
+  "last_id": "file-abc456",
+  "has_more": false
+}
+```

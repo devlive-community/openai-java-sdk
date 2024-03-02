@@ -42,6 +42,7 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsFileResponse;
 import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
@@ -292,6 +293,13 @@ public abstract class DefaultClient
         }
         String url = String.format("%s?%s", ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS), String.join("&", params));
         return this.api.fetchAssistants(url)
+                .blockingGet();
+    }
+
+    public AssistantsFileResponse assistantsFiles(String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS_FILES), assistantId);
+        return this.api.fetchAssistantFiles(url)
                 .blockingGet();
     }
 
