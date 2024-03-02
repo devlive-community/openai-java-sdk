@@ -93,13 +93,6 @@ public class FileEntity
     @JsonProperty(value = "file")
     private File file;
 
-    public Map<String, RequestBody> convertMap()
-    {
-        Map<String, RequestBody> map = Maps.newConcurrentMap();
-        map.put("purpose", RequestBody.create(MultipartBodyUtils.TYPE, this.getPurpose()));
-        return map;
-    }
-
     private FileEntity(FileEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.file)) {
@@ -111,6 +104,13 @@ public class FileEntity
             builder.purpose(PurposeModel.FINE_TUNE);
         }
         this.purpose = builder.purpose;
+    }
+
+    public Map<String, RequestBody> convertMap()
+    {
+        Map<String, RequestBody> map = Maps.newConcurrentMap();
+        map.put("purpose", RequestBody.create(MultipartBodyUtils.TYPE, this.getPurpose()));
+        return map;
     }
 
     public static class FileEntityBuilder

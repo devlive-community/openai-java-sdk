@@ -6,13 +6,13 @@ public enum PurposeModel
 
     private final String name;
 
-    public String getName()
-    {
-        return name;
-    }
-
     PurposeModel(String name)
     {
         this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

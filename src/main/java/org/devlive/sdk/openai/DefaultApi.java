@@ -14,6 +14,7 @@ import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
@@ -25,7 +26,6 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
-import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -240,7 +240,7 @@ public interface DefaultApi
      * 创建具有模型和说明的助手。
      */
     @POST
-    Single<AssistantsEntity> fetchAssistants(@Url String url,
+    Single<AssistantsEntity> fetchCreateAssistants(@Url String url,
             @Body AssistantsEntity configure);
 
     /**
@@ -248,6 +248,6 @@ public interface DefaultApi
      * 通过将文件附加到助手来创建助手文件。
      */
     @POST
-    Single<AssistantsResponse> fetchCreateAssistantFile(@Url String url,
+    Single<AssistantsFileEntity> fetchCreateAssistantFile(@Url String url,
             @Body Map<String, String> configure);
 }

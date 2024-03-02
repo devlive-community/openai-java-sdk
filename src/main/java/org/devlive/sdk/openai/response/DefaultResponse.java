@@ -16,7 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @SuppressFBWarnings(value = {"SE_BAD_FIELD"})
-public class DefaultResponse<T> implements Serializable
+public class DefaultResponse<T>
+        implements Serializable
 {
     private List<T> result;
     private ErrorResponse error;

@@ -23,6 +23,7 @@ import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
 import org.devlive.sdk.openai.entity.google.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
@@ -39,7 +40,6 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
-import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
 
@@ -255,11 +255,11 @@ public abstract class DefaultClient
     public AssistantsEntity createAssistants(AssistantsEntity configure)
     {
         String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS);
-        return this.api.fetchAssistants(url, configure)
+        return this.api.fetchCreateAssistants(url, configure)
                 .blockingGet();
     }
 
-    public AssistantsResponse createAssistantsFile(String fileId,
+    public AssistantsFileEntity createAssistantsFile(String fileId,
             String assistantId)
     {
         String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS_FILES), assistantId);

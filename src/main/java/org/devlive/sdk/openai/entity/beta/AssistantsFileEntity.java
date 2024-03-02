@@ -1,4 +1,4 @@
-package org.devlive.sdk.openai.response.beta;
+package org.devlive.sdk.openai.entity.beta;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AssistantsResponse
+public class AssistantsFileEntity
 {
     @JsonProperty(value = "id")
     private String id;

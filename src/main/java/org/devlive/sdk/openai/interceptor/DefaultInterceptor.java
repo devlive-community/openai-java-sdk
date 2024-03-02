@@ -32,7 +32,8 @@ public abstract class DefaultInterceptor
     protected abstract Request prepared(Request original);
 
     @Override
-    public Response intercept(Chain chain) throws IOException
+    public Response intercept(Chain chain)
+            throws IOException
     {
         JsonUtils<DefaultResponse> jsonInstance = JsonUtils.getInstance();
 
