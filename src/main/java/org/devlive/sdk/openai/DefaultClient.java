@@ -303,6 +303,13 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
+    public AssistantsEntity retrieveAssistant(String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT), assistantId);
+        return this.api.fetchRetrieveAssistant(url)
+                .blockingGet();
+    }
+
     private ObjectMapper createObjectMapper()
     {
         ObjectMapper objectMapper = new ObjectMapper();

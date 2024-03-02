@@ -59,6 +59,7 @@ public class ProviderUtils
         DEFAULT_PROVIDER.put(UrlModel.FETCH_FINE_TUNING_JOBS_CANCEL, "v1/fine_tuning/jobs/%s/cancel");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_ASSISTANTS, "v1/assistants");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_ASSISTANTS_FILES, "v1/assistants/%s/files");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_RETRIEVE_ASSISTANT, "v1/assistants/%s");
 
         AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");

@@ -266,4 +266,11 @@ public interface DefaultApi
      */
     @GET
     Single<AssistantsFileResponse> fetchAssistantFiles(@Url String url);
+
+    /**
+     * Retrieves an assistant.
+     * 检索助手。
+     */
+    @GET
+    Single<AssistantsEntity> fetchRetrieveAssistant(@Url String url);
 }
