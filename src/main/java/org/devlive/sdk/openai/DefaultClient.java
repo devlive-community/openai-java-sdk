@@ -1,6 +1,7 @@
 package org.devlive.sdk.openai;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
@@ -24,6 +25,7 @@ import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
+import org.devlive.sdk.openai.entity.beta.QueryEntity;
 import org.devlive.sdk.openai.entity.google.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
@@ -40,9 +42,11 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
 
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -266,6 +270,28 @@ public abstract class DefaultClient
         Map<String, String> configure = Maps.newHashMap();
         configure.put("file_id", fileId);
         return this.api.fetchCreateAssistantFile(url, configure)
+                .blockingGet();
+    }
+
+    public AssistantsResponse assistants(QueryEntity configure)
+    {
+        List<String> params = Lists.newArrayList();
+        if (configure != null) {
+            if (configure.getLimit() != null) {
+                params.add(String.format("limit=%s", configure.getLimit()));
+            }
+            if (configure.getBefore() != null) {
+                params.add(String.format("before=%s", configure.getBefore()));
+            }
+            if (configure.getAfter() != null) {
+                params.add(String.format("after=%s", configure.getAfter()));
+            }
+            if (configure.getOrder() != null) {
+                params.add(String.format("order=%s", configure.getOrder()));
+            }
+        }
+        String url = String.format("%s?%s", ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS), String.join("&", params));
+        return this.api.fetchAssistants(url)
                 .blockingGet();
     }
 

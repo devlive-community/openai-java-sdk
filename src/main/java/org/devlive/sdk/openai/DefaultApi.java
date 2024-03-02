@@ -26,6 +26,7 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -250,4 +251,11 @@ public interface DefaultApi
     @POST
     Single<AssistantsFileEntity> fetchCreateAssistantFile(@Url String url,
             @Body Map<String, String> configure);
+
+    /**
+     * Returns a list of assistants.
+     * 返回助手列表。
+     */
+    @GET
+    Single<AssistantsResponse> fetchAssistants(@Url String url);
 }

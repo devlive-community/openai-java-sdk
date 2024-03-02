@@ -1,6 +1,7 @@
 package org.devlive.sdk.openai;
 
 import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
+import org.devlive.sdk.openai.entity.beta.QueryEntity;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,7 +21,7 @@ public class AssistantsTest
     }
 
     @Test
-    public void testAssistants()
+    public void testCreateAssistants()
     {
         AssistantsEntity entity = AssistantsEntity.builder()
                 .name("Math Tutor")
@@ -34,5 +35,16 @@ public class AssistantsTest
     public void testCreateAssistantsFile()
     {
         Assert.assertNotNull(client.createAssistantsFile("file-jNuKdx61rNQ0FUhuPFpMNmGZ", "asst_xv9N9dNXstuV8OVLElLqgV7U"));
+    }
+
+    @Test
+    public void testAssistants()
+    {
+        Assert.assertNotNull(client.assistants(null));
+
+        QueryEntity configure = QueryEntity.builder()
+                .limit(2)
+                .build();
+        Assert.assertNotNull(client.assistants(configure));
     }
 }

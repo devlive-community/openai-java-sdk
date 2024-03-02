@@ -71,3 +71,44 @@ Returns:
   "assistant_id": "asst_abc123"
 }
 ```
+
+### List assistants
+
+---
+
+Returns a list of assistants.
+
+```java
+client.listAssistants(null);
+
+// With query params
+QueryEntity configure = QueryEntity.builder()
+        .limit(2)
+        .build();
+client.assistants(configure);
+```
+
+Returns:
+
+```json
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "asst_abc123",
+      "object": "assistant",
+      "created_at": 1698982736,
+      "name": "Coding Tutor",
+      "description": null,
+      "model": "gpt-4",
+      "instructions": "You are a helpful assistant designed to make me better at coding!",
+      "tools": [],
+      "file_ids": [],
+      "metadata": {}
+    }
+  ],
+  "first_id": "asst_abc123",
+  "last_id": "asst_abc789",
+  "has_more": false
+}
+```
