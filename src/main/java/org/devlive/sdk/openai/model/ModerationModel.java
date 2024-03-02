@@ -7,13 +7,13 @@ public enum ModerationModel
 
     private final String name;
 
-    public String getName()
-    {
-        return name;
-    }
-
     ModerationModel(String name)
     {
         this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

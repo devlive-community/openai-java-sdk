@@ -16,12 +16,14 @@ public class JsonUtils<T>
         return new JsonUtils();
     }
 
-    public T getObject(String json, Class<T> clazz) throws JsonProcessingException
+    public T getObject(String json, Class<T> clazz)
+            throws JsonProcessingException
     {
         return OBJECT_MAPPER.readValue(json, clazz);
     }
 
-    public String getString(T clazz) throws JsonProcessingException
+    public String getString(T clazz)
+            throws JsonProcessingException
     {
         return OBJECT_MAPPER.writeValueAsString(clazz);
     }

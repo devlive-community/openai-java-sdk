@@ -40,6 +40,8 @@ public class OpenAiClient
     private String version;
     // Support see
     private EventSourceListener listener;
+    // Support beta
+    private String extra;
 
     private OpenAiClient(OpenAiClientBuilder builder)
     {
@@ -167,6 +169,7 @@ public class OpenAiClient
                 interceptor.setModel(this.model);
             }
             interceptor.setApiKey(apiKey);
+            interceptor.setExtra(extra);
             client = client.newBuilder()
                     .addInterceptor(interceptor)
                     .build();

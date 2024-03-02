@@ -13,7 +13,7 @@ public class FileUtils
      * 根据提供的文件获取文件后缀
      *
      * @param file Provided file <br />
-     *             提供的文件
+     * 提供的文件
      * @return extension <br />
      * 后缀名
      */

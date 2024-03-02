@@ -18,7 +18,6 @@ public class ModerationEntityTest
                 .inputs(Lists.newArrayList())
                 .build());
 
-
         Assert.assertTrue(ModerationEntity.builder()
                 .inputs(Lists.newArrayList("a"))
                 .build()

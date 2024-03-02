@@ -27,11 +27,13 @@ public abstract class DefaultInterceptor
     private String apiKey;
     private String model;
     private String version;
+    private String extra;
 
     protected abstract Request prepared(Request original);
 
     @Override
-    public Response intercept(Chain chain) throws IOException
+    public Response intercept(Chain chain)
+            throws IOException
     {
         JsonUtils<DefaultResponse> jsonInstance = JsonUtils.getInstance();
 

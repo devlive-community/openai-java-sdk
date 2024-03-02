@@ -1,6 +1,8 @@
 package org.devlive.sdk.openai;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -21,6 +23,9 @@ import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
+import org.devlive.sdk.openai.entity.beta.QueryEntity;
 import org.devlive.sdk.openai.entity.google.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
@@ -37,8 +42,13 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsFileResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
+
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public abstract class DefaultClient
@@ -244,6 +254,87 @@ public abstract class DefaultClient
     {
         String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_CANCEL), jobId);
         return this.api.fetchCancelFineTuningJob(url)
+                .blockingGet();
+    }
+
+    public AssistantsEntity createAssistants(AssistantsEntity configure)
+    {
+        String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS);
+        return this.api.fetchCreateAssistants(url, configure)
+                .blockingGet();
+    }
+
+    public AssistantsFileEntity createAssistantsFile(String fileId,
+            String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS_FILES), assistantId);
+        Map<String, String> configure = Maps.newHashMap();
+        configure.put("file_id", fileId);
+        return this.api.fetchCreateAssistantFile(url, configure)
+                .blockingGet();
+    }
+
+    public AssistantsResponse assistants(QueryEntity configure)
+    {
+        List<String> params = Lists.newArrayList();
+        if (configure != null) {
+            if (configure.getLimit() != null) {
+                params.add(String.format("limit=%s", configure.getLimit()));
+            }
+            if (configure.getBefore() != null) {
+                params.add(String.format("before=%s", configure.getBefore()));
+            }
+            if (configure.getAfter() != null) {
+                params.add(String.format("after=%s", configure.getAfter()));
+            }
+            if (configure.getOrder() != null) {
+                params.add(String.format("order=%s", configure.getOrder()));
+            }
+        }
+        String url = String.format("%s?%s", ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS), String.join("&", params));
+        return this.api.fetchAssistants(url)
+                .blockingGet();
+    }
+
+    public AssistantsFileResponse assistantsFiles(String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS_FILES), assistantId);
+        return this.api.fetchAssistantFiles(url)
+                .blockingGet();
+    }
+
+    public AssistantsEntity retrieveAssistant(String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT), assistantId);
+        return this.api.fetchRetrieveAssistant(url)
+                .blockingGet();
+    }
+
+    public AssistantsFileEntity retrieveAssistantFile(String assistantId, String fileId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT_FILE), assistantId, fileId);
+        return this.api.fetchRetrieveAssistantFile(url)
+                .blockingGet();
+    }
+
+    public AssistantsEntity updateAssistant(String assistantId, AssistantsEntity configure)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT), assistantId);
+        return this.api.fetchUpdateAssistant(url, configure)
+                .blockingGet();
+    }
+
+    public AssistantsResponse deleteAssistant(String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT), assistantId);
+        return this.api.fetchDeleteAssistant(url)
+                .blockingGet();
+    }
+
+    public AssistantsFileResponse deleteAssistantFile(String assistantId, String fileId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT_FILE), assistantId, fileId);
+        return this.api.fetchDeleteAssistantFile(url)
                 .blockingGet();
     }
 

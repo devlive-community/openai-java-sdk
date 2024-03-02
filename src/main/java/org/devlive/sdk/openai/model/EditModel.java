@@ -7,13 +7,13 @@ public enum EditModel
 
     private final String name;
 
-    public String getName()
-    {
-        return name;
-    }
-
     EditModel(String name)
     {
         this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

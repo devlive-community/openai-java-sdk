@@ -75,22 +75,6 @@ public class ImageEntity
     private Boolean isEdit;
     private Boolean isVariation;
 
-    public Map<String, RequestBody> convertMap()
-    {
-        Map<String, RequestBody> map = Maps.newConcurrentMap();
-        if (this.isEdit) {
-            map.put("prompt", RequestBody.create(MultipartBodyUtils.TYPE, this.getPrompt()));
-        }
-        map.put("n", RequestBody.create(MultipartBodyUtils.TYPE, this.getCount().toString()));
-        map.put("size", RequestBody.create(MultipartBodyUtils.TYPE, this.getSize()));
-        map.put("response_format", RequestBody.create(MultipartBodyUtils.TYPE, this.getFormat()));
-
-        if (StringUtils.isNotEmpty(this.getUser())) {
-            map.put("user", RequestBody.create(MultipartBodyUtils.TYPE, this.getUser()));
-        }
-        return map;
-    }
-
     private ImageEntity(ImageEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.prompt)) {
@@ -134,6 +118,22 @@ public class ImageEntity
         this.isVariation = builder.isVariation;
 
         this.user = builder.user;
+    }
+
+    public Map<String, RequestBody> convertMap()
+    {
+        Map<String, RequestBody> map = Maps.newConcurrentMap();
+        if (this.isEdit) {
+            map.put("prompt", RequestBody.create(MultipartBodyUtils.TYPE, this.getPrompt()));
+        }
+        map.put("n", RequestBody.create(MultipartBodyUtils.TYPE, this.getCount().toString()));
+        map.put("size", RequestBody.create(MultipartBodyUtils.TYPE, this.getSize()));
+        map.put("response_format", RequestBody.create(MultipartBodyUtils.TYPE, this.getFormat()));
+
+        if (StringUtils.isNotEmpty(this.getUser())) {
+            map.put("user", RequestBody.create(MultipartBodyUtils.TYPE, this.getUser()));
+        }
+        return map;
     }
 
     public static class ImageEntityBuilder

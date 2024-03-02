@@ -72,27 +72,6 @@ public class AudioEntity
     @JsonProperty(value = "language")
     private String language;
 
-    public Map<String, RequestBody> convertMap()
-    {
-        Map<String, RequestBody> map = Maps.newConcurrentMap();
-        if (StringUtils.isNotEmpty(this.model)) {
-            map.put("model", RequestBody.create(MultipartBodyUtils.TYPE, this.getModel()));
-        }
-        if (StringUtils.isNotEmpty(this.prompt)) {
-            map.put("prompt", RequestBody.create(MultipartBodyUtils.TYPE, this.getPrompt()));
-        }
-        if (StringUtils.isNotEmpty(this.format)) {
-            map.put("response_format", RequestBody.create(MultipartBodyUtils.TYPE, this.getFormat()));
-        }
-        if (ObjectUtils.isNotEmpty(this.temperature)) {
-            map.put("temperature", RequestBody.create(MultipartBodyUtils.TYPE, String.valueOf(this.getTemperature())));
-        }
-        if (StringUtils.isNotEmpty(this.language)) {
-            map.put("language", RequestBody.create(MultipartBodyUtils.TYPE, this.getLanguage()));
-        }
-        return map;
-    }
-
     private AudioEntity(AudioEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.file)) {
@@ -118,6 +97,27 @@ public class AudioEntity
         this.temperature = builder.temperature;
 
         this.language = builder.language;
+    }
+
+    public Map<String, RequestBody> convertMap()
+    {
+        Map<String, RequestBody> map = Maps.newConcurrentMap();
+        if (StringUtils.isNotEmpty(this.model)) {
+            map.put("model", RequestBody.create(MultipartBodyUtils.TYPE, this.getModel()));
+        }
+        if (StringUtils.isNotEmpty(this.prompt)) {
+            map.put("prompt", RequestBody.create(MultipartBodyUtils.TYPE, this.getPrompt()));
+        }
+        if (StringUtils.isNotEmpty(this.format)) {
+            map.put("response_format", RequestBody.create(MultipartBodyUtils.TYPE, this.getFormat()));
+        }
+        if (ObjectUtils.isNotEmpty(this.temperature)) {
+            map.put("temperature", RequestBody.create(MultipartBodyUtils.TYPE, String.valueOf(this.getTemperature())));
+        }
+        if (StringUtils.isNotEmpty(this.language)) {
+            map.put("language", RequestBody.create(MultipartBodyUtils.TYPE, this.getLanguage()));
+        }
+        return map;
     }
 
     public static class AudioEntityBuilder

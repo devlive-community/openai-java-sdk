@@ -8,13 +8,13 @@ public enum ImageSizeModel
 
     private final String name;
 
-    public String getName()
-    {
-        return name;
-    }
-
     ImageSizeModel(String name)
     {
         this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

@@ -20,10 +20,18 @@ public class OpenAiInterceptor
         if (StringUtils.isEmpty(this.getApiKey())) {
             throw new ParamException("Invalid OpenAi token, must be non-empty");
         }
-        return original.newBuilder()
+
+        original = original.newBuilder()
                 .header("Authorization", String.format("Bearer %s", this.getApiKey()))
                 .header("Content-Type", "application/json")
                 .method(original.method(), original.body())
                 .build();
+
+        if (this.getExtra() != null) {
+            original = original.newBuilder()
+                    .header("OpenAI-Beta", this.getExtra())
+                    .build();
+        }
+        return original;
     }
 }

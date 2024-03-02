@@ -13,6 +13,8 @@ import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
@@ -24,6 +26,8 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsFileResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -232,4 +236,70 @@ public interface DefaultApi
      */
     @POST
     Single<FineTuningEntity> fetchCancelFineTuningJob(@Url String url);
+
+    /**
+     * Create an assistant with a model and instructions.
+     * 创建具有模型和说明的助手。
+     */
+    @POST
+    Single<AssistantsEntity> fetchCreateAssistants(@Url String url,
+            @Body AssistantsEntity configure);
+
+    /**
+     * Create an assistant file by attaching a File to an assistant.
+     * 通过将文件附加到助手来创建助手文件。
+     */
+    @POST
+    Single<AssistantsFileEntity> fetchCreateAssistantFile(@Url String url,
+            @Body Map<String, String> configure);
+
+    /**
+     * Returns a list of assistants.
+     * 返回助手列表。
+     */
+    @GET
+    Single<AssistantsResponse> fetchAssistants(@Url String url);
+
+    /**
+     * Returns a list of assistant files.
+     * 返回助手文件的列表。
+     */
+    @GET
+    Single<AssistantsFileResponse> fetchAssistantFiles(@Url String url);
+
+    /**
+     * Retrieves an assistant.
+     * 检索助手。
+     */
+    @GET
+    Single<AssistantsEntity> fetchRetrieveAssistant(@Url String url);
+
+    /**
+     * Retrieves an AssistantFile.
+     * 检索助手文件。
+     */
+    @GET
+    Single<AssistantsFileEntity> fetchRetrieveAssistantFile(@Url String url);
+
+    /**
+     * Modifies an assistant.
+     * 修改助手。
+     */
+    @POST
+    Single<AssistantsEntity> fetchUpdateAssistant(@Url String url,
+            @Body AssistantsEntity configure);
+
+    /**
+     * Delete an assistant.
+     * 删除助手
+     */
+    @DELETE
+    Single<AssistantsResponse> fetchDeleteAssistant(@Url String url);
+
+    /**
+     * Delete assistant file
+     * 删除助手文件
+     */
+    @DELETE
+    Single<AssistantsFileResponse> fetchDeleteAssistantFile(@Url String url);
 }

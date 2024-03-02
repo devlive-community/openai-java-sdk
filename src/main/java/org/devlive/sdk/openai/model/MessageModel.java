@@ -9,13 +9,13 @@ public enum MessageModel
 
     private final String name;
 
-    public String getName()
-    {
-        return name;
-    }
-
     MessageModel(String name)
     {
         this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }
