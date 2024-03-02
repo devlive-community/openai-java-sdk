@@ -12,13 +12,13 @@
         <meta name="author" content="qinamoQ">
       
       
-        <link rel="canonical" href="https://openai-java-sdk.devlive.org/reference/openai/files.html">
+        <link rel="canonical" href="https://openai-java-sdk.devlive.org/reference/openai/assistants.html">
       
       
-        <link rel="prev" href="edits.html">
+        <link rel="prev" href="fine_tunes.html">
       
       
-        <link rel="next" href="fine_tunes.html">
+        <link rel="next" href="../azure/completions.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Files - Open AI Models Java Sdk</title>
+        <title>Assistants <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span> - Open AI Models Java Sdk</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#list-files" class="md-skip">
+        <a href="#create-assistant" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Files
+              Assistants <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
             
           </span>
         </div>
@@ -160,13 +160,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../zh/reference/openai/files.html" hreflang="zh" class="md-select__link">
+            <a href="../../zh/reference/openai/assistants.html" hreflang="zh" class="md-select__link">
               Chinese (Simplified)
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="files.html" hreflang="en" class="md-select__link">
+            <a href="assistants.html" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -732,27 +732,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Files
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="files.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="files.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,59 +743,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#list-files" class="md-nav__link">
-    List files
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upload-file" class="md-nav__link">
-    Upload file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-file" class="md-nav__link">
-    Delete file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#retrieve-file" class="md-nav__link">
-    Retrieve file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#retrieve-file-content" class="md-nav__link">
-    Retrieve file content
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -843,9 +772,27 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="assistants.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Assistants <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="assistants.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -854,6 +801,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-assistant" class="md-nav__link">
+    Create assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-assistant-file" class="md-nav__link">
+    Create assistant file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-assistants" class="md-nav__link">
+    List assistants
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-assistant-files" class="md-nav__link">
+    List assistant files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieve-assistant" class="md-nav__link">
+    Retrieve assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieve-assistant-file" class="md-nav__link">
+    Retrieve assistant file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-assistant" class="md-nav__link">
+    Modify assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-assistant" class="md-nav__link">
+    Delete assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-assistant-file" class="md-nav__link">
+    Delete assistant file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1297,36 +1325,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#list-files" class="md-nav__link">
-    List files
+  <a href="#create-assistant" class="md-nav__link">
+    Create assistant
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upload-file" class="md-nav__link">
-    Upload file
+  <a href="#create-assistant-file" class="md-nav__link">
+    Create assistant file
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#delete-file" class="md-nav__link">
-    Delete file
+  <a href="#list-assistants" class="md-nav__link">
+    List assistants
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#retrieve-file" class="md-nav__link">
-    Retrieve file
+  <a href="#list-assistant-files" class="md-nav__link">
+    List assistant files
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#retrieve-file-content" class="md-nav__link">
-    Retrieve file content
+  <a href="#retrieve-assistant" class="md-nav__link">
+    Retrieve assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieve-assistant-file" class="md-nav__link">
+    Retrieve assistant file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-assistant" class="md-nav__link">
+    Modify assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-assistant" class="md-nav__link">
+    Delete assistant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-assistant-file" class="md-nav__link">
+    Delete assistant file
   </a>
   
 </li>
@@ -1350,7 +1406,7 @@
   
 
 
-  <h1>Files</h1>
+  <h1>Assistants <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span></h1>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1362,81 +1418,180 @@
 </code></pre></div>
 <p><code>System.getProperty("openai.token")</code> is the key to access the API authorization.</p>
 </div>
-<h3 id="list-files">List files</h3>
+<h3 id="create-assistant">Create assistant</h3>
 <hr />
-<p>Returns a list of files that belong to the user's organization.</p>
-<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">files</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">AssistantsEntity</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AssistantsEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;Math Tutor&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">CompletionModel</span><span class="p">.</span><span class="na">GPT_35_TURBO</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">instructions</span><span class="p">(</span><span class="s">&quot;You are a personal math tutor. When asked a question, write and run Python code to answer the question.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">client</span><span class="p">.</span><span class="na">createAssistants</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span>
 </code></pre></div>
 <p>Returns:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1698984975</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Math Tutor&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a personal math tutor. When asked a question, write and run Python code to answer the question.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-ccdDZrC3iZVNiQVeEA6Z66wf&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;createdTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-02 22:22:22&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train.jsonl&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;search&quot;</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code_interpreter&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span>
+<span class="w">  </span><span class="nt">&quot;file_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="upload-file">Upload file</h3>
+<h3 id="create-assistant-file">Create assistant file</h3>
 <hr />
-<p>Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact openai if you need to increase the storage limit.</p>
-<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getResource</span><span class="p">(</span><span class="s">&quot;/test.jsonl&quot;</span><span class="p">).</span><span class="na">getFile</span><span class="p">();</span>
-<span class="n">FileEntity</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">file</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="k">this</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">uploadFile</span><span class="p">(</span><span class="n">configure</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">createAssistantsFile</span><span class="p">(</span><span class="s">&quot;file-jNuKdx61rNQ0FUhuPFpMNmGZ&quot;</span><span class="p">,</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Returns:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-XjGxS3KTG0uNmNOK362iJua3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;createdTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-02 22:22:22&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test.jsonl&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine-tune&quot;</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant.file&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1699055364</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;assistant_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="delete-file">Delete file</h3>
+<h3 id="list-assistants">List assistants</h3>
 <hr />
-<p>Delete a file.</p>
-<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;file-XjGxS3KTG0uNmNOK362iJua3&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">deleteFile</span><span class="p">(</span><span class="n">entity</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">listAssistants</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="c1">// With query params</span>
+<span class="n">QueryEntity</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QueryEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">client</span><span class="p">.</span><span class="na">assistants</span><span class="p">(</span><span class="n">configure</span><span class="p">);</span>
 </code></pre></div>
 <p>Returns:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-XjGxS3KTG0uNmNOK362iJua3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1698982736</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Coding Tutor&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a helpful assistant designed to make me better at coding!&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;file_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;first_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;last_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc789&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;has_more&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="list-assistant-files">List assistant files</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">assistantsFiles</span><span class="p">(</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">));</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant.file&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1699060412</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;assistant_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;first_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;last_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc456&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;has_more&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="retrieve-assistant">Retrieve assistant</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">retrieveAssistant</span><span class="p">(</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1698984975</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Math Tutor&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a personal math tutor. When asked a question, write and run Python code to answer the question.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code_interpreter&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;file_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="retrieve-assistant-file">Retrieve assistant file</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">retrieveAssistantFile</span><span class="p">(</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">,</span><span class="s">&quot;file-jNuKdx61rNQ0FUhuPFpMNmGZ&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant.file&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1699055364</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;assistant_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="modify-assistant">Modify assistant</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">AssistantsEntity</span><span class="w"> </span><span class="n">entity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AssistantsEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;Math Tutor 1&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">CompletionModel</span><span class="p">.</span><span class="na">GPT_35_TURBO</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">instructions</span><span class="p">(</span><span class="s">&quot;You are a personal math tutor. When asked a question, write and run Python code to answer the question.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">client</span><span class="p">.</span><span class="na">updateAssistant</span><span class="p">(</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">,</span><span class="n">entity</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1698984975</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Math Tutor 1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a personal math tutor. When asked a question, write and run Python code to answer the question.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code_interpreter&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;file_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="delete-assistant">Delete assistant</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">deleteAssistant</span><span class="p">(</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asst_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant.deleted&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="retrieve-file">Retrieve file</h3>
+<h3 id="delete-assistant-file">Delete assistant file</h3>
 <hr />
-<p>Returns information about a specific file.</p>
-<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;file-XjGxS3KTG0uNmNOK362iJua3&quot;</span><span class="p">;</span>
-<span class="k">this</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">retrieveFile</span><span class="p">(</span><span class="n">entity</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+<div class="highlight"><pre><span></span><code><span class="n">client</span><span class="p">.</span><span class="na">deleteAssistantFile</span><span class="p">(</span><span class="s">&quot;asst_xv9N9dNXstuV8OVLElLqgV7U&quot;</span><span class="p">,</span><span class="s">&quot;file-jNuKdx61rNQ0FUhuPFpMNmGZ&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Returns:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-XjGxS3KTG0uNmNOK362iJua3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1613779657</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test.jsonl&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fine-tune&quot;</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant.file.deleted&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="retrieve-file-content">Retrieve file content</h3>
-<hr />
-<p>Returns information about a specific file.</p>
-<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;file-XjGxS3KTG0uNmNOK362iJua3&quot;</span><span class="p">;</span>
-<span class="k">this</span><span class="p">.</span><span class="na">client</span><span class="p">.</span><span class="na">retrieveFileContent</span><span class="p">(</span><span class="n">entity</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
-</code></pre></div>
-<p>Returns the original content of the uploaded file.</p>
 
 
 
