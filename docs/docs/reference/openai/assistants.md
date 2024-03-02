@@ -27,7 +27,9 @@ AssistantsEntity entity = AssistantsEntity.builder()
         .model(CompletionModel.GPT_35_TURBO)
         .instructions("You are a personal math tutor. When asked a question, write and run Python code to answer the question.")
         .build();
-client.createAssistants(entity);
+client.
+
+createAssistants(entity);
 ```
 
 Returns:
@@ -58,7 +60,7 @@ Returns:
 Create an assistant file by attaching a File to an assistant.
 
 ```java
-client.createAssistantsFile("file-jNuKdx61rNQ0FUhuPFpMNmGZ", "asst_xv9N9dNXstuV8OVLElLqgV7U")
+client.createAssistantsFile("file-jNuKdx61rNQ0FUhuPFpMNmGZ","asst_xv9N9dNXstuV8OVLElLqgV7U")
 ```
 
 Returns:
@@ -85,7 +87,9 @@ client.listAssistants(null);
 QueryEntity configure = QueryEntity.builder()
         .limit(2)
         .build();
-client.assistants(configure);
+client.
+
+assistants(configure);
 ```
 
 Returns:
@@ -170,5 +174,26 @@ Returns:
   ],
   "file_ids": [],
   "metadata": {}
+}
+```
+
+### Retrieve assistant file
+
+---
+
+Retrieves an assistant file.
+
+```java
+client.retrieveAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U","file-jNuKdx61rNQ0FUhuPFpMNmGZ");
+```
+
+Returns:
+
+```json
+{
+  "id": "file-abc123",
+  "object": "assistant.file",
+  "created_at": 1699055364,
+  "assistant_id": "asst_abc123"
 }
 ```

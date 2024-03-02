@@ -59,4 +59,10 @@ public class AssistantsTest
     {
         Assert.assertNotNull(client.retrieveAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U"));
     }
+
+    @Test
+    public void testRetrieveAssistantsFile()
+    {
+        Assert.assertNotNull(client.retrieveAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U", "file-jNuKdx61rNQ0FUhuPFpMNmGZ"));
+    }
 }
