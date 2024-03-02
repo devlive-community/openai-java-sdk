@@ -210,7 +210,9 @@ AssistantsEntity entity = AssistantsEntity.builder()
         .model(CompletionModel.GPT_35_TURBO)
         .instructions("You are a personal math tutor. When asked a question, write and run Python code to answer the question.")
         .build();
-client.updateAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U", entity);
+client.
+
+updateAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U",entity);
 ```
 
 Returns:
@@ -231,5 +233,25 @@ Returns:
   ],
   "file_ids": [],
   "metadata": {}
+}
+```
+
+### Delete assistant
+
+---
+
+Deletes an assistant.
+
+```java
+client.deleteAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U");
+```
+
+Returns:
+
+```json
+{
+  "id": "asst_abc123",
+  "object": "assistant.deleted",
+  "deleted": true
 }
 ```

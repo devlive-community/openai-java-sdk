@@ -11,6 +11,9 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AssistantsResponse
 {
+    @JsonProperty(value = "id")
+    private String id;
+
     @JsonProperty(value = "object")
     private String object;
 
@@ -25,4 +28,7 @@ public class AssistantsResponse
 
     @JsonProperty(value = "has_more")
     private boolean hasMore;
+
+    @JsonProperty(value = "deleted")
+    private boolean deleted;
 }

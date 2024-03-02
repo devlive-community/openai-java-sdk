@@ -324,6 +324,13 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
+    public AssistantsResponse deleteAssistant(String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT), assistantId);
+        return this.api.fetchDeleteAssistant(url)
+                .blockingGet();
+    }
+
     private ObjectMapper createObjectMapper()
     {
         ObjectMapper objectMapper = new ObjectMapper();

@@ -288,4 +288,11 @@ public interface DefaultApi
     @POST
     Single<AssistantsEntity> fetchUpdateAssistant(@Url String url,
             @Body AssistantsEntity configure);
+
+    /**
+     * Delete an assistant.
+     * 删除助手
+     */
+    @DELETE
+    Single<AssistantsResponse> fetchDeleteAssistant(@Url String url);
 }

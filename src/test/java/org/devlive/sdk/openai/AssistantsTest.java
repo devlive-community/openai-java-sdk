@@ -76,4 +76,10 @@ public class AssistantsTest
                 .build();
         Assert.assertNotNull(client.updateAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U", entity));
     }
+
+    @Test
+    public void testDeleteAssistants()
+    {
+        Assert.assertNotNull(client.deleteAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U"));
+    }
 }
