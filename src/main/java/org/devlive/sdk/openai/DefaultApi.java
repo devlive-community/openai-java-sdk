@@ -13,6 +13,7 @@ import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
@@ -232,4 +233,12 @@ public interface DefaultApi
      */
     @POST
     Single<FineTuningEntity> fetchCancelFineTuningJob(@Url String url);
+
+    /**
+     * Create an assistant with a model and instructions.
+     * 创建具有模型和说明的助手。
+     */
+    @POST
+    Single<AssistantsEntity> fetchAssistants(@Url String url,
+            @Body AssistantsEntity configure);
 }

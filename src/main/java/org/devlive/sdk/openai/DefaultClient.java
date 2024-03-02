@@ -21,6 +21,7 @@ import org.devlive.sdk.openai.entity.ImageEntity;
 import org.devlive.sdk.openai.entity.ModelEntity;
 import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
+import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
 import org.devlive.sdk.openai.entity.google.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
@@ -244,6 +245,13 @@ public abstract class DefaultClient
     {
         String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_FINE_TUNING_JOBS_CANCEL), jobId);
         return this.api.fetchCancelFineTuningJob(url)
+                .blockingGet();
+    }
+
+    public AssistantsEntity createAssistants(AssistantsEntity configure)
+    {
+        String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS);
+        return this.api.fetchAssistants(url, configure)
                 .blockingGet();
     }
 
