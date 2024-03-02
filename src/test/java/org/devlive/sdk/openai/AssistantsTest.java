@@ -29,4 +29,10 @@ public class AssistantsTest
                 .build();
         Assert.assertNotNull(client.createAssistants(entity));
     }
+
+    @Test
+    public void testCreateAssistantsFile()
+    {
+        Assert.assertNotNull(client.createAssistantsFile("file-jNuKdx61rNQ0FUhuPFpMNmGZ", "asst_xv9N9dNXstuV8OVLElLqgV7U"));
+    }
 }

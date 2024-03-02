@@ -25,6 +25,7 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -241,4 +242,12 @@ public interface DefaultApi
     @POST
     Single<AssistantsEntity> fetchAssistants(@Url String url,
             @Body AssistantsEntity configure);
+
+    /**
+     * Create an assistant file by attaching a File to an assistant.
+     * 通过将文件附加到助手来创建助手文件。
+     */
+    @POST
+    Single<AssistantsResponse> fetchCreateAssistantFile(@Url String url,
+            @Body Map<String, String> configure);
 }

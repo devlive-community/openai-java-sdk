@@ -1,5 +1,5 @@
 ---
-title: Assistants (Beta)
+title: Assistants <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
 ---
 
 !!! Note
@@ -48,5 +48,26 @@ Returns:
   ],
   "file_ids": [],
   "metadata": {}
+}
+```
+
+### Create assistant file
+
+---
+
+Create an assistant file by attaching a File to an assistant.
+
+```java
+client.createAssistantsFile("file-jNuKdx61rNQ0FUhuPFpMNmGZ", "asst_xv9N9dNXstuV8OVLElLqgV7U")
+```
+
+Returns:
+
+```json
+{
+  "id": "file-abc123",
+  "object": "assistant.file",
+  "created_at": 1699055364,
+  "assistant_id": "asst_abc123"
 }
 ```

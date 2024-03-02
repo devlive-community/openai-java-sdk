@@ -1,6 +1,7 @@
 package org.devlive.sdk.openai;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -38,8 +39,11 @@ import org.devlive.sdk.openai.response.ImageResponse;
 import org.devlive.sdk.openai.response.ModelResponse;
 import org.devlive.sdk.openai.response.ModerationResponse;
 import org.devlive.sdk.openai.response.UserKeyResponse;
+import org.devlive.sdk.openai.response.beta.AssistantsResponse;
 import org.devlive.sdk.openai.utils.MultipartBodyUtils;
 import org.devlive.sdk.openai.utils.ProviderUtils;
+
+import java.util.Map;
 
 @Slf4j
 public abstract class DefaultClient
@@ -252,6 +256,16 @@ public abstract class DefaultClient
     {
         String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS);
         return this.api.fetchAssistants(url, configure)
+                .blockingGet();
+    }
+
+    public AssistantsResponse createAssistantsFile(String fileId,
+            String assistantId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS_FILES), assistantId);
+        Map<String, String> configure = Maps.newHashMap();
+        configure.put("file_id", fileId);
+        return this.api.fetchCreateAssistantFile(url, configure)
                 .blockingGet();
     }
 
