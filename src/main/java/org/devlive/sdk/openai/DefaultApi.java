@@ -295,4 +295,11 @@ public interface DefaultApi
      */
     @DELETE
     Single<AssistantsResponse> fetchDeleteAssistant(@Url String url);
+
+    /**
+     * Delete assistant file
+     * 删除助手文件
+     */
+    @DELETE
+    Single<AssistantsFileResponse> fetchDeleteAssistantFile(@Url String url);
 }

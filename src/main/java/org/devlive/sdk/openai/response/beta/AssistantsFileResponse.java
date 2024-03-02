@@ -25,4 +25,10 @@ public class AssistantsFileResponse
 
     @JsonProperty(value = "has_more")
     private boolean hasMore;
+
+    @JsonProperty(value = "id")
+    private String id;
+
+    @JsonProperty(value = "deleted")
+    private boolean deleted;
 }

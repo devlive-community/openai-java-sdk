@@ -255,3 +255,23 @@ Returns:
   "deleted": true
 }
 ```
+
+### Delete assistant file
+
+---
+
+Deletes an assistant file.
+
+```java
+client.deleteAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U","file-jNuKdx61rNQ0FUhuPFpMNmGZ");
+```
+
+Returns:
+
+```json
+{
+  "id": "file-abc123",
+  "object": "assistant.file.deleted",
+  "deleted": true
+}
+```

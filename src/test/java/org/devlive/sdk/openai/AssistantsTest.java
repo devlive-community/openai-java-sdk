@@ -82,4 +82,10 @@ public class AssistantsTest
     {
         Assert.assertNotNull(client.deleteAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U"));
     }
+
+    @Test
+    public void testDeleteAssistantsFile()
+    {
+        Assert.assertNotNull(client.deleteAssistantFile("asst_xv9N9dNXstuV8OVLElLqgV7U", "file-jNuKdx61rNQ0FUhuPFpMNmGZ"));
+    }
 }
