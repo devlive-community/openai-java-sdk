@@ -25,4 +25,11 @@ public class ThreadTest
                 .build();
         Assert.assertNotNull(client.createThread(configure));
     }
+
+    @Test
+    public void testRetrieveThread()
+    {
+        String threadId = "thread_lsfBRIATCECds5WYLVXnVcpU";
+        Assert.assertNotNull(client.retrieveThread(threadId));
+    }
 }

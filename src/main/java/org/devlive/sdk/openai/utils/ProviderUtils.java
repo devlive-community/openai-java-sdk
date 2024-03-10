@@ -62,6 +62,7 @@ public class ProviderUtils
         DEFAULT_PROVIDER.put(UrlModel.FETCH_RETRIEVE_ASSISTANT, "v1/assistants/%s");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_RETRIEVE_ASSISTANT_FILE, "v1/assistants/%s/files/%s");
         DEFAULT_PROVIDER.put(UrlModel.FETCH_THREADS, "v1/threads");
+        DEFAULT_PROVIDER.put(UrlModel.FETCH_RETRIEVE_THREADS, "v1/threads/%s");
 
         AZURE_PROVIDER.put(UrlModel.FETCH_COMPLETIONS, "completions");
         AZURE_PROVIDER.put(UrlModel.FETCH_CHAT_COMPLETIONS, "chat/completions");

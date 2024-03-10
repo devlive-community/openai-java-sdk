@@ -311,4 +311,11 @@ public interface DefaultApi
     @POST
     Single<ThreadEntity> fetchCreateThread(@Url String url,
             @Body ThreadEntity configure);
+
+    /**
+     * Retrieves a thread.
+     * 检索线程。
+     */
+    @GET
+    Single<ThreadEntity> fetchRetrieveThread(@Url String url);
 }
