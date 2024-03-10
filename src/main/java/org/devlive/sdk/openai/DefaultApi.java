@@ -318,4 +318,12 @@ public interface DefaultApi
      */
     @GET
     Single<ThreadEntity> fetchRetrieveThread(@Url String url);
+
+    /**
+     * Modifies a thread.
+     * 修改线程。
+     */
+    @POST
+    Single<ThreadEntity> fetchUpdateThread(@Url String url,
+            @Body ThreadEntity configure);
 }

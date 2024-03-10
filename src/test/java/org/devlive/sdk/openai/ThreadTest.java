@@ -32,4 +32,13 @@ public class ThreadTest
         String threadId = "thread_lsfBRIATCECds5WYLVXnVcpU";
         Assert.assertNotNull(client.retrieveThread(threadId));
     }
+
+    @Test
+    public void testUpdateThread()
+    {
+        String threadId = "thread_lsfBRIATCECds5WYLVXnVcpU";
+        ThreadEntity configure = ThreadEntity.builder()
+                .build();
+        Assert.assertNotNull(client.updateThread(threadId, configure));
+    }
 }

@@ -353,6 +353,13 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
+    public ThreadEntity updateThread(String threadId, ThreadEntity configure)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_THREADS), threadId);
+        return this.api.fetchUpdateThread(url, configure)
+                .blockingGet();
+    }
+
     private ObjectMapper createObjectMapper()
     {
         ObjectMapper objectMapper = new ObjectMapper();
