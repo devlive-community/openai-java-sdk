@@ -326,4 +326,11 @@ public interface DefaultApi
     @POST
     Single<ThreadEntity> fetchUpdateThread(@Url String url,
             @Body ThreadEntity configure);
+
+    /**
+     * Deletes a thread.
+     * 删除线程。
+     */
+    @DELETE
+    Single<ThreadEntity> fetchDeleteThread(@Url String url);
 }

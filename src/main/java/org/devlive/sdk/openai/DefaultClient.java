@@ -360,6 +360,13 @@ public abstract class DefaultClient
                 .blockingGet();
     }
 
+    public ThreadEntity deleteThread(String threadId)
+    {
+        String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_THREADS), threadId);
+        return this.api.fetchDeleteThread(url)
+                .blockingGet();
+    }
+
     private ObjectMapper createObjectMapper()
     {
         ObjectMapper objectMapper = new ObjectMapper();

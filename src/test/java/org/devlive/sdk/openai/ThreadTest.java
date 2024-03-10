@@ -41,4 +41,11 @@ public class ThreadTest
                 .build();
         Assert.assertNotNull(client.updateThread(threadId, configure));
     }
+
+    @Test
+    public void testDeleteThread()
+    {
+        String threadId = "thread_lsfBRIATCECds5WYLVXnVcpU";
+        Assert.assertNotNull(client.deleteThread(threadId));
+    }
 }

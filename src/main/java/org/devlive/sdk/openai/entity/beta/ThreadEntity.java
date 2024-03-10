@@ -47,4 +47,7 @@ public class ThreadEntity
      */
     @JsonProperty(value = "metadata")
     private Map<Object, Object> metadata;
+
+    @JsonProperty(value = "deleted")
+    private boolean deleted;
 }
