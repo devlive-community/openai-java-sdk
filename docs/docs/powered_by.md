@@ -33,7 +33,7 @@ hide:
 
     DataCap is integrated software for data transformation, integration, and visualization. Support a variety of data sources, file types, big data related database, relational database, NoSQL database, etc. Through the software can realize the management of multiple data sources, the data under the source of various operations conversion ...
     
-    [:octicons-arrow-right-24: Getting started](https://github.com/EdurtIO/datacap)
+    [Getting started](https://github.com/EdurtIO/datacap)
 
 </div>
 
@@ -49,7 +49,7 @@ hide:
 
     Source code contributors who love open source projects.
 
-    [:octicons-arrow-right-24: Visit qianmoQ](https://github.com/qianmoQ)
+    [Visit qianmoQ](https://github.com/qianmoQ)
 
 </div>
 

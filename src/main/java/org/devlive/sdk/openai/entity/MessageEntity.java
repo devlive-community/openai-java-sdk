@@ -13,6 +13,9 @@ import org.devlive.sdk.openai.exception.ParamException;
 import org.devlive.sdk.openai.model.MessageModel;
 import org.devlive.sdk.openai.utils.EnumsUtils;
 
+import java.util.Map;
+import java.util.Set;
+
 @Data
 @Builder
 @ToString
@@ -30,6 +33,20 @@ public class MessageEntity
     @JsonProperty(value = "name")
     private String name;
 
+    /**
+     * A list of File IDs that the message should use. There can be a maximum of 10 files attached to a message. Useful for tools like retrieval and code_interpreter that can access and use files.
+     * 邮件应使用的文件 ID 列表。一封邮件最多可以附加 10 个文件。对于可以访问和使用文件的检索和code_interpreter等工具很有用。
+     */
+    @JsonProperty(value = "file_ids")
+    private Set<String> fileIds;
+
+    /**
+     * Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long.
+     * 可附加到对象的 16 个键值对的集合。这对于以结构化格式存储有关对象的其他信息非常有用。键的最大长度为 64 个字符，值的最大长度为 512 个字符。
+     */
+    @JsonProperty(value = "metadata")
+    private Map<Object, Object> metadata;
+
     private MessageEntity(MessageEntityBuilder builder)
     {
         if (StringUtils.isEmpty(builder.role)) {
@@ -46,6 +63,8 @@ public class MessageEntity
             builder.name("openai-java-sdk");
         }
         this.name = builder.name;
+        this.fileIds = builder.fileIds;
+        this.metadata = builder.metadata;
     }
 
     public static class MessageEntityBuilder

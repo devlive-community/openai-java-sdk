@@ -142,7 +142,7 @@ client.assistantsFiles("asst_xv9N9dNXstuV8OVLElLqgV7U"));
 client.retrieveAssistant("asst_xv9N9dNXstuV8OVLElLqgV7U");
 ```
 
-Returns:
+返回:
 
 ```json
 {

@@ -1,17 +1,16 @@
 ---
-title: 2023.12.1
+title: 2024.01.2
 ---
 
 | Release version | Release Time |
 |:---------------:|:------------:|
-|   `2023.12.1`   | `2023-12-23` |
+|   `2024.01.2`   | `2024-03-10` |
 
 ## OpenAi
 
 ---
 
-- Create fine-tuning job
-- List fine-tuning jobs
-- List fine-tuning events
-- Retrieve fine-tuning job
-- Cancel fine-tuning
+- Create thread
+- Retrieve thread 
+- Modify thread 
+- Delete thread
