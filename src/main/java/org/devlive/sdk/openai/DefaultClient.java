@@ -26,6 +26,7 @@ import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
 import org.devlive.sdk.openai.entity.beta.QueryEntity;
+import org.devlive.sdk.openai.entity.beta.ThreadEntity;
 import org.devlive.sdk.openai.entity.google.MessageEntity;
 import org.devlive.sdk.openai.exception.RequestException;
 import org.devlive.sdk.openai.mixin.IgnoreUnknownMixin;
@@ -335,6 +336,13 @@ public abstract class DefaultClient
     {
         String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_RETRIEVE_ASSISTANT_FILE), assistantId, fileId);
         return this.api.fetchDeleteAssistantFile(url)
+                .blockingGet();
+    }
+
+    public ThreadEntity createThread(ThreadEntity configure)
+    {
+        String url = ProviderUtils.getUrl(provider, UrlModel.FETCH_THREADS);
+        return this.api.fetchCreateThread(url, configure)
                 .blockingGet();
     }
 

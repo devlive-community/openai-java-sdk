@@ -22,7 +22,6 @@ import org.junit.Test;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 public class OpenAiClientTest
 {
@@ -118,9 +117,7 @@ public class OpenAiClientTest
         Assert.assertTrue(client.createChatCompletion(configure)
                 .getChoices()
                 .stream()
-                .map(v -> v.getMessage().getContent())
-                .collect(Collectors.toList())
-                .size() > 0);
+                .map(v -> v.getMessage().getContent()).findAny().isPresent());
     }
 
     @Test

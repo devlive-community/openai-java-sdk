@@ -9,7 +9,7 @@ repo_url: https://github.com/devlive-community/openai-java-sdk
 edit_uri: "https://github.com/devlive-community/openai-java-sdk/blob/master/docs/docs"
 
 banners:
-  - title: OpenAi Java SDK &nbsp; <em>2023.12.1</em> &nbsp; is released
+  - title: OpenAi Java SDK &nbsp; <em>2024.01.1</em> &nbsp; is released
     link: /release-latest.html
     description: <a href="https://github.com/devlive-community/openai-java-sdk" class="text-white"> Do you ❤️ DataCap? Give us a 🌟 on GitHub </a>
 
@@ -59,9 +59,6 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.snippets
   - abbr
 
@@ -76,19 +73,21 @@ plugins:
           default: false
           nav_translations:
             NavReleaseNote: 更新日志
+            NavDocument: 文档
         - locale: en
           name: English
           build: true
           default: true
           nav_translations:
             NavReleaseNote: Release Note
+            NavDocument: Documentation
   - redirects:
       redirect_maps:
         release-latest.md: release/latest.md
 
 nav:
   - index.md
-  - Reference:
+  - NavDocument:
       - Stream (Not provider):
           - reference/stream/console.md
       - Open Ai:
@@ -114,5 +113,6 @@ nav:
           - reference/google_palm/chat.md
   - NavReleaseNote:
       - release/latest.md
+      - release/2023.12.1.md
       - released.md
   - powered_by.md

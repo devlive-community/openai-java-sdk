@@ -15,6 +15,7 @@ import org.devlive.sdk.openai.entity.ModerationEntity;
 import org.devlive.sdk.openai.entity.UserKeyEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsEntity;
 import org.devlive.sdk.openai.entity.beta.AssistantsFileEntity;
+import org.devlive.sdk.openai.entity.beta.ThreadEntity;
 import org.devlive.sdk.openai.response.AudioResponse;
 import org.devlive.sdk.openai.response.ChatResponse;
 import org.devlive.sdk.openai.response.CompleteResponse;
@@ -302,4 +303,12 @@ public interface DefaultApi
      */
     @DELETE
     Single<AssistantsFileResponse> fetchDeleteAssistantFile(@Url String url);
+
+    /**
+     * Create a thread.
+     * 创建线程。
+     */
+    @POST
+    Single<ThreadEntity> fetchCreateThread(@Url String url,
+            @Body ThreadEntity configure);
 }
