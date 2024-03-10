@@ -9,7 +9,7 @@ repo_url: https://github.com/devlive-community/openai-java-sdk
 edit_uri: "https://github.com/devlive-community/openai-java-sdk/blob/master/docs/docs"
 
 banners:
-  - title: OpenAi Java SDK &nbsp; <em>2024.01.1</em> &nbsp; is released
+  - title: OpenAi Java SDK &nbsp; <em>2024.01.2</em> &nbsp; is released
     link: /release-latest.html
     description: <a href="https://github.com/devlive-community/openai-java-sdk" class="text-white"> Do you ❤️ DataCap? Give us a 🌟 on GitHub </a>
 
@@ -114,6 +114,7 @@ nav:
           - reference/google_palm/chat.md
   - NavReleaseNote:
       - release/latest.md
+      - release/2024.01.1.md
       - release/2023.12.1.md
       - released.md
   - powered_by.md

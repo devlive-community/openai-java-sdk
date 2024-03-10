@@ -5,7 +5,7 @@
 
     <groupId>org.devlive.sdk</groupId>
     <artifactId>openai-java-sdk</artifactId>
-    <version>2024.01.2-SNAPSHOT</version>
+    <version>2024.01.2</version>
 
     <name>openai-java-sdk</name>
     <description>

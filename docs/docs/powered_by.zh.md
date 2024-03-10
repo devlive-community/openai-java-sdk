@@ -33,7 +33,7 @@ hide:
 
     DataCap 是用于数据转换、集成和可视化的集成软件。支持多种数据源、文件类型、大数据相关数据库、关系型数据库、NoSQL数据库等。通过软件可以实现多种数据源的管理，对源下的数据进行各种操作转换...
     
-    [:octicons-arrow-right-24: Getting started](https://github.com/EdurtIO/datacap)
+    [Getting started](https://github.com/EdurtIO/datacap)
 
 </div>
 
@@ -49,7 +49,7 @@ hide:
 
     热爱开源项目的源代码贡献者。
 
-    [:octicons-arrow-right-24: Visit qianmoQ](https://github.com/qianmoQ)
+    [Visit qianmoQ](https://github.com/qianmoQ)
 
 </div>
 
