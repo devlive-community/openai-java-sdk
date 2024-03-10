@@ -12,13 +12,13 @@
         <meta name="author" content="qinamoQ">
       
       
-        <link rel="canonical" href="https://openai-java-sdk.devlive.org/reference/azure/completions_chat.html">
+        <link rel="canonical" href="https://openai-java-sdk.devlive.org/reference/openai/threads.html">
       
       
-        <link rel="prev" href="completions.html">
+        <link rel="prev" href="assistants.html">
       
       
-        <link rel="next" href="../anthropic/completions.html">
+        <link rel="next" href="../azure/completions.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Chat Completions - Open AI Models Java Sdk</title>
+        <title>Threads <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span> - Open AI Models Java Sdk</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#required" class="md-skip">
+        <a href="#create-thread" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chat Completions
+              Threads <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
             
           </span>
         </div>
@@ -160,13 +160,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../zh/reference/azure/completions_chat.html" hreflang="zh" class="md-select__link">
+            <a href="../../zh/reference/openai/threads.html" hreflang="zh" class="md-select__link">
               Chinese (Simplified)
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="completions_chat.html" hreflang="en" class="md-select__link">
+            <a href="threads.html" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -485,6 +485,8 @@
                 
   
   
+    
+  
   
     
     
@@ -522,14 +524,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -543,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Open Ai
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/users.html" class="md-nav__link">
+      <a href="users.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -576,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/models.html" class="md-nav__link">
+      <a href="models.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/completions.html" class="md-nav__link">
+      <a href="completions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -616,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/completions_chat.html" class="md-nav__link">
+      <a href="completions_chat.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -636,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/images.html" class="md-nav__link">
+      <a href="images.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -656,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/embeddings.html" class="md-nav__link">
+      <a href="embeddings.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -676,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/audio.html" class="md-nav__link">
+      <a href="audio.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -696,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/moderations.html" class="md-nav__link">
+      <a href="moderations.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -716,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/edits.html" class="md-nav__link">
+      <a href="edits.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -736,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/files.html" class="md-nav__link">
+      <a href="files.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/fine_tunes.html" class="md-nav__link">
+      <a href="fine_tunes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -776,106 +776,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai/assistants.html" class="md-nav__link">
+      <a href="assistants.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Assistants <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../openai/threads.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Threads <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Azure Open Ai
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            Azure Open Ai
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="completions.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Completions
   </span>
   
 
@@ -902,18 +807,18 @@
           
   
   <span class="md-ellipsis">
-    Chat Completions
+    Threads <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="completions_chat.html" class="md-nav__link md-nav__link--active">
+      <a href="threads.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Chat Completions
+    Threads <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span>
   </span>
   
 
@@ -933,15 +838,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required" class="md-nav__link">
-    Required
+  <a href="#create-thread" class="md-nav__link">
+    Create thread
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-chat-completion" class="md-nav__link">
-    Create chat completion
+  <a href="#retrieve-thread" class="md-nav__link">
+    Retrieve thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-thread" class="md-nav__link">
+    Modify thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-thread" class="md-nav__link">
+    Delete thread
   </a>
   
 </li>
@@ -950,6 +869,101 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Azure Open Ai
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Azure Open Ai
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/completions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Completions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/completions_chat.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chat Completions
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1320,15 +1334,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required" class="md-nav__link">
-    Required
+  <a href="#create-thread" class="md-nav__link">
+    Create thread
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-chat-completion" class="md-nav__link">
-    Create chat completion
+  <a href="#retrieve-thread" class="md-nav__link">
+    Retrieve thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-thread" class="md-nav__link">
+    Modify thread
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-thread" class="md-nav__link">
+    Delete thread
   </a>
   
 </li>
@@ -1352,77 +1380,70 @@
   
 
 
-  <h1>Chat Completions</h1>
+  <h1>Threads <span style="font-weight:bold; margin-left:10px; color:red;">Beta</span></h1>
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Support the Open Ai service provided by Microsoft, product address: <a href="https://azure.microsoft.com/zh-cn/products/cognitive-services/openai-service/">https://azure.microsoft.com/zh-cn/products/cognitive-services/openai-service/</a></p>
-</div>
-<h3 id="required">Required</h3>
-<hr />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following are some configurations that must be specified to invoke the service.</p>
-</div>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">name</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><code>apiHost</code></td>
-<td>Created zone markers in the format <code>${your-resource-name}.openai.azure.com</code></td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>apiKey</code></td>
-<td>Azure token</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>provider</code></td>
-<td>Specify <code>ProviderModel.azure</code></td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>model</code></td>
-<td>Model name deployed in Azure</td>
-</tr>
-<tr>
-<td style="text-align: center;"><code>version</code></td>
-<td>Model version deployed in Azure</td>
-</tr>
-</tbody>
-</table>
-<h3 id="create-chat-completion">Create chat completion</h3>
-<hr />
-<p>Creates a model response for the given chat conversation.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Automatic resource release</span>
-<span class="k">try</span><span class="p">(</span><span class="n">OpenAiClient</span><span class="w"> </span><span class="n">client</span><span class="o">=</span><span class="n">OpenAiClient</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">apiHost</span><span class="p">(</span><span class="s">&quot;https://eus-chatgpt.openai.azure.com&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">apiKey</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;azure.token&quot;</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">(</span><span class="n">ProviderModel</span><span class="p">.</span><span class="na">azure</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;text-davinci-002&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">version</span><span class="p">(</span><span class="s">&quot;2022-12-01&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">CompletionMessageEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lists</span><span class="p">.</span><span class="na">newArrayList</span><span class="p">();</span>
-<span class="w">    </span><span class="n">messages</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">CompletionMessageEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">content</span><span class="p">(</span><span class="s">&quot;Hello, my name is openai-java-sdk&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
-
-<span class="w">    </span><span class="n">CompletionChatEntity</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CompletionChatEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">messages</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+<p>Please build the client before calling, the build code is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">OpenAiClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenAiClient</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">apiHost</span><span class="p">(</span><span class="s">&quot;https://api.openai.com&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">apiKey</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&quot;openai.token&quot;</span><span class="p">))</span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="na">createChatCompletion</span><span class="p">(</span><span class="n">configure</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">getChoices</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">choice</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">messages</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">choice</span><span class="p">.</span><span class="na">getMessage</span><span class="p">()));</span>
-
-<span class="w">    </span><span class="n">messages</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">CompletionMessageEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">content</span><span class="p">(</span><span class="s">&quot;What is my name?&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span>
-<span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="na">createChatCompletion</span><span class="p">(</span><span class="n">configure</span><span class="p">).</span><span class="na">getChoices</span><span class="p">();</span>
+</code></pre></div>
+<p><code>System.getProperty("openai.token")</code> is the key to access the API authorization.</p>
+</div>
+<h3 id="create-thread">Create thread</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">ThreadEntity</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ThreadEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">client</span><span class="p">.</span><span class="na">createThread</span><span class="p">(</span><span class="n">configure</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1699012949</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="retrieve-thread">Retrieve thread</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">threadId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;thread_lsfBRIATCECds5WYLVXnVcpU&quot;</span><span class="p">;</span>
+<span class="n">client</span><span class="p">.</span><span class="na">retrieveThread</span><span class="p">(</span><span class="n">threadId</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1699014083</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="modify-thread">Modify thread</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">threadId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;thread_lsfBRIATCECds5WYLVXnVcpU&quot;</span><span class="p">;</span>
+<span class="n">ThreadEntity</span><span class="w"> </span><span class="n">configure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ThreadEntity</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="n">client</span><span class="p">.</span><span class="na">updateThread</span><span class="p">(</span><span class="n">threadId</span><span class="p">,</span><span class="w"> </span><span class="n">configure</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1699014083</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="delete-thread">Delete thread</h3>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">threadId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;thread_lsfBRIATCECds5WYLVXnVcpU&quot;</span><span class="p">;</span>
+<span class="n">client</span><span class="p">.</span><span class="na">deleteThread</span><span class="p">(</span><span class="n">threadId</span><span class="p">);</span>
+</code></pre></div>
+<p>Returns:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;thread.deleted&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div>
 
