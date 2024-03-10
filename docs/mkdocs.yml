@@ -103,6 +103,7 @@ nav:
         - reference/openai/files.md
         - reference/openai/fine_tunes.md
         - reference/openai/assistants.md
+        - reference/openai/threads.md
       - Azure Open Ai:
           - reference/azure/completions.md
           - reference/azure/completions_chat.md
