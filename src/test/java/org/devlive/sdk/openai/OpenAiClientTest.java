@@ -15,6 +15,7 @@ import org.devlive.sdk.common.exception.AuthorizedException;
 import org.devlive.sdk.common.exception.RequestException;
 import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.model.EditModel;
+import org.devlive.sdk.openai.response.ChatResponse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -92,6 +93,30 @@ public class OpenAiClientTest
                 .temperature(2D)
                 .build();
         Assert.assertTrue(client.createCompletion(configure).getChoices().size() > 0);
+    }
+
+    @Test
+    public void testCustomizedModel()
+    {
+        client = OpenAiClient.builder()
+                .apiHost(System.getProperty("proxy.host"))
+                .apiKey(System.getProperty("openai.token"))
+                .model("text-davinci-003")
+                .build();
+
+        List<MessageEntity> messages = Lists.newArrayList();
+        messages.add(MessageEntity.builder()
+                .content("Hello, please show me a jok!")
+                .build());
+
+        ChatEntity configure = ChatEntity.builder()
+                .messages(messages)
+                .model("text-davinci-003")
+                .build();
+        ChatResponse chatCompletion = client.createChatCompletion(configure);
+        String content = chatCompletion.getChoices().get(0).getMessage().getContent();
+        // System.out.println(content);
+        Assert.assertNotNull(content);
     }
 
     @Test

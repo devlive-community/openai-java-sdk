@@ -13,6 +13,9 @@ import org.devlive.sdk.openai.model.CompletionModel;
 import org.devlive.sdk.openai.utils.EnumsUtils;
 
 import java.util.List;
+import java.util.Objects;
+
+import static org.devlive.sdk.openai.model.CompletionModel.GPT_35_TURBO;
 
 @Data
 @Builder
@@ -47,7 +50,7 @@ public class ChatEntity
     private ChatEntity(ChatEntityBuilder builder)
     {
         if (ObjectUtils.isEmpty(builder.model)) {
-            builder.model(CompletionModel.GPT_35_TURBO);
+            builder.model(GPT_35_TURBO);
         }
         this.model = builder.model;
         this.messages = builder.messages;
@@ -73,7 +76,7 @@ public class ChatEntity
         public ChatEntityBuilder model(CompletionModel model)
         {
             if (ObjectUtils.isEmpty(model)) {
-                model = CompletionModel.GPT_35_TURBO;
+                model = GPT_35_TURBO;
             }
             switch (model) {
                 case GPT_35_TURBO:
@@ -96,6 +99,12 @@ public class ChatEntity
             return this;
         }
 
+        public ChatEntityBuilder model(String model)
+        {
+            this.model = model;
+            return this;
+        }
+
         public ChatEntityBuilder temperature(Double temperature)
         {
             if (temperature < 0 || temperature > 2) {
@@ -108,11 +117,20 @@ public class ChatEntity
         public ChatEntityBuilder maxTokens(Integer maxTokens)
         {
             CompletionModel completionModel = EnumsUtils.getCompleteModel(this.model);
-            if (ObjectUtils.isNotEmpty(this.model) && maxTokens > completionModel.getMaxTokens()) {
-                throw new ParamException(String.format("Invalid maxTokens: %s, Cannot be larger than the model default configuration %s", maxTokens, completionModel.getMaxTokens()));
+            if (Objects.isNull(completionModel)) {
+                this.maxTokens = maxTokens;
+                return this;
             }
-            this.maxTokens = maxTokens;
-            return this;
+            else {
+                if (ObjectUtils.isNotEmpty(this.model)
+                        && maxTokens > completionModel.getMaxTokens()) {
+                    throw new ParamException(String.format(
+                            "Invalid maxTokens: %s, Cannot be larger than the model default configuration %s",
+                            maxTokens, completionModel.getMaxTokens()));
+                }
+                this.maxTokens = maxTokens;
+                return this;
+            }
         }
 
         private ChatEntityBuilder stream()
