@@ -266,7 +266,7 @@ public abstract class DefaultClient
     }
 
     public AssistantsFileEntity createAssistantsFile(String fileId,
-            String assistantId)
+                                                     String assistantId)
     {
         String url = String.format(ProviderUtils.getUrl(provider, UrlModel.FETCH_ASSISTANTS_FILES), assistantId);
         Map<String, String> configure = Maps.newHashMap();
