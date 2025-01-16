@@ -12,7 +12,7 @@ title: 2024.01.3 (latest)
 
 - 支持新模型 `gpt-4o`
 
-### Google Gemini
+## Google Gemini
 
 ---
 
